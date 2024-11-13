@@ -1,0 +1,18 @@
+---
+- name: create env
+  hosts: localhost
+  tasks:
+    - name: Add hosts
+      ansible.builtin.add_host:
+        name: "{{ hosts_update }}"
+        groups: centrify
+      with_items: '{{ hosts_update.split() }}'
+
+- name: Install centrifyDC Client
+  hosts: centrify
+  become: yes
+  remote_user: root
+  tasks:
+    - name: Uptime host test
+      ansible.builtin.shell: uptime
+

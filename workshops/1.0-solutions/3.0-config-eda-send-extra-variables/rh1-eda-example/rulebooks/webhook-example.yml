@@ -1,0 +1,18 @@
+---
+- name: Listen for events on a webhook
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 6000
+  rules:
+    - name: Say Hello
+      condition: event.payload.event_name == 'Hello'
+      action:
+        run_job_template:
+          name: rh1-aap-extra-vars-eda 
+          organization: Ex
+          job_args:
+            extra_vars:
+              hosts_update: "{{ event.payload.host_host }}"
+
