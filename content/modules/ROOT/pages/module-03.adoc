@@ -39,7 +39,7 @@ Let's create the inventory:
 
 To create the inventory we will click on "Create Inventory" in blue.
 
-image::create-inventory-001.png[create-inventory-001,100%,100%]
+image::create-inventory-001.jpg[create-inventory-001,100%,100%]
 
 Now click on Create Inventory:
 
@@ -49,29 +49,29 @@ Name: localhost
 Organization: Default
 ----
 
-image::lab003-002.png[lab003-002,100%,100%]
+image::lab003-002.jpg[lab003-002,100%,100%]
 
 Let's add a host to the inventory. Now click on Hosts
 
-image::lab003-003.png[lab003-003,100%,100%]
+image::lab003-003.jpg[lab003-003,100%,100%]
 
 Click on Create hosts:
 
-image::lab003-004.png[lab003-004,100%,100%]
+image::lab003-004.jpg[lab003-004,100%,100%]
 
 Name: localhost
 
 Click on create host:
 
-image::lab003-005.png[lab003-005,100%,100%]
+image::lab003-005.jpg[lab003-005,100%,100%]
 
 Now with the host created:
 
-image::lab003-006.png[lab003-006,100%,100%]
+image::lab003-006.jpg[lab003-006,100%,100%]
 
 Go back to the inventory and disable the host:
 
-image::lab003-007.png[lab003-006,100%,100%]
+image::lab003-007.jpg[lab003-006,100%,100%]
 
 Let's create the hosts ec2-user user credential in AAP:
 
@@ -110,11 +110,11 @@ SSH Private Key: Copy your bastion private key: cat .ssh/vkhtjkey.pem
 
 ----
 
-image::lab003-009.png[lab003-009,100%,100%]
+image::lab003-009.jpg[lab003-009,100%,100%]
 
 Confirming that you created the ec2-user user:
 
-image::lab003-010.png[lab003-010,100%,100%]
+image::lab003-010.jpg[lab003-010,100%,100%]
 
 Let's create the gitlab credential:
 
@@ -128,7 +128,7 @@ Username: root
 Password: redhat..123
 ----
 
-image::lab003-011.png[lab003-011,100%,100%]
+image::lab003-011.jpg[lab003-011,100%,100%]
 
 Let's create the project in AAP to sync the rh1-aap-extra-vars-eda project:
 
@@ -145,15 +145,15 @@ check box:
   Update revision on launch
 ----
 
-image::lab003-015.png[lab003-015,100%,100%]
+image::lab003-015.jpg[lab003-015,100%,100%]
 
 This error will occur:
 
-image::lab003-013.png[lab003-013,100%,100%]
+image::lab003-013.jpg[lab003-013,100%,100%]
 
 To solve this, we will add this configuration to the job settings:
 
-image::lab003-014.png[lab003-014,100%,100%]
+image::lab003-014.jpg[lab003-014,100%,100%]
 
 Now, sync the project again.
 
@@ -175,9 +175,9 @@ Credentials: ec2-user
 Extra variables: Check Box Prompt on launch 
 ----
 
-image::lab003-016.png[lab003-016,100%,100%]
+image::lab003-016.jpg[lab003-016,100%,100%]
 
-image::lab003-017.png[lab003-017,100%,100%]
+image::lab003-017.jpg[lab003-017,100%,100%]
 
 
 Now in Automation Decisions we will create the credential:
@@ -186,7 +186,7 @@ Click em Create credential:
 
 Let's now add the credential information:
 
-image::lab003-018.png[lab003-018,100%,100%]
+image::lab003-018.jpg[lab003-018,100%,100%]
 
 [source,bash]
 ----
@@ -197,13 +197,13 @@ Username: root
 Password: redhat..123
 ----
 
-image::lab003-020.png[lab003-020,100%,100%]
+image::lab003-020.jpg[lab003-020,100%,100%]
 
 Let's create the project in EDA:
 
 Click em Create Project:
 
-image::lab003-021.png[lab003-021,100%,100%]
+image::lab003-021.jpg[lab003-021,100%,100%]
 
 To create your project, you need to get the link to the rh1-aap-extra-vars-eda repository. Access your gitlab:
 
@@ -212,7 +212,7 @@ Click on the rh1-aap-extra-vars-eda repository.
 
 Now in Code(Blue) Click on Clone with https:
 
-image::lab003-022.png[lab003-022,100%,100%]
+image::lab003-022.jpg[lab003-022,100%,100%]
 
 Create the project:
 
@@ -226,15 +226,15 @@ Source control credential: gitlab
 uncheck box: Verify SSL
 ----
 
-image::lab003-023.png[lab003-023,100%,100%]
-image::lab003-024.png[lab003-024,100%,100%]
+image::lab003-023.jpg[lab003-023,100%,100%]
+image::lab003-024.jpg[lab003-024,100%,100%]
 
 Now that the project has been successfully created and synced, let's create the AAP credential:
 Click em Create Credential:
 
-image::lab003-017.png[lab003-017,100%,100%]
+image::lab003-017.jpg[lab003-017,100%,100%]
 
-image::lab003-018.png[lab003-018,100%,100%]
+image::lab003-018.jpg[lab003-018,100%,100%]
 
 Let's add:
 
@@ -250,7 +250,7 @@ Password: R3dh4t1!
 
 Click on Create Project:
 
-image::lab003-027.png[lab003-027,100%,100%]
+image::lab003-027.jpg[lab003-027,100%,100%]
 
 Now let's create the RuleBook:
 
@@ -267,27 +267,27 @@ Decision environment: Default
 ----
 
 
-image::lab003-025.png[lab003-025,100%,100%]
+image::lab003-025.jpg[lab003-025,100%,100%]
 
-image::lab003-028.png[lab003-028,100%,100%]
+image::lab003-028.jpg[lab003-028,100%,100%]
 
 Click on Create rulebook activation
 
 Now in Running:
 
-image::lab003-032.png[lab003-032,100%,100%]
+image::lab003-032.jpg[lab003-032,100%,100%]
 
 Let's click on the rulebook: rh1-aap-extra-vars-eda
 
-image::lab003-033.png[lab003-033,100%,100%]
+image::lab003-033.jpg[lab003-033,100%,100%]
 
 Let's go to History:
 
-image::lab003-034.png[lab003-034,100%,100%]
+image::lab003-034.jpg[lab003-034,100%,100%]
 
 Click on the rulebook that is in Running:
 
-image::lab003-035.png[lab003-035,100%,100%]
+image::lab003-035.jpg[lab003-035,100%,100%]
 
 
 Now let's send the curl to this rulebook:
