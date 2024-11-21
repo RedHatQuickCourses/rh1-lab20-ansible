@@ -1,0 +1,303 @@
+= Configure Event Drive to send Extra Variables to AAP.
+
+
+== Let's copy the files:
+
+Copy both folders into the repository:
+
+[source,bash]
+----
+cp -rf rh1-eda-example/*  rh1-aap-extra-vars-eda/
+----
+
+Now let's commit to git:
+
+
+[source,bash]
+----
+git add .
+git commit -m "RH1"
+git push 
+----
+
+Now on Controller:
+
+Open the URL: https://controller.XXXXX.sandbox1125.opentlc.com/  - Replace XXXXX with your lab ID:
+
+EX: https://controller.vkhtj.sandbox1125.opentlc.com/
+
+
+Vamos logar: 
+
+[source,bash]
+----
+User: admin
+Pass: R3dh4t1!
+----
+
+Let's create the inventory:
+
+To create the inventory we will click on "Create Inventory" in blue.
+
+image::create-inventory-001.png[create-inventory-001,100%,100%]
+
+Now click on Create Inventory:
+
+[source,bash]
+----
+Name: localhost
+Organization: Default
+----
+
+image::lab003-002.png[lab003-002,100%,100%]
+
+Let's add a host to the inventory. Now click on Hosts
+
+image::lab003-003.png[lab003-003,100%,100%]
+
+Click on Create hosts:
+
+image::lab003-004.png[lab003-004,100%,100%]
+
+Name: localhost
+
+Click on create host:
+
+image::lab003-005.png[lab003-005,100%,100%]
+
+Now with the host created:
+
+image::lab003-006.png[lab003-006,100%,100%]
+
+Go back to the inventory and disable the host:
+
+image::lab003-007.png[lab003-006,100%,100%]
+
+Let's create the hosts ec2-user user credential in AAP:
+
+To create the machine credential in AAP, we need to get the private key from the bastion host.
+
+In the test environment I'm using now it's: .ssh/vkhtjkey.pem 
+
+To validate your private key:
+
+
+[source,bash]
+----
+[lab-user@bastion ~]$ ls -lha .ssh/
+total 24K
+drwx------. 2 lab-user lab-user  102 Nov 19 02:24 .
+drwxr-xr-x. 8 lab-user lab-user 4.0K Nov 19 12:41 ..
+-rw-------. 1 lab-user lab-user 2.4K Nov 19 13:10 authorized_keys
+-r--------. 1 lab-user root      216 Nov 19 01:40 config
+-rw-r--r--. 1 lab-user lab-user  374 Nov 19 12:41 known_hosts
+-r--------. 1 lab-user root     2.6K Nov 19 01:40 wlffskey.pem
+-r--------. 1 lab-user root      552 Nov 19 01:40 wlffskey.pub
+[lab-user@bastion ~]$ 
+[lab-user@bastion ~]$ cat .ssh/vkhtjkey.pem 
+----
+
+Let's copy the contents of the private key and create the credential machine:
+
+
+[source,bash]
+----
+Name: ec2-user
+Organization: Default
+credenial type: Machine
+Username: ec2-user
+SSH Private Key: Copy your bastion private key: cat .ssh/vkhtjkey.pem
+
+----
+
+image::lab003-009.png[lab003-009,100%,100%]
+
+Confirming that you created the ec2-user user:
+
+image::lab003-010.png[lab003-010,100%,100%]
+
+Let's create the gitlab credential:
+
+
+[source,bash]
+----
+Name: gitlab
+Organization: Default
+credenial type: Source Control
+Username: root
+Password: redhat..123
+----
+
+image::lab003-011.png[lab003-011,100%,100%]
+
+Let's create the project in AAP to sync the rh1-aap-extra-vars-eda project:
+
+[source,bash]
+----
+Name: rh1-aap-extra-vars-eda
+Organization: Default
+credenial control type: git
+Source control URL: https://server.example.com/root/rh1-aap-extra-vars-eda.git
+Source control credential: gtilab
+check box:
+  Clean
+  Delete
+  Update revision on launch
+----
+
+image::lab003-015.png[lab003-015,100%,100%]
+
+This error will occur:
+
+image::lab003-013.png[lab003-013,100%,100%]
+
+To solve this, we will add this configuration to the job settings:
+
+image::lab003-014.png[lab003-014,100%,100%]
+
+Now, sync the project again.
+
+[source,bash]
+----
+GIT_SSL_NO_VERIFY: 'True'
+----
+
+Let's create the job_template in AAP with the project name rh1-aap-extra-vars-eda:
+
+
+[source,bash]
+----
+Name: rh1-aap-extra-vars-eda
+Inventory: localhost 
+Project: rh1-aap-extra-vars-eda
+Playbook: playbook/hello-rh1.yml
+Credentials: ec2-user
+Extra variables: Check Box Prompt on launch 
+----
+
+image::lab003-016.png[lab003-016,100%,100%]
+
+image::lab003-017.png[lab003-017,100%,100%]
+
+
+Now in Automation Decisions we will create the credential:
+
+Click em Create credential:
+
+Let's now add the credential information:
+
+image::lab003-018.png[lab003-018,100%,100%]
+
+[source,bash]
+----
+Name: gitlab 
+Organization: Default
+Credential type: Source Control 
+Username: root
+Password: redhat..123
+----
+
+image::lab003-020.png[lab003-020,100%,100%]
+
+Let's create the project in EDA:
+
+Click em Create Project:
+
+image::lab003-021.png[lab003-021,100%,100%]
+
+To create your project, you need to get the link to the rh1-aap-extra-vars-eda repository. Access your gitlab:
+
+To access your gitlab: https://server.XXXX.sandbox829.opentlc.com
+Click on the rh1-aap-extra-vars-eda repository.
+
+Now in Code(Blue) Click on Clone with https:
+
+image::lab003-022.png[lab003-022,100%,100%]
+
+Create the project:
+
+[source,bash]
+----
+Name: rh1-aap-extra-vars-eda 
+Organization: Default
+Source control type: git
+Source control URL: https://server.example.com/root/rh1-aap-extra-vars-eda.git
+Source control credential: gitlab
+uncheck box: Verify SSL
+----
+
+image::lab003-023.png[lab003-023,100%,100%]
+image::lab003-024.png[lab003-024,100%,100%]
+
+Now that the project has been successfully created and synced, let's create the AAP credential:
+Click em Create Credential:
+
+image::lab003-017.png[lab003-017,100%,100%]
+
+image::lab003-018.png[lab003-018,100%,100%]
+
+Let's add:
+
+[source,bash]
+----
+Name: AAP
+Organization: Default
+Credential type: Red Hat Ansible Automation Platform
+Red Hat Ansible Automation Platform: https://controller.slfk6.sandbox829.opentlc.com/api/controller/
+Username: admin 
+Password: R3dh4t1!
+----
+
+Click on Create Project:
+
+image::lab003-027.png[lab003-027,100%,100%]
+
+Now let's create the RuleBook:
+
+Click on Create Rulebook activation:
+
+[source,bash]
+----
+Name: rh1-aap-extra-vars-eda
+Organization: Default
+Project: rh1-aap-extra-vars-eda
+Rulebook: webhook-example.yml
+Credential: AAP
+Decision environment: Default
+----
+
+
+image::lab003-025.png[lab003-025,100%,100%]
+
+image::lab003-028.png[lab003-028,100%,100%]
+
+Click on Create rulebook activation
+
+Now in Running:
+
+image::lab003-032.png[lab003-032,100%,100%]
+
+Let's click on the rulebook: rh1-aap-extra-vars-eda
+
+image::lab003-033.png[lab003-033,100%,100%]
+
+Let's go to History:
+
+image::lab003-034.png[lab003-034,100%,100%]
+
+Click on the rulebook that is in Running:
+
+image::lab003-035.png[lab003-035,100%,100%]
+
+
+Now let's send the curl to this rulebook:
+
+
+[source,bash]
+----
+ssh node1
+curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "node1.example.com" }' controller:6000/endpoint
+----
+
+After sending the curl. The Job Template rh1-aap-extra-vars-eda will execute.
+
