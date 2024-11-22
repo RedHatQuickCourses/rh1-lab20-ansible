@@ -20,14 +20,14 @@ git commit -m "RH1"
 git push 
 ----
 
-Now on Controller:
+== Now on Controller:
 
 Open the URL: https://controller.XXXXX.sandbox1125.opentlc.com/  - Replace XXXXX with your lab ID:
 
 EX: https://controller.vkhtj.sandbox1125.opentlc.com/
 
 
-Vamos logar: 
+Let's log in:
 
 [source,bash]
 ----
@@ -177,12 +177,11 @@ Extra variables: Check Box Prompt on launch
 
 image::lab003-016.jpg[lab003-016,100%,100%]
 
-image::lab003-017.jpg[lab003-017,100%,100%]
-
-
-Now in Automation Decisions we will create the credential:
+== Now in Automation Decisions we will create the credential:
 
 Click em Create credential:
+
+image::lab003-017.jpg[lab003-017,100%,100%]
 
 Let's now add the credential information:
 

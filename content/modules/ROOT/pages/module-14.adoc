@@ -165,7 +165,7 @@ Let's now create the Rulebook in Event Driven to receive these Alerts:
 
 
 
-Now on Controller:
+== Now on Controller:
 
 Open the URL: https://controller.XXXXX.sandbox1125.opentlc.com/ - Replace XXXXX with your lab ID:
 
@@ -239,7 +239,9 @@ ssh node1
 sudo systemclt stop httpd
 ----
 
-In the Zabbix Dashboards, we will be able to see the Apache alert being sent to the EDA:
+== In the Zabbix Dashboards
+
+We will be able to see the Apache alert being sent to the EDA:
 
 image::lab004-034.jpg[lab004-034,100%,100%]
 

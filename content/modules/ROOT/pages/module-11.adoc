@@ -5,7 +5,7 @@
 
 Access the node1 node via ssh:
 
-Voce vai ter 
+Access the 01-lab folder
 
 [source,bash]
 ----

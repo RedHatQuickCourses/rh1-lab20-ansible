@@ -175,18 +175,19 @@ Credentials: ec2-user
 Extra variables: Check Box Prompt on launch 
 ----
 
+
 image::lab003-016.jpg[lab003-016,100%,100%]
 
-image::lab003-017.jpg[lab003-017,100%,100%]
-
-
-Now in Automation Decisions we will create the credential:
+== Now in Automation Decisions we will create the credential:
 
 Click em Create credential:
+
+image::lab003-017.jpg[lab003-017,100%,100%]
 
 Let's now add the credential information:
 
 image::lab003-018.jpg[lab003-018,100%,100%]
+
 
 [source,bash]
 ----
