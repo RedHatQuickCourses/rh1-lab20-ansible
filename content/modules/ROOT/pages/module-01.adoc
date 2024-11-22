@@ -43,7 +43,7 @@ In another terminal, run the curl command:
 curl -H 'Content-Type: application/json' -d '{"event_name:" "Hello" }' node1:5000/endpoint
 ----
 
-Quando mandar o curl acima. Vai mostrar a mensagem abaixo:
+When you send the curl above, it will show the message below:
 
 
 [source,bash]

@@ -138,7 +138,7 @@ Name: rh1-aap-extra-vars-eda
 Organization: Default
 credenial control type: git
 Source control URL: https://server.example.com/root/rh1-aap-extra-vars-eda.git
-Source control credential: gtilab
+Source control credential: gitlab
 check box:
   Clean
   Delete
