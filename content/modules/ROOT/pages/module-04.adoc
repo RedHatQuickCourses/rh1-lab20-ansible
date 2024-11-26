@@ -91,13 +91,13 @@ Before:
 
 image::lab004-016.jpg[lab004-016,100%,100%]
 
-After. After clicking on Disabled(Red). It will change to Disabled(Green):
+After. After clicking on Disabled(Red). It will change to Enabled(Green):
 
 image::lab004-017.jpg[lab004-017,100%,100%]
 
 Let's enable the Media Type:
 
-Alerts > Media Type > Event Driven Ansible. Click on Disabled(Red). It will change to Disabled(Green):
+Alerts > Media Type > Event Driven Ansible. Click on Disabled(Red). It will change to Enabled(Green):
 
 image::lab004-018.jpg[lab004-018,100%,100%]
 
@@ -180,6 +180,17 @@ User: admin
 Pass: R3dh4t1!
 ----
 
+
+[source,bash]
+----
+[ec2-user@node1 ~]$ cd 04-lab/
+[ec2-user@node1 ~]$ git clone git@server.example.com:root/eda-debug.git
+[ec2-user@node1 04-lab]$ cp -rf rulebooks eda-debug/
+[ec2-user@node1 eda-debug]$ git add . ; git commit -m add ; git push
+
+----
+
+
 Let's first create the project in Automation Decision:
 
 Click on Create project:
@@ -236,7 +247,7 @@ Access node1:
 [source,bash]
 ----
 ssh node1
-sudo systemclt stop httpd
+sudo systemctl stop httpd
 ----
 
 == In the Zabbix Dashboards 

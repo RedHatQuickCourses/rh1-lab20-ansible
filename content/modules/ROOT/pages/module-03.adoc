@@ -7,7 +7,33 @@ Copy both folders into the repository:
 
 [source,bash]
 ----
-cp -rf rh1-eda-example/*  rh1-aap-extra-vars-eda/
+[lab-user@bastion ~]$ ssh node1 
+[ec2-user@node1 ~]$ cd 03-lab/
+[ec2-user@node1 ~]$ cat .ssh/id_rsa.pub
+----
+
+Copy the contents of the public key and add it to this link:
+
+https://server.xxxx.sandbox491.opentlc.com/-/user_settings/ssh_keys
+
+image::lab003-add002.jpg[lab003-add002,100%,100%]
+
+Agora click em add new key
+
+image::lab003-add003.jpg[lab003-add003,100%,100%]
+
+Copie o id_rsa.pub
+
+image::lab003-add004.jpg[lab003-add004,100%,100%]
+
+Cole e click em add key
+
+image::lab003-add005.jpg[lab003-add005,100%,100%]
+
+[source,bash]
+----
+[ec2-user@node1 ~]$ git clone git@server.example.com:root/rh1-aap-extra-vars-eda.git
+[ec2-user@node1 ~]$ cp -rf rh1-eda-example/*  rh1-aap-extra-vars-eda/
 ----
 
 Now let's commit to git:
@@ -68,10 +94,6 @@ image::lab003-005.jpg[lab003-005,100%,100%]
 Now with the host created:
 
 image::lab003-006.jpg[lab003-006,100%,100%]
-
-Go back to the inventory and disable the host:
-
-image::lab003-007.jpg[lab003-006,100%,100%]
 
 Let's create the hosts ec2-user user credential in AAP:
 
@@ -198,20 +220,12 @@ Password: redhat..123
 
 image::lab003-020.jpg[lab003-020,100%,100%]
 
+
 Let's create the project in EDA:
 
 Click em Create Project:
 
 image::lab003-021.jpg[lab003-021,100%,100%]
-
-To create your project, you need to get the link to the rh1-aap-extra-vars-eda repository. Access your gitlab:
-
-To access your gitlab: https://server.XXXX.sandbox829.opentlc.com
-Click on the rh1-aap-extra-vars-eda repository.
-
-Now in Code(Blue) Click on Clone with https:
-
-image::lab003-022.jpg[lab003-022,100%,100%]
 
 Create the project:
 
@@ -247,7 +261,7 @@ Username: admin
 Password: R3dh4t1!
 ----
 
-Click on Create Project:
+Click on Create Credential:
 
 image::lab003-027.jpg[lab003-027,100%,100%]
 

@@ -45,7 +45,7 @@ In another terminal, run the curl command:
 
 [source,bash]
 ----
-  curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "gitlab.lnx.example.local" }' node1:5000/endpoint
+  curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "node1" }' node1:5000/endpoint
 ----
 
 In the terminal where you executed the rulebook command. You will get this output:

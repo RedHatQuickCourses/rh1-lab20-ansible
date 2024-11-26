@@ -7,7 +7,33 @@ Copy both folders into the repository:
 
 [source,bash]
 ----
-cp -rf rh1-eda-example/*  rh1-aap-extra-vars-eda/
+[lab-user@bastion ~]$ ssh node1 
+[ec2-user@node1 ~]$ cd 03-lab/
+[ec2-user@node1 ~]$ cat .ssh/id_rsa.pub
+----
+
+Copy the contents of the public key and add it to this link:
+
+https://server.xxxx.sandbox491.opentlc.com/-/user_settings/ssh_keys
+
+image::lab003-add002.jpg[lab003-add002,100%,100%]
+
+Agora click em add new key
+
+image::lab003-add003.jpg[lab003-add003,100%,100%]
+
+Copie o id_rsa.pub
+
+image::lab003-add004.jpg[lab003-add004,100%,100%]
+
+Cole e click em add key
+
+image::lab003-add005.jpg[lab003-add005,100%,100%]
+
+[source,bash]
+----
+[ec2-user@node1 ~]$ git clone git@server.example.com:root/rh1-aap-extra-vars-eda.git
+[ec2-user@node1 ~]$ cp -rf rh1-eda-example/*  rh1-aap-extra-vars-eda/
 ----
 
 Now let's commit to git:
@@ -20,14 +46,14 @@ git commit -m "RH1"
 git push 
 ----
 
-Now on Controller:
+== Now on Controller:
 
 Open the URL: https://controller.XXXXX.sandbox1125.opentlc.com/  - Replace XXXXX with your lab ID:
 
 EX: https://controller.vkhtj.sandbox1125.opentlc.com/
 
 
-Vamos logar: 
+Let's log in:
 
 [source,bash]
 ----
@@ -175,7 +201,6 @@ Credentials: ec2-user
 Extra variables: Check Box Prompt on launch 
 ----
 
-
 image::lab003-016.jpg[lab003-016,100%,100%]
 
 == Now in Automation Decisions we will create the credential:
@@ -188,7 +213,6 @@ Let's now add the credential information:
 
 image::lab003-018.jpg[lab003-018,100%,100%]
 
-
 [source,bash]
 ----
 Name: gitlab 
@@ -200,20 +224,12 @@ Password: redhat..123
 
 image::lab003-020.jpg[lab003-020,100%,100%]
 
+
 Let's create the project in EDA:
 
 Click em Create Project:
 
 image::lab003-021.jpg[lab003-021,100%,100%]
-
-To create your project, you need to get the link to the rh1-aap-extra-vars-eda repository. Access your gitlab:
-
-To access your gitlab: https://server.XXXX.sandbox829.opentlc.com
-Click on the rh1-aap-extra-vars-eda repository.
-
-Now in Code(Blue) Click on Clone with https:
-
-image::lab003-022.jpg[lab003-022,100%,100%]
 
 Create the project:
 
@@ -249,7 +265,7 @@ Username: admin
 Password: R3dh4t1!
 ----
 
-Click on Create Project:
+Click on Create Credential:
 
 image::lab003-027.jpg[lab003-027,100%,100%]
 
@@ -301,4 +317,16 @@ curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host"
 ----
 
 After sending the curl. The Job Template rh1-aap-extra-vars-eda will execute.
+
+[ec2-user@node1 ~]$ cd 03-lab/
+[ec2-user@node1 03-lab]$ ls
+rh1-aap-extra-vars-eda  rh1-eda-example
+[ec2-user@node1 03-lab]$ cd rh1-aap-extra-vars-eda/
+[ec2-user@node1 rh1-aap-extra-vars-eda]$ ls
+playbook  README.md  rulebooks
+[ec2-user@node1 rh1-aap-extra-vars-eda]$ vim playbook/hello-rh1.yml
+
+Remove remote_user: root
+
+Save the file.
 

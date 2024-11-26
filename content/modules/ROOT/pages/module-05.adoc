@@ -6,9 +6,13 @@ Add the files inside this folder to git.
 
 [source,bash]
 ----
-cd 05-lab/
-cd rh1-ansible-eda-vars-zabbix/
-git add . ; git commit -m add ; git push
+[ec2-user@node1 ~]$ cd 05-lab/
+[ec2-user@node1 05-lab]$ git clone git@server.example.com:root/rh1-ansible-eda-vars-zabbix.git
+[ec2-user@node1 05-lab]$ cd rh1-ansible-eda-vars-zabbix/
+[ec2-user@node1 05-lab]$ cp -rf projeto-http rulebooks rh1-ansible-eda-vars-zabbix/
+[ec2-user@node1 05-lab]$ cd rh1-ansible-eda-vars-zabbix/
+[ec2-user@node1 rh1-ansible-eda-vars-zabbix]$
+[ec2-user@node1 05-lab]$ git add . ; git commit -m add ; git push
 ----
 
 In Ansible Automation Platform we will create the rh1-ansible-eda-vars-zabbix project in Automation Decisions:
@@ -134,7 +138,7 @@ image::lab005-014.jpg[lab005-014,100%,100%]
 
 [source,bash]
 ----
-Name: projecto-http
+Name: projeto-http
 Project: rh1-ansible-eda-vars-zabbix
 Playbook: projeto-http/playbook.yml
 Credentials: ec2-user
@@ -154,18 +158,16 @@ Let's stop the server's httpd:
 
 [source,bash]
 ----
-systemctl stop httpd
+sudo systemctl stop httpd
 ----
 
 Now Zabbix will send the notification to Ansible Event Driven:
 
-image::lab005-023.png[lab005-023,100%,100%]
+image::lab005-023.jpg[lab005-023,100%,100%]
 
 And Check if the job ran successfully:
 
 image::lab005-020.jpg[lab005-020,100%,100%]
 
 Now we can see the logs in Ansible Event Driven
-
-image::lab005-022.jpg[lab005-022,100%,100%]
 
