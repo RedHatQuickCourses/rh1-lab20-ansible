@@ -18,15 +18,15 @@ https://server.xxxx.sandbox491.opentlc.com/-/user_settings/ssh_keys
 
 image::lab003-add002.jpg[lab003-add002,100%,100%]
 
-Agora click em add new key
+Now click on add new key
 
 image::lab003-add003.jpg[lab003-add003,100%,100%]
 
-Copie o id_rsa.pub
+Copy the id_rsa.pub
 
 image::lab003-add004.jpg[lab003-add004,100%,100%]
 
-Cole e click em add key
+Paste and click add key
 
 image::lab003-add005.jpg[lab003-add005,100%,100%]
 
