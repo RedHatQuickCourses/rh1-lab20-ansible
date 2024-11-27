@@ -4,6 +4,20 @@
 == Validate the rules in the rulebooks
 
 
+Let's copy the SSH settings to access the host:
+
+[source,bash]
+----
+[lab-user@bastion ~]$ cd .ssh/
+[lab-user@bastion .ssh]$ ls
+authorized_keys  config  known_hosts  n66g5key.pem  n66g5key.pub
+[lab-user@bastion .ssh]$ scp config n66g5key.p* ec2-user@node1:/home/ec2-user/.ssh/ 
+config                                                                               100%  216   445.0KB/s   00:00    
+n66g5key.pem                                                                         100% 2602     4.1MB/s   00:00    
+n66g5key.pub                                                                         100%  552   878.2KB/s   00:00    
+[lab-user@bastion .ssh]$ 
+----
+
 [source,bash]
 ----
 [lab-user@bastion ~]$ ssh node1 
@@ -14,6 +28,15 @@ total 12
 -rw-r--r--. 1 ec2-user ec2-user  61 Nov 18 13:57 inventory.yml
 -rw-r--r--. 1 ec2-user ec2-user 288 Nov 18 13:57 webhook-example.yml
 ----
+
+We will need to edit the hello-rh1.yml file.
+
+[source,bash]
+----
+[ec2-user@node1 02-lab]$ vim hello-rh1.yml
+----
+
+Change remote_user: root to remote_user: ec2-user
 
 In the terminal where you created the files. Run ansible-rulebook:
 

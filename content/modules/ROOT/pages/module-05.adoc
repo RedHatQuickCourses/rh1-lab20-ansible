@@ -8,8 +8,7 @@ Add the files inside this folder to git.
 ----
 [ec2-user@node1 ~]$ cd 05-lab/
 [ec2-user@node1 05-lab]$ git clone git@server.example.com:root/rh1-ansible-eda-vars-zabbix.git
-[ec2-user@node1 05-lab]$ cd rh1-ansible-eda-vars-zabbix/
-[ec2-user@node1 05-lab]$ cp -rf projeto-http rulebooks rh1-ansible-eda-vars-zabbix/
+[ec2-user@node1 05-lab]$ cp -rf project-http rulebooks rh1-ansible-eda-vars-zabbix/
 [ec2-user@node1 05-lab]$ cd rh1-ansible-eda-vars-zabbix/
 [ec2-user@node1 rh1-ansible-eda-vars-zabbix]$
 [ec2-user@node1 05-lab]$ git add . ; git commit -m add ; git push
@@ -106,7 +105,10 @@ Organization: Default
 Source Control type: git
 Source control URL: https://server.example.com/root/rh1-ansible-eda-vars-zabbix.git
 Source control Credential: gitlab
-check box:Clean, Update revision on launch and Delete
+Check box: 
+    Clean, 
+    Update revision on launch 
+    Delete
 ----
 
 image::lab005-022.jpg[lab005-022,100%,100%]
@@ -114,6 +116,13 @@ image::lab005-022.jpg[lab005-022,100%,100%]
 Click on Create project.
 
 Let's create the project-http inventory containing only the host localhost:
+
+[source,bash]
+----
+Name: project-http
+Organization: Default
+----
+
 
 image::lab005-015.jpg[lab005-015,100%,100%]
 
@@ -123,11 +132,16 @@ image::lab005-016.jpg[lab005-016,100%,100%]
 
 Now let's add the host localhost:
 
+[source,bash]
+----
+Name: localhost
+----
+
+
+
 image::lab005-017.jpg[lab005-017,100%,100%]
 
-Remember to put the host in disabled mode inside the inventory:
-
-image::lab005-018.jpg[lab005-018,100%,100%]
+Let's click on Create Host:
 
 
 Let's create the job_template:
@@ -138,17 +152,46 @@ image::lab005-014.jpg[lab005-014,100%,100%]
 
 [source,bash]
 ----
-Name: projeto-http
+Name: project-http
 Project: rh1-ansible-eda-vars-zabbix
-Playbook: projeto-http/playbook.yml
+Playbook: project-http/playbook.yml
 Credentials: ec2-user
-Inventory: projeto-http
+Inventory: project-http
 ----
 
-Mark the Extra variable check box as Prompt on launch
+The big problem is creating the correct regular expression for the payload to execute.
 
-image::lab005-019.jpg[lab005-019,100%,100%]
+Now it's time to edit the rh1-ansible-eda-vars-zabbix/rulebooks/webhook-zabbix.yml file and find the correct expression.
 
+
+[source,yml]
+----
+---
+- name: Listen for events on a webhook
+  hosts: all
+  sources:
+    - ansible.eda.webhook:
+        host: 0.0.0.0
+        port: 5000
+  rules:
+    - name: Zabbix Apache 
+      condition: event.payload.event_name == "Apache: Service is down"
+      action:
+        run_job_template:
+          name: projeto-http
+          organization: Default
+          job_args:
+            extra_vars:
+              hosts_update: "{{ event.payload.host_host }}"
+
+----
+
+You only need to edit this line:
+
+[source,bash]
+----
+condition: event.payload.event_name == "Apache: Service is down"
+----
 
 == Let's test Zabbix alerts:
 

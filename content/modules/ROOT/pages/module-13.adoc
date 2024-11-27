@@ -3,13 +3,27 @@
 
 == Let's copy the files:
 
-Copy both folders into the repository:
+Let's list the files in the .ssh/ folder
+
+Now, let's copy the contents of the .pub file:
 
 [source,bash]
 ----
 [lab-user@bastion ~]$ ssh node1 
-[ec2-user@node1 ~]$ cd 03-lab/
-[ec2-user@node1 ~]$ cat .ssh/id_rsa.pub
+[ec2-user@node1 ~]$ ls -lha .ssh/
+total 36K
+drwx------.  2 ec2-user ec2-user  157 Nov 26 14:23 .
+drwx------. 10 ec2-user ec2-user 4.0K Nov 26 14:05 ..
+-rw-------.  1 ec2-user ec2-user 3.1K Nov 26 13:21 authorized_keys
+-r--------.  1 ec2-user ec2-user  216 Nov 26 14:02 config
+-rw-------.  1 ec2-user ec2-user 2.6K Nov 26 13:47 id_rsa
+-rw-------.  1 ec2-user ec2-user  582 Nov 26 13:47 id_rsa.pub
+-rw-------.  1 ec2-user ec2-user 1.7K Nov 26 14:23 known_hosts
+-rw-------.  1 ec2-user ec2-user  913 Nov 26 14:21 known_hosts.old
+-r--------.  1 ec2-user ec2-user 2.6K Nov 26 14:22 n66g5key.pem
+-r--------.  1 ec2-user ec2-user  552 Nov 26 14:22 n66g5key.pub
+[ec2-user@node1 ~]$ cat .ssh/n66g5key.pub (Change to your ssh pub key)
+
 ----
 
 Copy the contents of the public key and add it to this link:
@@ -20,15 +34,14 @@ image::lab003-add002.jpg[lab003-add002,100%,100%]
 
 Now click on add new key
 
-image::lab003-add003.jpg[lab003-add003,100%,100%]
-
-Copy the id_rsa.pub
+Copy the .ssh/n66g5key.pub (Change to your ssh pub key)
 
 image::lab003-add004.jpg[lab003-add004,100%,100%]
 
 Paste and click add key
 
 image::lab003-add005.jpg[lab003-add005,100%,100%]
+
 
 [source,bash]
 ----
@@ -41,9 +54,9 @@ Now let's commit to git:
 
 [source,bash]
 ----
-git add .
-git commit -m "RH1"
-git push 
+[ec2-user@node1 rh1-aap-extra-vars-eda]$ git add .
+[ec2-user@node1 rh1-aap-extra-vars-eda]$ git commit -m "RH1"
+[ec2-user@node1 rh1-aap-extra-vars-eda]$ git push 
 ----
 
 == Now on Controller:
@@ -61,7 +74,7 @@ User: admin
 Pass: R3dh4t1!
 ----
 
-Let's create the inventory:
+Let's create the inventory. Select Automation Controller > Infrastructure > Inventories.
 
 To create the inventory we will click on "Create Inventory" in blue.
 
@@ -318,6 +331,8 @@ curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host"
 
 After sending the curl. The Job Template rh1-aap-extra-vars-eda will execute.
 
+[source,bash]
+----
 [ec2-user@node1 ~]$ cd 03-lab/
 [ec2-user@node1 03-lab]$ ls
 rh1-aap-extra-vars-eda  rh1-eda-example
@@ -325,6 +340,7 @@ rh1-aap-extra-vars-eda  rh1-eda-example
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ ls
 playbook  README.md  rulebooks
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ vim playbook/hello-rh1.yml
+----
 
 Remove remote_user: root
 

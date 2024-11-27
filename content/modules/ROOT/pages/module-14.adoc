@@ -3,8 +3,8 @@
 
 == Let's add a node in zabbix:
 
-Let's run the client-zabbix playbook on the Ansible Automation Platform to configure the zabbix agent on the host apache001
-Loging in zabbix http://server.XXXX.sandbox829.opentlc.com/zabbix/.
+Let's run the client-zabbix playbook on the Ansible Automation Platform to configure the Zabbix agent on the host apache001
+Loging in Zabbix http://server.XXXX.sandbox829.opentlc.com/zabbix/.
 
 [source,bash]
 ----
@@ -63,7 +63,7 @@ Now in interface. Click on Add.
 
 image::lab004-011.jpg[lab004-011,100%,100%]
 
-In Connect to. Change to DNS:
+In Connect to. Change to DNS: (IMPORTANT)
 
 image::lab004-012.jpg[lab004-012,100%,100%]
 
@@ -261,5 +261,80 @@ image::lab004-035.jpg[lab004-035,100%,100%]
 
 In eda we can see the playload arriving.
 
-Next, we will use this playload to solve the apache problem.
+image::lab005-add001.jpg[lab005-add001,100%,100%]
+
+[source,bash]
+----
+
+{'hosts': ['all'],
+ 'inventory': '',
+ 'project_data_file': '',
+ 'rule': 'Output Zabbix Information',
+ 'rule_run_at': '2024-11-26T18:13:47.455882Z',
+ 'rule_set': 'Listen for events on a webhook from Zabbix',
+ 'rule_set_uuid': '9ccc3577-5045-4ce3-b72a-97c229bdb042',
+ 'rule_uuid': 'a643a63e-72c1-485f-a228-c410e08e0d60',
+ 'variables': {'event': {'meta': {'endpoint': 'endpoint',
+                                  'headers': {'Accept': '*/*',
+                                              'Accept-Encoding': 'deflate, '
+                                                                 'gzip, br',
+                                              'Content-Length': '813',
+                                              'Content-Type': 'application/json',
+                                              'Host': '192.168.0.135:5000'},
+                                  'received_at': '2024-11-26T18:13:47.400499Z',
+                                  'source': {'name': 'Listen for alerts from '
+                                                     'Zabbix',
+                                             'type': 'ansible.eda.webhook'},
+                                  'uuid': 'dc3d7651-c374-4a95-9169-73e5f269db33'},
+                         'payload': {'HTTPProxy': '',
+                                     'acknowledged': 'No',
+                                     'endpoint': '/endpoint',
+                                     'event_date': '2024.11.26',
+                                     'event_datetime_timestamp': 1732644824,
+                                     'event_id': 110,
+                                     'event_name': 'Apache: Service is down',
+                                     'event_nseverity': 3,
+                                     'event_object': 0,
+                                     'event_severity': 'Average',
+                                     'event_source': 0,
+                                     'event_tags': {'class': ['software'],
+                                                    'component': ['application',
+                                                                  'health',
+                                                                  'system'],
+                                                    'scope': ['availability'],
+                                                    'target': ['apache']},
+                                     'event_time': '18:13:44',
+                                     'event_value': 1,
+                                     'host_groups': ['Applications'],
+                                     'host_host': 'node1.example.com',
+                                     'host_id': 10631,
+                                     'host_ip': '127.0.0.1',
+                                     'host_port': '10050',
+                                     'monitoring_source': 'Zabbix sever',
+                                     'operation_data': 'Down (0), 0',
+                                     'send_to': '192.168.0.135:5000',
+                                     'subject': 'Event ID: 110, Host: '
+                                                'node1.example.com, Problem: '
+                                                'Apache: Service is down',
+                                     'trigger_description': '',
+                                     'trigger_id': 23758,
+                                     'trigger_name': 'Apache: Service is '
+                                                     'down'}}}}
+********************************************************************************
+
+----
+
+We are looking for what we can use from this payload:
+
+
+[source,bash]
+----
+ 'event_name': 'Apache: Service is down', 
+ 'host_host': 'node1.example.com',
+----
+
+In the next lab, we will customize the rulebook to take this event_name as a condition!
+
+
+We will use this playload to solve the apache problem.
 

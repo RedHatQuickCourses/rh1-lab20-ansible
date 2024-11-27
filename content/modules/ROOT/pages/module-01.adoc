@@ -22,6 +22,11 @@ In the terminal where you created the files. Run ansible-rulebook:
 
 [source,bash]
 ----
+ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --print-events 
+----
+
+[source,bash]
+----
 [ec2-user@node1 01-lab]$ ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --print-events 
 2024-11-18 20:00:48,035 - ansible_rulebook.app - INFO - Starting sources
 2024-11-18 20:00:48,035 - ansible_rulebook.app - INFO - Starting rules
