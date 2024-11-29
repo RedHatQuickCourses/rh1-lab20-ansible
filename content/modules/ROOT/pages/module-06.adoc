@@ -1,5 +1,192 @@
 = Let's work with Podman and Ansible-builder
 
+[#in_this_bfx]
+== What’s in this break-fix?
+
+FIXME: 
+
+Short description about this break-fix activity
+
+Steps to be followed:
+
+. Step 1
++
+[source,bash]
+----
+command to be executed in the lab
+----
++
+.Output
+----
+Output displayed by the command
+----
+
+. Step 2
+
+.. sub-step 2.1
+
+.. sub-step 2.2
+
+. Step 3
+
+
+
+== Podman
+
+Many customer show TAMs problems with modules within the image.
+There are two ways to show the customer what the image (Execution Enviroment) needs to be able to execute the playbook.
+Interactive and Declarative
+Let's start with the interactive way:
+Access the node1 via ssh:
+
+[source,bash]
+----
+ssh node1
+----
+
+Now we will use the ee-supported-rhel8 image.
+We can get its path:
+
+image::lab006-001.jpg[lab006-001,100%,100%]
+
+Click on ee-supported-rhel8
+click on "copy to clicborad"
+
+image::lab006-002.jpg[lab006-002,100%,100%]
+
+[source,bash]
+----
+podman pull controller.example.com/ee-supported-rhel8
+podman run -it controller.example.com/ee-supported-rhel8 bash 
+----
+
+Now inside the container:
+
+Let's create the file playbook.yml
+
+[source,bash]
+----
+cat > playbook.yml
+---
+- name: Get all vms
+  hosts: all
+  gather_facts: yes
+  become: yes
+
+  tasks:
+    - name: Get VMs list
+      community.libvirt.virt:
+        command: list_vms
+      register: existing_vms
+
+    - name: Debug 
+      ansible.builtin.debug: 
+        var: existing_vms
+----
+To save the playbook.yml file "ctrl + d " on an empty line
+
+[source,bash]
+----
+ssh-keygen
+----
+
+ssh-copy-id lab-user@bastion
+
+
+Let's create the hosts file:
+
+[source,bash]
+----
+cat > hosts
+[all]
+bastion
+
+----
+
+Let's run our playbook:
+
+[source,bash]
+----
+ansible-playbook -i hosts playbook.yml
+----
+
+We can see from the error that we don't have the collection: community.libvirt.virt
+
+
+
+[source,bash]
+----
+ansible-galaxy collection install community.libvirt
+----
+
+
+Now we can run the playbook:
+
+[source,bash]
+----
+ansible-playbook -i hosts playbook.yml
+----
+Now it works!!!!!!
+
+
+== Now with ansible-builder:
+
+Let's start in Declarative mode now:
+In declarative mode. Let's create the Execution Enviroment:
+
+[source,bash]
+----
+ssh node1
+cd 06-lab
+
+----
+
+You need to change the token in the ansible.cfg file.
+
+To generate a new token in the HUB. Click on Generation token:
+
+image::lab006-002.jpg[lab006-002,100%,100%]
+
+Now build the Execution Environment:
+
+
+[source,bash]
+----
+ansible-builder build --tag=my-lib-virt
+ssh-keygen
+ssh-copy-id lab-user@bastion
+ansible-navigator run playbook.yml   -i hosts
+----
+
+
+
+
+[#guided_solution]
+== Guided solution
+
+Steps to be followed:
+
+. Step 1
++
+[source,bash]
+----
+command to be executed in the lab
+----
++
+.Output
+----
+Output displayed by the command
+----
+
+. Step 2
+
+.. sub-step 2.1
+
+.. sub-step 2.2
+
+. Step 3
+
+
 == Podman
 
 Many customer show TAMs problems with modules within the image.
