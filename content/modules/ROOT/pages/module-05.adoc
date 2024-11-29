@@ -246,6 +246,27 @@ image::lab005-020.jpg[lab005-020,100%,100%]
 Now we can see the logs in Ansible Event Driven
 
 
+'''
+
+**PAUSE**
+
+'''
+
+== Before moving ahead 
+
+=== Please take a moment to solve the challenge on your own.
+
+**The real value of this activity lies in your effort to troubleshoot independently.**
+
+**Once you have tried, continue to the next section for guided steps to verify your approach or learn an alternate solution.**
+
+'''
+
+**CONTINUE**
+
+'''
+
+
 [#guided_solution]
 == Guided solution
 

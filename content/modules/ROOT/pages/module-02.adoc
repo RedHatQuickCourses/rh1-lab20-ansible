@@ -3,302 +3,232 @@
 [#in_this_bfx]
 == What’s in this break-fix?
 
-FIXME: 
+In this activity, you will troubleshoot SSH authentication and user configuration issues in an Event-Driven Ansible workflow while exploring the use of `extra_vars` in the rulebook.
 
-Short description about this break-fix activity
-
-Steps to be followed:
-
-. Step 1
+. SSH into the *node1* instance from the bastion host.
 +
 [source,bash]
 ----
-command to be executed in the lab
+ssh node1
 ----
 +
 .Output
 ----
-Output displayed by the command
+[lab-user@bastion ~]$ ssh node1
+Last login: Fri Nov 29 06:30:21 2024 from 192.168.0.33
+[ec2-user@node1 ~]$ 
 ----
 
-. Step 2
-
-.. sub-step 2.1
-
-.. sub-step 2.2
-
-. Step 3
-
-
+. Navigate to the *02-lab* directory.  
++
 [source,bash]
 ----
-[lab-user@bastion ~]$ ssh node1 
-[ec2-user@node1 ~]$ cd 02-lab/
-[ec2-user@node1 02-lab]$ ll
-total 12
--rw-r--r--. 1 ec2-user ec2-user  86 Nov 18 13:57 hello-rh1.yml
--rw-r--r--. 1 ec2-user ec2-user  61 Nov 18 13:57 inventory.yml
--rw-r--r--. 1 ec2-user ec2-user 288 Nov 18 13:57 webhook-example.yml
+cd 02-lab
+ls
+----
++
+.Output
+----
+[ec2-user@node1 ~]$ cd 02-lab
+[ec2-user@node1 02-lab]$ ls
+hello-rh1.yml  inventory.yml  webhook-example.yml
+[ec2-user@node1 02-lab]$ 
 ----
 
-In the terminal where you created the files. Run ansible-rulebook:
-
-
+. Review the rulebook, playbook, and inventory files in the lab directory and try to understand their purpose.
++
+[source,bash]
+----
+less webhook-example.yml
+less hello-rh1.yml
+less inventory.yml
+----
+  
+. Run the `ansible-rulebook` command from the lab's directory in the terminal as shown below.  
++
 [source,bash]
 ----
 ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --print-events
 ----
-
-
-
-[source,bash]
++
+.Output
 ----
-[ec2-user@node1 02-lab]$ ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --print-events 
-2024-11-18 20:15:27,185 - ansible_rulebook.app - INFO - Starting sources
-2024-11-18 20:15:27,186 - ansible_rulebook.app - INFO - Starting rules
-2024-11-18 20:15:27,187 - drools.ruleset - INFO - Using jar: /usr/lib/python3.9/site-packages/drools/jars/drools-ansible-rulebook-integration-runtime-1.0.6.Final-redhat-00001.jar
-2024-11-18 20:15:28 511 [main] INFO org.drools.ansible.rulebook.integration.api.rulesengine.AbstractRulesEvaluator - Start automatic pseudo clock with a tick every 100 milliseconds
-2024-11-18 20:15:28,544 - ansible_rulebook.engine - INFO - load source ansible.eda.webhook
-2024-11-18 20:15:29,415 - ansible_rulebook.engine - INFO - loading source filter eda.builtin.insert_meta_info
-2024-11-18 20:15:30,234 - ansible_rulebook.engine - INFO - Waiting for all ruleset tasks to end
-2024-11-18 20:15:30,235 - ansible_rulebook.rule_set_runner - INFO - Waiting for actions on events from Listen for events on a webhook
-2024-11-18 20:15:30,235 - ansible_rulebook.rule_set_runner - INFO - Waiting for events, ruleset: Listen for events on a webhook
-2024-11-18 20:15:30 236 [drools-async-evaluator-thread] INFO org.drools.ansible.rulebook.integration.api.io.RuleExecutorChannel - Async channel connected
+[ec2-user@node1 02-lab]$ ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --print-events
+2024-11-29 15:24:45,039 - ansible_rulebook.app - INFO - Starting sources
+2024-11-29 15:24:45,039 - ansible_rulebook.app - INFO - Starting rules
 
+. . . 
+
+2024-11-29 15:24:47,527 - ansible_rulebook.rule_set_runner - INFO - Waiting for events, ruleset: Listen for events on a webhook
+2024-11-29 15:24:47 528 [drools-async-evaluator-thread] INFO org.drools.ansible.rulebook.integration.api.io.RuleExecutorChannel - Async channel connected
 ----
 
-In another terminal, run the curl command:
-
+. Open another terminal on the bastion node and execute the `curl` command as specified.  
++
 [source,bash]
 ----
   curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "node1" }' node1:5000/endpoint
 ----
 
-In the terminal where you executed the rulebook command. You will get this output:
+. In the terminal where you ran the `ansible-rulebook` command, observe the output.  
 
-Now, You have two vars: event_name and host_host.
-
-
-[source,bash]
+.Output
 ----
-2024-10-22 15:05:30,506 - ansible_rulebook.app - INFO - Starting sources
-2024-10-22 15:05:30,506 - ansible_rulebook.app - INFO - Starting rules
-2024-10-22 15:05:30,506 - ansible_rulebook.engine - INFO - run_ruleset
-2024-10-22 15:05:30,506 - drools.ruleset - INFO - Using jar: /usr/local/lib/python3.9/site-packages/drools/jars/drools-ansible-rulebook-integration-runtime-1.0.2-SNAPSHOT.jar
-2024-10-22 15:05:30 841 [main] INFO org.drools.ansible.rulebook.integration.api.rulesengine.AbstractRulesEvaluator - Start automatic pseudo clock with a tick every 100 milliseconds
-2024-10-22 15:05:30,844 - ansible_rulebook.engine - INFO - ruleset define: {"name": "Listen for events on a webhook", "hosts": ["all"], "sources": [{"EventSource": {"name": "ansible.eda.webhook", "source_name": "ansible.eda.webhook", "source_args": {"host": "0.0.0.0", "port": 5000}, "source_filters": []}}], "rules": [{"Rule": {"name": "Hello RH1", "condition": {"AllCondition": [{"EqualsExpression": {"lhs": {"Event": "payload.event_name"}, "rhs": {"String": "Hello"}}}]}, "actions": [{"Action": {"action": "run_playbook", "action_args": {"name": "hello-rh1.yml", "extra_vars": {"hosts_update": "{{ event.payload.host_host }}"}}}}], "enabled": true}}]}
-2024-10-22 15:05:30,852 - ansible_rulebook.engine - INFO - load source
-2024-10-22 15:05:31,061 - ansible_rulebook.engine - INFO - load source filters
-2024-10-22 15:05:31,061 - ansible_rulebook.engine - INFO - loading eda.builtin.insert_meta_info
-2024-10-22 15:05:31,260 - ansible_rulebook.engine - INFO - Calling main in ansible.eda.webhook
-2024-10-22 15:05:31,262 - ansible_rulebook.engine - INFO - Waiting for all ruleset tasks to end
-2024-10-22 15:05:31,262 - ansible_rulebook.rule_set_runner - INFO - Waiting for actions on events from Listen for events on a webhook
-2024-10-22 15:05:31,262 - ansible_rulebook.rule_set_runner - INFO - Waiting for events, ruleset: Listen for events on a webhook
-2024-10-22 15:05:31 262 [drools-async-evaluator-thread] INFO org.drools.ansible.rulebook.integration.api.io.RuleExecutorChannel - Async channel connected
-2024-10-22 15:07:21,844 - aiohttp.access - INFO - 127.0.0.1 [22/Oct/2024:18:07:21 +0000] "POST /endpoint HTTP/1.1" 200 158 "-" "curl/7.61.1"
-{   'meta': {   'endpoint': 'endpoint',
-                'headers': {   'Accept': '*/*',
-                               'Content-Length': '65',
-                               'Content-Type': 'application/json',
-                               'Host': 'localhost:5000',
-                               'User-Agent': 'curl/7.61.1'},
-                'received_at': '2024-10-22T18:07:21.843955Z',
-                'source': {   'name': 'ansible.eda.webhook',
-                              'type': 'ansible.eda.webhook'},
-                'uuid': 'f27e21d6-dd63-4549-bd78-f9b93f454a4c'},
-    'payload': {'event_name': 'Hello', 'host_host': 'gitlab.lnx.example.local'}}
-2024-10-22 15:07:21 864 [main] INFO org.drools.ansible.rulebook.integration.api.rulesengine.RegisterOnlyAgendaFilter - Activation of effective rule "Hello RH1" with facts: {m={payload={host_host=gitlab.lnx.example.local, event_name=Hello}, meta={headers={Accept=*/*, User-Agent=curl/7.61.1, Host=localhost:5000, Content-Length=65, Content-Type=application/json}, endpoint=endpoint, received_at=2024-10-22T18:07:21.843955Z, source={name=ansible.eda.webhook, type=ansible.eda.webhook}, uuid=f27e21d6-dd63-4549-bd78-f9b93f454a4c}}}
-2024-10-22 15:07:21,870 - ansible_rulebook.rule_generator - INFO - calling Hello RH1
-2024-10-22 15:07:21,870 - ansible_rulebook.rule_set_runner - INFO - call_action run_playbook
-2024-10-22 15:07:21,870 - ansible_rulebook.rule_set_runner - INFO - substitute_variables [{'name': 'hello-rh1.yml', 'extra_vars': {'hosts_update': '{{ event.payload.host_host }}'}}] [{'event': {'payload': {'host_host': 'gitlab.lnx.example.local', 'event_name': 'Hello'}, 'meta': {'headers': {'Accept': '*/*', 'User-Agent': 'curl/7.61.1', 'Host': 'localhost:5000', 'Content-Length': '65', 'Content-Type': 'application/json'}, 'endpoint': 'endpoint', 'received_at': '2024-10-22T18:07:21.843955Z', 'source': {'name': 'ansible.eda.webhook', 'type': 'ansible.eda.webhook'}, 'uuid': 'f27e21d6-dd63-4549-bd78-f9b93f454a4c'}}}]
-2024-10-22 15:07:21,873 - ansible_rulebook.rule_set_runner - INFO - action args: {'name': 'hello-rh1.yml', 'extra_vars': {'hosts_update': 'gitlab.lnx.example.local'}}
-2024-10-22 15:07:21,873 - ansible_rulebook.builtin - INFO - running Ansible playbook: hello-rh1.yml
-2024-10-22 15:07:21,875 - ansible_rulebook.builtin - INFO - ruleset: Listen for events on a webhook, rule: Hello RH1
-2024-10-22 15:07:21,875 - ansible_rulebook.builtin - INFO - Calling Ansible runner
+2024-11-29 15:26:18,350 - aiohttp.access - INFO - 192.168.0.18 [29/Nov/2024:15:26:18 +0000] "POST /endpoint HTTP/1.1" 200 158 "-" "curl/7.76.1"
 
-PLAY [create env] **************************************************************
+** 2024-11-29 15:26:18.350626 [received event] 
 
-TASK [Gathering Facts] *********************************************************
-ok: [localhost]
-
-TASK [Add hosts] ***************************************************************
-changed: [localhost] => (item=gitlab.lnx.example.local)
+. . . 
 
 PLAY [Install centrifyDC Client] ***********************************************
 
 TASK [Gathering Facts] *********************************************************
-ok: [gitlab.lnx.example.local]
-
-TASK [Uptime host test] ********************************************************
-changed: [gitlab.lnx.example.local]
+fatal: [node1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: root@node1: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).", "unreachable": true}
 
 PLAY RECAP *********************************************************************
-gitlab.lnx.example.local   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-2024-10-22 15:07:40,528 - ansible_rulebook.builtin - INFO - Ansible Runner Queue task cancelled
-2024-10-22 15:07:40,529 - ansible_rulebook.builtin - INFO - Playbook rc: 0, status: successful
-2024-10-22 15:07:40,529 - ansible_rulebook.rule_set_runner - INFO - Task action::run_playbook::Listen for events on a webhook::Hello RH1 finished, active actions 0
+node1                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 
+. . . 
+
+2024-11-29 15:26:21,603 - ansible_rulebook.action.run_playbook - ERROR - 
+PLAY [create env] **************************************************************
+
+. . . 
+
+PLAY [Install centrifyDC Client] ***********************************************
+
+TASK [Gathering Facts] *********************************************************
+fatal: [node1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: root@node1: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).", "unreachable": true}
+
+PLAY RECAP *********************************************************************
+localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+node1                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 ----
+
+. Note the error generated after the event is captured by the `ansible-rulebook` command and attempt to resolve it.  
+
+
+'''
+
+**PAUSE**
+
+'''
+
+== Before moving ahead 
+
+=== Please take a moment to solve the challenge on your own.
+
+**The real value of this activity lies in your effort to troubleshoot independently.**
+
+**Once you have tried, continue to the next section for guided steps to verify your approach or learn an alternate solution.**
+
+'''
+
+**CONTINUE**
+
+'''
 
 
 [#guided_solution]
 == Guided solution
 
-Steps to be followed:
+. Note the error generated after the event is captured by the `ansible-rulebook` command
++
+.Output
+----
+Failed to connect to the host via ssh: root@node1: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+----
++
+This indicates a failure to connect to the node via SSH.
 
-. Step 1
+. Review the rulebook `webhook-example.yml` and the playbook `hello-rh1.yml`.
+
+. Note that two variables are used in the rulebook: `event_name` and `host_host`.  
+
+. The event is matched using the `event_name` variable.  
+
+. The value of the `host_host` variable captured in the event is passed as an extra variable to the playbook.  
+
+. The first task in the playbook uses this hostname variable to add it to the `centrify` group using the `ansible.builtin.add_host` module.  
+
+. This creates a temporary inventory, which is used by the next task in the playbook.  
+
+. The next task installs a package on the hosts in the `centrify` group.  
+
+. The rulebook triggers an event to deploy a package on `node1` from `node1` via inventory host settings. 
+
+. Attempt to SSH from `node1` to itself.  
++
+.Output
+----
+[ec2-user@node1 ~]$ ssh node1
+ec2-user@node1: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
+[ec2-user@node1 ~]$ 
+----
++
+The same error is observed as with the playbook.
+
+. Return to the bastion host as `lab-user`.  
+
+. Copy the SSH config and key files from the `lab-user` on the bastion to the `ec2-user` on `node1` to enable passwordless SSH authentication from `node1` to itself.  
 +
 [source,bash]
 ----
-command to be executed in the lab
+cd ~/.ssh
+ls
+scp config *.p* ec2-user@node1:.ssh/
 ----
 +
 .Output
 ----
-Output displayed by the command
-----
-
-. Step 2
-
-.. sub-step 2.1
-
-.. sub-step 2.2
-
-. Step 3
-
-
-Let's copy the SSH settings to access the host:
-
-[source,bash]
-----
 [lab-user@bastion ~]$ cd .ssh/
 [lab-user@bastion .ssh]$ ls
-authorized_keys  config  known_hosts  n66g5key.pem  n66g5key.pub
-[lab-user@bastion .ssh]$ scp config n66g5key.p* ec2-user@node1:/home/ec2-user/.ssh/ 
-config                                                                               100%  216   445.0KB/s   00:00    
-n66g5key.pem                                                                         100% 2602     4.1MB/s   00:00    
-n66g5key.pub                                                                         100%  552   878.2KB/s   00:00    
+authorized_keys  config  known_hosts  known_hosts.old  xjvz8key.pem  xjvz8key.pub
+[lab-user@bastion .ssh]$ 
+[lab-user@bastion .ssh]$ scp config *.p* ec2-user@node1:.ssh/
+config                                                                                                             100%  216   304.2KB/s   00:00    
+xjvz8key.pem                                                                                                       100% 2602     5.3MB/s   00:00    
+xjvz8key.pub                                                                                                       100%  552   353.7KB/s   00:00    
 [lab-user@bastion .ssh]$ 
 ----
 
-[source,bash]
+. Login back to `node1` and attempt to SSH to itself.
++
+.Output
 ----
-[lab-user@bastion ~]$ ssh node1 
-[ec2-user@node1 ~]$ cd 02-lab/
-[ec2-user@node1 02-lab]$ ll
-total 12
--rw-r--r--. 1 ec2-user ec2-user  86 Nov 18 13:57 hello-rh1.yml
--rw-r--r--. 1 ec2-user ec2-user  61 Nov 18 13:57 inventory.yml
--rw-r--r--. 1 ec2-user ec2-user 288 Nov 18 13:57 webhook-example.yml
-----
-
-We will need to edit the hello-rh1.yml file.
-
-[source,bash]
-----
-[ec2-user@node1 02-lab]$ vim hello-rh1.yml
+[lab-user@bastion .ssh]$ ssh node1
+Last login: Fri Nov 29 16:11:55 2024 from 192.168.0.18
+[ec2-user@node1 ~]$ 
+[ec2-user@node1 ~]$ ssh node1
+Last login: Fri Nov 29 16:19:17 2024 from 192.168.0.18
+[ec2-user@node1 ~]$ 
 ----
 
-Change remote_user: root to remote_user: ec2-user
-
-In the terminal where you created the files. Run ansible-rulebook:
-
-
-[source,bash]
+. Re-run the rulebook if it is not already running and send the event using the `curl` command as earlier.
++
+.Output
 ----
-[ec2-user@node1 02-lab]$ ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --print-events
-----
-
-
-
-[source,bash]
-----
-[ec2-user@node1 02-lab]$ ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --print-events 
-2024-11-18 20:15:27,185 - ansible_rulebook.app - INFO - Starting sources
-2024-11-18 20:15:27,186 - ansible_rulebook.app - INFO - Starting rules
-2024-11-18 20:15:27,187 - drools.ruleset - INFO - Using jar: /usr/lib/python3.9/site-packages/drools/jars/drools-ansible-rulebook-integration-runtime-1.0.6.Final-redhat-00001.jar
-2024-11-18 20:15:28 511 [main] INFO org.drools.ansible.rulebook.integration.api.rulesengine.AbstractRulesEvaluator - Start automatic pseudo clock with a tick every 100 milliseconds
-2024-11-18 20:15:28,544 - ansible_rulebook.engine - INFO - load source ansible.eda.webhook
-2024-11-18 20:15:29,415 - ansible_rulebook.engine - INFO - loading source filter eda.builtin.insert_meta_info
-2024-11-18 20:15:30,234 - ansible_rulebook.engine - INFO - Waiting for all ruleset tasks to end
-2024-11-18 20:15:30,235 - ansible_rulebook.rule_set_runner - INFO - Waiting for actions on events from Listen for events on a webhook
-2024-11-18 20:15:30,235 - ansible_rulebook.rule_set_runner - INFO - Waiting for events, ruleset: Listen for events on a webhook
-2024-11-18 20:15:30 236 [drools-async-evaluator-thread] INFO org.drools.ansible.rulebook.integration.api.io.RuleExecutorChannel - Async channel connected
-
-----
-
-In another terminal, run the curl command:
-
-[source,bash]
-----
-  curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "node1" }' node1:5000/endpoint
-----
-
-In the terminal where you executed the rulebook command. You will get this output:
-
-Now, You have two vars: event_name and host_host.
-
-
-[source,bash]
-----
-2024-10-22 15:05:30,506 - ansible_rulebook.app - INFO - Starting sources
-2024-10-22 15:05:30,506 - ansible_rulebook.app - INFO - Starting rules
-2024-10-22 15:05:30,506 - ansible_rulebook.engine - INFO - run_ruleset
-2024-10-22 15:05:30,506 - drools.ruleset - INFO - Using jar: /usr/local/lib/python3.9/site-packages/drools/jars/drools-ansible-rulebook-integration-runtime-1.0.2-SNAPSHOT.jar
-2024-10-22 15:05:30 841 [main] INFO org.drools.ansible.rulebook.integration.api.rulesengine.AbstractRulesEvaluator - Start automatic pseudo clock with a tick every 100 milliseconds
-2024-10-22 15:05:30,844 - ansible_rulebook.engine - INFO - ruleset define: {"name": "Listen for events on a webhook", "hosts": ["all"], "sources": [{"EventSource": {"name": "ansible.eda.webhook", "source_name": "ansible.eda.webhook", "source_args": {"host": "0.0.0.0", "port": 5000}, "source_filters": []}}], "rules": [{"Rule": {"name": "Hello RH1", "condition": {"AllCondition": [{"EqualsExpression": {"lhs": {"Event": "payload.event_name"}, "rhs": {"String": "Hello"}}}]}, "actions": [{"Action": {"action": "run_playbook", "action_args": {"name": "hello-rh1.yml", "extra_vars": {"hosts_update": "{{ event.payload.host_host }}"}}}}], "enabled": true}}]}
-2024-10-22 15:05:30,852 - ansible_rulebook.engine - INFO - load source
-2024-10-22 15:05:31,061 - ansible_rulebook.engine - INFO - load source filters
-2024-10-22 15:05:31,061 - ansible_rulebook.engine - INFO - loading eda.builtin.insert_meta_info
-2024-10-22 15:05:31,260 - ansible_rulebook.engine - INFO - Calling main in ansible.eda.webhook
-2024-10-22 15:05:31,262 - ansible_rulebook.engine - INFO - Waiting for all ruleset tasks to end
-2024-10-22 15:05:31,262 - ansible_rulebook.rule_set_runner - INFO - Waiting for actions on events from Listen for events on a webhook
-2024-10-22 15:05:31,262 - ansible_rulebook.rule_set_runner - INFO - Waiting for events, ruleset: Listen for events on a webhook
-2024-10-22 15:05:31 262 [drools-async-evaluator-thread] INFO org.drools.ansible.rulebook.integration.api.io.RuleExecutorChannel - Async channel connected
-2024-10-22 15:07:21,844 - aiohttp.access - INFO - 127.0.0.1 [22/Oct/2024:18:07:21 +0000] "POST /endpoint HTTP/1.1" 200 158 "-" "curl/7.61.1"
-{   'meta': {   'endpoint': 'endpoint',
-                'headers': {   'Accept': '*/*',
-                               'Content-Length': '65',
-                               'Content-Type': 'application/json',
-                               'Host': 'localhost:5000',
-                               'User-Agent': 'curl/7.61.1'},
-                'received_at': '2024-10-22T18:07:21.843955Z',
-                'source': {   'name': 'ansible.eda.webhook',
-                              'type': 'ansible.eda.webhook'},
-                'uuid': 'f27e21d6-dd63-4549-bd78-f9b93f454a4c'},
-    'payload': {'event_name': 'Hello', 'host_host': 'gitlab.lnx.example.local'}}
-2024-10-22 15:07:21 864 [main] INFO org.drools.ansible.rulebook.integration.api.rulesengine.RegisterOnlyAgendaFilter - Activation of effective rule "Hello RH1" with facts: {m={payload={host_host=gitlab.lnx.example.local, event_name=Hello}, meta={headers={Accept=*/*, User-Agent=curl/7.61.1, Host=localhost:5000, Content-Length=65, Content-Type=application/json}, endpoint=endpoint, received_at=2024-10-22T18:07:21.843955Z, source={name=ansible.eda.webhook, type=ansible.eda.webhook}, uuid=f27e21d6-dd63-4549-bd78-f9b93f454a4c}}}
-2024-10-22 15:07:21,870 - ansible_rulebook.rule_generator - INFO - calling Hello RH1
-2024-10-22 15:07:21,870 - ansible_rulebook.rule_set_runner - INFO - call_action run_playbook
-2024-10-22 15:07:21,870 - ansible_rulebook.rule_set_runner - INFO - substitute_variables [{'name': 'hello-rh1.yml', 'extra_vars': {'hosts_update': '{{ event.payload.host_host }}'}}] [{'event': {'payload': {'host_host': 'gitlab.lnx.example.local', 'event_name': 'Hello'}, 'meta': {'headers': {'Accept': '*/*', 'User-Agent': 'curl/7.61.1', 'Host': 'localhost:5000', 'Content-Length': '65', 'Content-Type': 'application/json'}, 'endpoint': 'endpoint', 'received_at': '2024-10-22T18:07:21.843955Z', 'source': {'name': 'ansible.eda.webhook', 'type': 'ansible.eda.webhook'}, 'uuid': 'f27e21d6-dd63-4549-bd78-f9b93f454a4c'}}}]
-2024-10-22 15:07:21,873 - ansible_rulebook.rule_set_runner - INFO - action args: {'name': 'hello-rh1.yml', 'extra_vars': {'hosts_update': 'gitlab.lnx.example.local'}}
-2024-10-22 15:07:21,873 - ansible_rulebook.builtin - INFO - running Ansible playbook: hello-rh1.yml
-2024-10-22 15:07:21,875 - ansible_rulebook.builtin - INFO - ruleset: Listen for events on a webhook, rule: Hello RH1
-2024-10-22 15:07:21,875 - ansible_rulebook.builtin - INFO - Calling Ansible runner
-
-PLAY [create env] **************************************************************
-
 TASK [Gathering Facts] *********************************************************
-ok: [localhost]
-
-TASK [Add hosts] ***************************************************************
-changed: [localhost] => (item=gitlab.lnx.example.local)
-
-PLAY [Install centrifyDC Client] ***********************************************
-
-TASK [Gathering Facts] *********************************************************
-ok: [gitlab.lnx.example.local]
-
-TASK [Uptime host test] ********************************************************
-changed: [gitlab.lnx.example.local]
-
-PLAY RECAP *********************************************************************
-gitlab.lnx.example.local   : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
-2024-10-22 15:07:40,528 - ansible_rulebook.builtin - INFO - Ansible Runner Queue task cancelled
-2024-10-22 15:07:40,529 - ansible_rulebook.builtin - INFO - Playbook rc: 0, status: successful
-2024-10-22 15:07:40,529 - ansible_rulebook.rule_set_runner - INFO - Task action::run_playbook::Listen for events on a webhook::Hello RH1 finished, active actions 0
-
+fatal: [node1]: UNREACHABLE! => {"changed": false, "msg": "Failed to create temporary directory. In some cases, you may have been able to authenticate and did not have permissions on the target directory. Consider changing the remote tmp path in ansible.cfg to a path rooted in \"/tmp\", for more error information use -vvv. Failed command was: ( umask 77 && mkdir -p \"` echo Please login as the user \"ec2-user\" rather than the user \"root\"./.ansible/tmp `\"&& mkdir \"` echo Please login as the user \"ec2-user\" rather than the user \"root\"./.ansible/tmp/ansible-tmp-1732897310.5139034-2830-144138432594257 `\" && echo ansible-tmp-1732897310.5139034-2830-144138432594257=\"` echo Please login as the user \"ec2-user\" rather than the user \"root\"./.ansible/tmp/ansible-tmp-1732897310.5139034-2830-144138432594257 `\" ), exited with result 142, stdout output: Please login as the user \"ec2-user\" rather than the user \"root\".\n\n", "unreachable": true}
 ----
+
+. Note the new error captured this time.
++
+----
+Please login as the user \"ec2-user\" rather than the user \"root\"
+----
+
+. Ensure you are in the `02-lab` directory on `node1`.
+
+. Edit the `hello-rh1.yml` playbook and change `remote_user: root` to `remote_user: ec2-user`.
++
+[source,bash]
+----
+vi hello-rh1.yml
+----
+
+. While the rulebook is still running on `node1`, send the event from the bastion host again.
+
+. Note that the playbook runs successfully this time, and the `Install CentrifyDC Client` task is executed.
 
