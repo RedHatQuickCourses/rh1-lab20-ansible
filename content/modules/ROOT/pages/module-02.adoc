@@ -142,6 +142,27 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0    s
 ----
 
 
+'''
+
+**PAUSE**
+
+'''
+
+== Before moving ahead 
+
+=== Please take a moment to solve the challenge on your own.
+
+**The real value of this activity lies in your effort to troubleshoot independently.**
+
+**Once you have tried, continue to the next section for guided steps to verify your approach or learn an alternate solution.**
+
+'''
+
+**CONTINUE**
+
+'''
+
+
 [#guided_solution]
 == Guided solution
 
