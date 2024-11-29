@@ -1,0 +1,55 @@
+= Module Heading
+
+[#in_this_bfx]
+== What’s in this break-fix?
+
+FIXME: 
+
+Short description about this break-fix activity
+
+Steps to be followed:
+
+. Step 1
++
+[source,bash]
+----
+command to be executed in the lab
+----
++
+.Output
+----
+Output displayed by the command
+----
+
+. Step 2
+
+.. sub-step 2.1
+
+.. sub-step 2.2
+
+. Step 3
+
+[#guided_solution]
+== Guided solution
+
+Steps to be followed:
+
+. Step 1
++
+[source,bash]
+----
+command to be executed in the lab
+----
++
+.Output
+----
+Output displayed by the command
+----
+
+. Step 2
+
+.. sub-step 2.1
+
+.. sub-step 2.2
+
+. Step 3
