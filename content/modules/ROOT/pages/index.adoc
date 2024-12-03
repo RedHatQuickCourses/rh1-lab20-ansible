@@ -1,12 +1,5 @@
 = {lab_name}
 
-Welcome to the Troubleshooting Event-Driven Ansible in AAP. 
-In this lab we will work with AAP 2.5, Gitlab and Zabbix-Server.
-The labs from 1.1 to 1.6 are all having problems running. We will need to find the problem and solve it.
-Zabbix will monitor node1. We will force an alert, stopping Apache so that Zabbix can send the Alert to Event Driven.
-The events of the problems found by Zabbix will be resolved by Ansible. For this to happen we will need to make several configurations in the environment.
-
-
 Welcome to the *Troubleshooting Event-Driven Ansible in Ansible Automation Platform* lab. In this session, we will work with AAP 2.5, GitLab, and Zabbix Server. 
 Labs 1 through 1 contain issues that need to be identified and resolved. Zabbix will monitor `node1`, and we will simulate an alert by stopping Apache. This alert will be sent to Event-Driven Ansible, which will use Ansible to resolve the detected issues. 
 Several configuration changes will be required in the environment to achieve this.
