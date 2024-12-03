@@ -7,40 +7,64 @@ Zabbix will monitor node1. We will force an alert, stopping Apache so that Zabbi
 The events of the problems found by Zabbix will be resolved by Ansible. For this to happen we will need to make several configurations in the environment.
 
 
-== Lab structure
-
-The challenges are in your Lab Instructions:
-Your lab instructions are available at https://bastion.kv9wg.sandbox2018.opentlc.com:443/showroom/
-
-
-== What each host has:
-On node1 we have the folders to do the labs.
-
-01-lab a 06-lab
-Apache
-zabbix-agent
-
-
-Server:
-
-Zabbix:  http://server.xxxx.sandbox2018.opentlc.com/zabbix
-Username: Admin
-Password: zabbix
-
-
-Gitlab:  https://server.xxxx.sandbox2018.opentlc.com
-Username: root
-Password: redhat..123
-
-Controller:
-AAP 2.5: https://controller.kv9wg.sandbox2018.opentlc.com
-Username: admin
-Password: R3dh4t1!
-
+Welcome to the *Troubleshooting Event-Driven Ansible in Ansible Automation Platform* lab. In this session, we will work with AAP 2.5, GitLab, and Zabbix Server. 
+Labs 1 through 1 contain issues that need to be identified and resolved. Zabbix will monitor `node1`, and we will simulate an alert by stopping Apache. This alert will be sent to Event-Driven Ansible, which will use Ansible to resolve the detected issues. 
+Several configuration changes will be required in the environment to achieve this.
 
 === Lab Access
 
-The terminal window to your right is *already* logged into the lab environment as the `{ssh_user}` user via `ssh`. 
+The terminal window on your right is *already* logged into the *bastion* node as the `{ssh_user}`.
+
+== Lab Access Details
+
+* Log in to the bastion:
+
+[subs=attributes+]
+----
+{ssh_command}
+----
+
+Bastion password `{ssh_password}`
+
+* **Public Domain Name of Server: server.{subdomain_base}**
+
+== Ansible Automation Platform Web Console:
+  * URL: https://{nginx_web_url}
+  * Username: `admin`
+  * Password: `R3dh4t1!`
+
+== Access Gitlab running on server:
+  * URL: https://server.{subdomain_base}
+  * Username: `root`
+  * Password: `redhat..123`
+
+== Access Zabbix running on server:
+  * URL: http://server.{subdomain_base}/zabbix
+  * Username: `Admin`
+  * Password: `zabbix`
+
+== Access other instances from Bastion
+
+* Log in to the Ansible Automation Platform Controller from bastion:
+
+[subs=attributes+]
+----
+[lab-user@bastion ~]$ ssh controller
+----
+
+* Log in to the additional node from bastion:
+
+[subs=attributes+]
+----
+[lab-user@bastion ~]$ ssh node1
+----
+
+* Log in to the additional server from bastion:
+
+[subs=attributes+]
+----
+[lab-user@bastion ~]$ ssh server
+----
 
 == Documentation:
 If you need the documentation link:
@@ -52,6 +76,7 @@ If you need the documentation link:
 
 === Solution:
 
-In your lab instruction there is a section only with solutions to environmental problems.
-
-
+A step-by-step guided solution is provided at the end of each lab section. 
+Before proceeding, take a moment to attempt the challenge on your own. 
+The true value of this activity lies in your effort to troubleshoot independently. 
+Once you have made an attempt, you can refer to the guided solutions to verify your approach or explore an alternate solution.
