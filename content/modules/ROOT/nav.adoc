@@ -16,6 +16,3 @@
 * xref:module-05.adoc[5 - Valide extra_vars]
 ** xref:module-05.adoc#in_this_bfx[What’s in this break-fix?]
 ** xref:module-05.adoc#guided_solution[Guided solution]
-* xref:module-06.adoc[6 - Ansible Builder]
-** xref:module-06.adoc#in_this_bfx[What’s in this break-fix?]
-** xref:module-06.adoc#guided_solution[Guided solution]

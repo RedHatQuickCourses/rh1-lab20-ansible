@@ -3,33 +3,7 @@
 [#in_this_bfx]
 == What’s in this break-fix?
 
-FIXME: 
-
-Short description about this break-fix activity
-
-Steps to be followed:
-
-. Step 1
-+
-[source,bash]
-----
-command to be executed in the lab
-----
-+
-.Output
-----
-Output displayed by the command
-----
-
-. Step 2
-
-.. sub-step 2.1
-
-.. sub-step 2.2
-
-. Step 3
-
-
+In this session we will configure Zabbix to monitor Node1. On Node1 execute an HTTPD. When HTTPD stops working. Zabbix sends an Event to Event Driven Ansible and thus executes the Jobs Template to solve the HTTPD problem.
 
 == Let's add the playbook and rulebook to git.
 
