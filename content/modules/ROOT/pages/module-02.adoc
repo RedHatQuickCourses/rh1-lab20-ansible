@@ -80,7 +80,7 @@ ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --pr
 
 . . . 
 
-PLAY [Install centrifyDC Client] ***********************************************
+PLAY [Install tcpdump] ***********************************************
 
 TASK [Gathering Facts] *********************************************************
 fatal: [node1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: root@node1: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).", "unreachable": true}
@@ -96,7 +96,7 @@ PLAY [create env] **************************************************************
 
 . . . 
 
-PLAY [Install centrifyDC Client] ***********************************************
+PLAY [Install tcpdump] ***********************************************
 
 TASK [Gathering Facts] *********************************************************
 fatal: [node1]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: root@node1: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).", "unreachable": true}
@@ -230,5 +230,5 @@ vi hello-rh1.yml
 
 . While the rulebook is still running on `node1`, send the event from the bastion host again.
 
-. Note that the playbook runs successfully this time, and the `Install CentrifyDC Client` task is executed.
+. Note that the playbook runs successfully this time, and the `Install tcpdump` task is executed.
 

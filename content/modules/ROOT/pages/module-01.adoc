@@ -5,6 +5,14 @@
 
 In this activity, you will explore the basic artifacts of Event-Driven Ansible, troubleshoot an error encountered while executing the `ansible-rulebook` command, and verify its functionality after resolving the issue.
 
+What is ansible-rulebook? The ansible-rulebook command is similar to ansible-playbook, but more oriented to "if-then" scenarios.
+
+A rulebook is comprised of three main components:
+        Sources define which event source we will use. These sources come from source plugins which have been built to accommodate common use cases. With time, more and more sources will be available. There are some source plugins that are available already, including: webhooks, Kafka, Azure service bus, file changes, and alertmanager.
+        Rules define conditionals we will try to match from the event source. Should the condition be met, then we can trigger an action.
+        Actions trigger what you need to happen should a condition be met. Some of the current actions are: run_playbook, run_module, set_fact, post_event, debug.
+
+
 Follow the below steps to proceed with the activity:
 
 . From bastion, access the *node1* instance via SSH.

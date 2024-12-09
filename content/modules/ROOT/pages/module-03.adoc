@@ -13,6 +13,13 @@ Now, let's copy the contents of the .pub file:
 
 [source,bash]
 ----
+ssh node1 
+ls -lha .ssh/
+cat .ssh/n66g5key.pub (Change to your ssh pub key)
+----
+
+.Output
+----
 [lab-user@bastion ~]$ ssh node1 
 [ec2-user@node1 ~]$ ls -lha .ssh/
 total 36K
@@ -27,12 +34,11 @@ drwx------. 10 ec2-user ec2-user 4.0K Nov 26 14:05 ..
 -r--------.  1 ec2-user ec2-user 2.6K Nov 26 14:22 n66g5key.pem
 -r--------.  1 ec2-user ec2-user  552 Nov 26 14:22 n66g5key.pub
 [ec2-user@node1 ~]$ cat .ssh/n66g5key.pub (Change to your ssh pub key)
-
 ----
 
 Copy the contents of the public key and add it to this link:
 
-https://server.xxxx.sandbox491.opentlc.com/-/user_settings/ssh_keys
+https://server.{subdomain_base}/-/user_settings/ssh_keys
 
 image::lab003-add002.jpg[lab003-add002,100%,100%]
 
@@ -50,13 +56,27 @@ Copy both folders into the repository:
 
 [source,bash]
 ----
-[ec2-user@node1 03-lab]$ git clone git@server.example.com:root/rh1-aap-extra-vars-eda.git
+git clone git@server.{subdomain_base}:root/rh1-aap-extra-vars-eda.git
+cp -rf rh1-eda-example/*  rh1-aap-extra-vars-eda/
+----
+
+.Output
+----
+[ec2-user@node1 03-lab]$ git clone git@server.{subdomain_base}:root/rh1-aap-extra-vars-eda.git
 [ec2-user@node1 03-lab]$ cp -rf rh1-eda-example/*  rh1-aap-extra-vars-eda/
 ----
+
 
 Now let's commit to git:
 
 [source,bash]
+----
+git add .
+git commit -m "RH1"
+git push 
+----
+
+.Output
 ----
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ git add .
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ git commit -m "RH1"
@@ -65,11 +85,7 @@ Now let's commit to git:
 
 == Now on Controller:
 
-Open the URL: https://controller.XXXXX.sandbox1125.opentlc.com/  - Replace XXXXX with your lab ID:
-
-EX: https://controller.vkhtj.sandbox1125.opentlc.com/
-
-
+Open the URL: https://controller.{subdomain_base}/ 
 Let's log in:
 
 [source,bash]
@@ -186,23 +202,7 @@ check box:
 
 image::lab003-015.jpg[lab003-015,100%,100%]
 
-This error will occur:
-
-image::lab003-013.jpg[lab003-013,100%,100%]
-
-To solve this, we will add this configuration to the job settings:
-
-image::lab003-014.jpg[lab003-014,100%,100%]
-
-Now, sync the project again.
-
-[source,bash]
-----
-GIT_SSL_NO_VERIFY: 'True'
-----
-
 Let's create the job_template in AAP with the project name rh1-aap-extra-vars-eda:
-
 
 [source,bash]
 ----
@@ -385,16 +385,7 @@ https://access.redhat.com/terms-based-registry/create
 
 . Set credential registry in Decision Environment
 
-. Remove remote_user: root the playbbok.
-
-[source,bash]
-----
-ssh node1
-curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "node1.{subdomain_base}" }' controller:6000/endpoint
-----
-
-
-After sending the curl. The Job Template rh1-aap-extra-vars-eda will execute.
+. Remove remote_user: root the playbook.
 
 [source,bash]
 ----
@@ -407,4 +398,14 @@ playbook  README.md  rulebooks
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ vim playbook/hello-rh1.yml
 ----
 Save the file.
+
+
+[source,bash]
+----
+ssh node1
+curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "node1.{subdomain_base}" }' controller:6000/endpoint
+----
+
+After sending the curl. The Job Template rh1-aap-extra-vars-eda will execute.
+
 
