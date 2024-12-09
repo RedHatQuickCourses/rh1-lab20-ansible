@@ -240,200 +240,24 @@ Now we can see the logs in Ansible Event Driven
 
 '''
 
-
 [#guided_solution]
 == Guided solution
 
-Steps to be followed:
+. Disable eda-debug rulebook.
 
-. Step 1
-+
-[source,bash]
-----
-command to be executed in the lab
-----
-+
-.Output
-----
-Output displayed by the command
-----
+. Rulebook will fail to start due to port conflict. Let's stop eda-debug rulebook.
 
-. Step 2
-
-.. sub-step 2.1
-
-.. sub-step 2.2
-
-. Step 3
-
-
-== Let's add the playbook and rulebook to git.
-
-Add the files inside this folder to git.
-
-[source,bash]
-----
-[ec2-user@node1 ~]$ cd 05-lab/
-[ec2-user@node1 05-lab]$ git clone git@server.example.com:root/rh1-ansible-eda-vars-zabbix.git
-[ec2-user@node1 05-lab]$ cp -rf project-http rulebooks rh1-ansible-eda-vars-zabbix/
-[ec2-user@node1 05-lab]$ cd rh1-ansible-eda-vars-zabbix/
-[ec2-user@node1 rh1-ansible-eda-vars-zabbix]$
-[ec2-user@node1 05-lab]$ git add . ; git commit -m add ; git push
-----
-
-In Ansible Automation Platform we will create the rh1-ansible-eda-vars-zabbix project in Automation Decisions:
-
-
-[source,bash]
-----
-
-Name rh1-ansible-eda-vars-zabbix
-Organization Default
-Source control type Git
-Source control URL https://server.example.com/root/rh1-ansible-eda-vars-zabbix.git
-Source control credential: gitlab
-Options
-uncheck box Verify SSL
-----
-
-image::lab005-001.jpg[lab005-001,100%,100%]
-
-Let's make sure the project Success syncs
-
-image::lab005-000.jpg[lab005-000,100%,100%]
-
-
-After creating the project in Automation Decision, let's create the rulebook:
-
-Click on Create rulebook activation:
-
-
-image::lab005-004.jpg[lab005-004,100%,100%]
-
-Add the following information:
-
-[source,bash]
-----
-Name: rh1-ansible-eda-vars-zabbix
-Organization: Default
-Project: rh1-ansible-eda-vars-zabbix
-Rulebook: webhook-zabbix.yml
-Credential: AAP
-Decision Enviroment: Default Decision Enviroment
-Log Level: Debug
-Now click on Create rulebook activation
-----
-
-image::lab005-005.jpg[lab005-005,100%,100%]
-
-Now click on Create rulebook activation
-
-Validate if the rulebook is running:
-
-Details of how we created the Rulebook:
-
-image::lab005-008.jpg[lab005-008,100%,100%]
-
-Click on History to see the issue:
-
-image::lab005-009.jpg[lab005-009,100%,100%]
-
-Rulebook will fail to start due to port conflict. Let's stop eda-debug rulebook.
-
-Click Rulebook action in blue:
-
-image::lab005-010.jpg[lab005-010,100%,100%]
-
-Check Box:
-Yes, I confirm that I want to disable these rulebook activations.
-
-image::lab005-011.jpg[lab005-011,100%,100%]
-
-Click on Disable rulebook activations
-
-image::lab005-012.jpg[lab005-012,100%,100%]
-
-Disable Rulebook activation successfully:
-
-image::lab005-013.jpg[lab005-013,100%,100%]
-
-
-Now the rh1-ansible-eda-vars-zabbix rulebook will be able to start.
-
-
-== Let's now configure the APP Controller.
-
-Let's create the rh1-ansible-eda-vars-zabbix project.
-
-[source,bash]
-----
-name: rh1-ansible-eda-vars-zabbix
-Organization: Default
-Source Control type: git
-Source control URL: https://server.example.com/root/rh1-ansible-eda-vars-zabbix.git
-Source control Credential: gitlab
-Check box: 
-     Clean, 
-     Update revision on launch  
-     Delete
-----
-
-image::lab005-022.jpg[lab005-022,100%,100%]
-
-Click on Create project.
-
-Let's create the project-http inventory containing only the host localhost:
-
-[source,bash]
-----
-Name: project-http
-Organization: Default
-----
-
-image::lab005-015.jpg[lab005-015,100%,100%]
-
-Let's click on Create Host:
-
-image::lab005-016.jpg[lab005-016,100%,100%]
-
-
-Now let's add the host localhost:
-
-[source,bash]
-----
-Name: localhost
-----
-
-image::lab005-017.jpg[lab005-017,100%,100%]
-
-Remember to put the host in disabled mode inside the inventory:
-
+. Remember to put the host in disabled mode inside the inventory:
+ 
 image::lab005-018.jpg[lab005-018,100%,100%]
 
-
-Let's create the job_template:
-Let's go to the Automation Execution section in Templates > Create Template > Create job Template:
-
-image::lab005-014.jpg[lab005-014,100%,100%]
-
-
-[source,bash]
-----
-Name: project-http
-Project: rh1-ansible-eda-vars-zabbix
-Playbook: project-http/playbook.yml
-Credentials: ec2-user
-Inventory: project-http
-----
-
-Mark the Extra variable check box as Prompt on launch
+. Mark the Extra variable check box as Prompt on launch
 
 image::lab005-019.jpg[lab005-019,100%,100%]
 
+. Before stopping Apache service. Need to remove remote_user: root 
 
-Before stopping Apache service. Need to remove remote_user:root:
-
-Change the condition line in the rulebooks/webhook-zabbix.yml file
+. Change the condition line in the rulebooks/webhook-zabbix.yml file
 
 [source,bash]
 ----
@@ -442,34 +266,17 @@ condition: event.payload.event_name is regex("Apache.*Service is down", ignoreca
 
 [source,bash]
 ----
+cd 05-lab/
+cd rh1-ansible-eda-vars-zabbix/
+vim project-http/playbook.yml
+git add . ; git commit -m add ; git push
+----
+
+.Output
+----
 [ec2-user@node1 ~]$ cd 05-lab/
 [ec2-user@node1 05-lab]$ cd rh1-ansible-eda-vars-zabbix/
 [ec2-user@node1 rh1-ansible-eda-vars-zabbix]$
 [ec2-user@node1 rh1-ansible-eda-vars-zabbix]$ vim project-http/playbook.yml
 [ec2-user@node1 05-lab]$ git add . ; git commit -m add ; git push
 ----
-
-Save the file.
-
-
-== Let's test Zabbix alerts:
-
-To do this. Let's stop httpd on node1 and validate in zabbix the sending of the alert.
-
-Let's stop the server's httpd:
-
-[source,bash]
-----
-sudo systemctl stop httpd
-----
-
-Now Zabbix will send the notification to Ansible Event Driven:
-
-image::lab005-023.jpg[lab005-023,100%,100%]
-
-And Check if the job ran successfully:
-
-image::lab005-020.jpg[lab005-020,100%,100%]
-
-Now we can see the logs in Ansible Event Driven
-
