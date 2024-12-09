@@ -272,7 +272,7 @@ Let's add:
 Name: AAP
 Organization: Default
 Credential type: Red Hat Ansible Automation Platform
-Red Hat Ansible Automation Platform: https://controller.slfk6.sandbox829.opentlc.com/api/controller/
+Red Hat Ansible Automation Platform: https://controller.{subdomain_base}/  /api/controller/
 Username: admin 
 Password: R3dh4t1!
 ----
@@ -327,6 +327,7 @@ Now let's send the curl to this rulebook:
 ssh node1
 curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "node1.example.com" }' controller:6000/endpoint
 ----
+
 
 After sending the curl. The Job Template rh1-aap-extra-vars-eda will execute.
 
