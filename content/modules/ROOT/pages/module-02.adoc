@@ -150,11 +150,11 @@ This indicates a failure to connect to the node via SSH.
 
 . The value of the `host_host` variable captured in the event is passed as an extra variable to the playbook.  
 
-. The first task in the playbook uses this hostname variable to add it to the `centrify` group using the `ansible.builtin.add_host` module.  
+. The first task in the playbook uses this hostname variable to add it to the `rh1` group using the `ansible.builtin.add_host` module.  
 
 . This creates a temporary inventory, which is used by the next task in the playbook.  
 
-. The next task installs a package on the hosts in the `centrify` group.  
+. The next task installs a package on the hosts in the `rh1` group.  
 
 . The rulebook triggers an event to deploy a package on `node1` from `node1` via inventory host settings. 
 
