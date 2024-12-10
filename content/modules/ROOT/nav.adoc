@@ -1,3 +1,5 @@
+* xref:index.adoc[0 - Index]
+** xref:index.adoc#main_page[Main page]
 * xref:module-01.adoc[1 - Working with curl]
 ** xref:module-01.adoc#in_this_bfx[What’s in this break-fix?]
 ** xref:module-01.adoc#guided_solution[Guided solution]

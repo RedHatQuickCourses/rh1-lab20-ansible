@@ -60,11 +60,11 @@ Now, Apache by agent Zabbix Agent
 
 image::lab004-009.jpg[lab004-009,100%,100%]
 
-In Host Group, click select and select Application
+In Host Group, click select and select Applications
 
 image::lab004-010.jpg[lab004-010,100%,100%]
 
-Now in interface. Click on Add.
+Now in interface. Click on Add and then click agent
 
 image::lab004-011.jpg[lab004-011,100%,100%]
 
@@ -72,7 +72,7 @@ In Connect to. Change to DNS: (IMPORTANT)
 
 image::lab004-012.jpg[lab004-012,100%,100%]
 
-Adicione:
+Click DNS next to IP and add DNS name:
 
 [source,bash]
 ----
@@ -114,11 +114,11 @@ Click on the Media tab:
 
 image::lab004-020.jpg[lab004-020,100%,100%]
 
-Click Add
+Click Admin user
 
 image::lab004-021.jpg[lab004-021,100%,100%]
 
-Let's add the Controller IP:
+Let's add the Controller IP. First click Media, and then Add under Type:
 
 image::lab004-022.jpg[lab004-022,100%,100%]
 
@@ -197,6 +197,7 @@ git add . ; git commit -m add ; git push
 [ec2-user@node1 ~]$ cd 04-lab/
 [ec2-user@node1 ~]$ git clone git@server.example.com:root/eda-debug.git
 [ec2-user@node1 04-lab]$ cp -rf rulebooks eda-debug/
+[ec2-user@node1 04-lab]$ cd eda-debug/
 [ec2-user@node1 eda-debug]$ git add . ; git commit -m add ; git push
 ----
 

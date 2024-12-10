@@ -106,7 +106,7 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0    s
 node1                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 ----
 
-. Note the error generated after the event is captured by the `ansible-rulebook` command and attempt to resolve it.  
+. Break out of the rulebook by ctrl-c and note the error generated after the event is captured by the `ansible-rulebook` command and attempt to resolve it.
 
 
 '''
@@ -143,33 +143,6 @@ Failed to connect to the host via ssh: root@node1: Permission denied (publickey,
 This indicates a failure to connect to the node via SSH.
 
 . Review the rulebook `webhook-example.yml` and the playbook `hello-rh1.yml`.
-
-. Note that two variables are used in the rulebook: `event_name` and `host_host`.  
-
-. The event is matched using the `event_name` variable.  
-
-. The value of the `host_host` variable captured in the event is passed as an extra variable to the playbook.  
-
-. The first task in the playbook uses this hostname variable to add it to the `rh1` group using the `ansible.builtin.add_host` module.  
-
-. This creates a temporary inventory, which is used by the next task in the playbook.  
-
-. The next task installs a package on the hosts in the `rh1` group.  
-
-. The rulebook triggers an event to deploy a package on `node1` from `node1` via inventory host settings. 
-
-. Attempt to SSH from `node1` to itself.  
-+
-.Output
-----
-[ec2-user@node1 ~]$ ssh node1
-ec2-user@node1: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
-[ec2-user@node1 ~]$ 
-----
-+
-The same error is observed as with the playbook.
-
-. Return to the bastion host as `lab-user`.  
 
 . Copy the SSH config and key files from the `lab-user` on the bastion to the `ec2-user` on `node1` to enable passwordless SSH authentication from `node1` to itself.  
 +
@@ -230,5 +203,4 @@ vi hello-rh1.yml
 
 . While the rulebook is still running on `node1`, send the event from the bastion host again.
 
-. Note that the playbook runs successfully this time, and the `Install tcpdump` task is executed.
-
+. Note that the playbook runs successfully this time, and the `Install tcpdump` task is executed. Ctrl-c to exit the rulebook on node1 and continue to the next section.

@@ -36,7 +36,7 @@ drwx------. 10 ec2-user ec2-user 4.0K Nov 26 14:05 ..
 [ec2-user@node1 ~]$ cat .ssh/n66g5key.pub (Change to your ssh pub key)
 ----
 
-Copy the contents of the public key and add it to this link:
+Copy the contents of the public key and add it to this link. To do this you will need to hold the shift key and then highlight the key and right click to copy:
 
 https://server.{subdomain_base}/-/user_settings/ssh_keys
 
@@ -52,11 +52,11 @@ Paste and click add key
 
 image::lab003-add005.jpg[lab003-add005,100%,100%]
 
-Copy both folders into the repository:
+On node1, pull the rh1-aap-extra-vars-eda repository and copy both folders into rh1-aap-extra-vars-eda:
 
 [source,bash]
 ----
-git clone git@server.{subdomain_base}:root/rh1-aap-extra-vars-eda.git
+git clone git@server.example.com:root/rh1-aap-extra-vars-eda.git
 cp -rf rh1-eda-example/*  rh1-aap-extra-vars-eda/
 ----
 
@@ -66,11 +66,11 @@ cp -rf rh1-eda-example/*  rh1-aap-extra-vars-eda/
 [ec2-user@node1 03-lab]$ cp -rf rh1-eda-example/*  rh1-aap-extra-vars-eda/
 ----
 
-
-Now let's commit to git:
+Change directory to rh1-aap-extra-vars-eda and commit to git:
 
 [source,bash]
 ----
+cd rh1-aap-extra-vars-eda/
 git add .
 git commit -m "RH1"
 git push 
@@ -78,6 +78,7 @@ git push
 
 .Output
 ----
+[ec2-user@node1 03-lab]$ cd rh1-aap-extra-vars-eda/
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ git add .
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ git commit -m "RH1"
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ git push 
@@ -252,7 +253,6 @@ Organization: Default
 Source control type: git
 Source control URL: https://server.example.com/root/rh1-aap-extra-vars-eda.git
 Source control credential: gitlab
-uncheck box: Verify SSL
 ----
 
 image::lab003-023.jpg[lab003-023,100%,100%]
