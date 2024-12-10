@@ -3,7 +3,7 @@
 [#in_this_bfx]
 == What’s in this break-fix?
 
-In this session we will configure Zabbix to monitor Node1. On Node1 execute an HTTPD. When HTTPD stops working. Zabbix sends an Event to Event Driven Ansible and thus executes the Jobs Template to solve the HTTPD problem.
+In this section, we will configure Zabbix to monitor Node1. On Node1 execute an HTTPD. When HTTPD stops working. Zabbix sends an Event to Event-Driven Ansible(Automation Decisions) and thus executes the Jobs Template to solve the HTTPD problem.
 
 == Let's add the playbook and rulebook to git.
 

@@ -3,7 +3,7 @@
 [#in_this_bfx]
 == What’s in this break-fix?
 
-In this activity, you will troubleshoot SSH authentication and user configuration issues in an Event-Driven Ansible workflow while exploring the use of `extra_vars` in the rulebook.
+In this section, you will troubleshoot SSH authentication and user configuration issues in an Event-Driven Ansible(Automation Decisions) workflow while exploring the use of `extra_vars` in the rulebook.
 
 . SSH into the *node1* instance from the bastion host.
 +

@@ -3,7 +3,7 @@
 [#in_this_bfx]
 == What’s in this break-fix?
 
-In this session you will configure Ansible Automation Platform to receive events from Event Driven Ansible. To be successful in this lab. After sending the curl with the host parameters. You need to run the Jobs Template: rh1-aap-extra-vars-eda
+In this section, you will configure Ansible Automation Platform to receive events from Event-Driven Ansible(Automation Decisions). To be successful in this lab. After sending the curl with the host parameters. You need to run the Jobs Template: rh1-aap-extra-vars-eda
 
 == Let's copy the files:
 

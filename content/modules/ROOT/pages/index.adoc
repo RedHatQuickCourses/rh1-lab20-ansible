@@ -1,16 +1,15 @@
 = {lab_name}
 
 Welcome to the *Troubleshooting Event-Driven Ansible in Ansible Automation Platform* lab. In this session, we will work with AAP 2.5, GitLab, and Zabbix Server. 
-Labs 1 through 1 contain issues that need to be identified and resolved. Zabbix will monitor `node1`, and we will simulate an alert by stopping Apache. This alert will be sent to Event-Driven Ansible, which will use Ansible to resolve the detected issues. 
-Several configuration changes will be required in the environment to achieve this.
+Labs 1 through 5 contain issues that need to be identified and resolved. Zabbix will monitor `node1`, and we will simulate an alert by stopping Apache. This alert will be sent to Event-Driven Ansible(Automation Decisions), which will use Ansible to resolve the detected issues. Several configuration changes will be required in the environment to achieve this.
 
 === Lab Access
 
-The terminal window on your right is *already* logged into the *bastion* node as the `{ssh_user}`.
+The terminal window on your right is *already* logged into the *bastion* node as the `{ssh_user}`, if it is not please click "Terminals" in the top left of the left-side screen and two terminals will appear.
 
 == Lab Access Details
 
-* Log in to the bastion:
+* If you are not already logged in to the bastion when you open the termails. Please log into them:
 
 [subs=attributes+]
 ----
@@ -19,7 +18,6 @@ The terminal window on your right is *already* logged into the *bastion* node as
 
 Bastion password `{ssh_password}`
 
-* **Public Domain Name of Server: server.{subdomain_base}**
 
 == Ansible Automation Platform Web Console:
   * URL: https://{nginx_web_url}
