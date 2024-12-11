@@ -7,6 +7,17 @@ Labs 1 through 5 contain issues that need to be identified and resolved. Zabbix 
 
 The terminal window on your right is *already* logged into the *bastion* node as the `{ssh_user}`, if it is not please click "Terminals" in the top left of the left-side screen and two terminals will appear.
 
+Your ssh key is located in the lab-user user's home folder in bastion node.
+
+To copy your ssh key:
+
+[source,bash]
+----
+[lab-user@bastion$ cd .ssh
+[lab-user@bastion .ssh]$ scp config *.p* ec2-user@node1:.ssh/
+----
+
+
 == Lab Access Details
 
 * If you are not already logged in to the bastion when you open the termails. Please log into them:
