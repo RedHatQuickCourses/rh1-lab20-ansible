@@ -31,17 +31,17 @@ Bastion password `{ssh_password}`
 
 
 == Ansible Automation Platform Web Console:
-  * URL: https://{nginx_web_url}
+  * URL: https://{nginx_web_url}[window=_blank]
   * Username: `admin`
   * Password: `R3dh4t1!`
 
 == Access Gitlab running on server:
-  * URL: https://server.{subdomain_base}
+  * URL: https://server.{subdomain_base}[window=_blank]
   * Username: `root`
   * Password: `redhat..123`
 
 == Access Zabbix running on server:
-  * URL: http://server.{subdomain_base}/zabbix
+  * URL: http://server.{subdomain_base}/zabbix[window=_blank]
   * Username: `Admin`
   * Password: `zabbix`
 
@@ -71,9 +71,9 @@ Bastion password `{ssh_password}`
 == Documentation:
 If you need the documentation link:
 
-* https://ansible.readthedocs.io/projects/rulebook/en/stable/introduction.html
+* https://ansible.readthedocs.io/projects/rulebook/en/stable/introduction.html[window=_blank]
 
-* https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5
+* https://docs.redhat.com/en/documentation/red_hat_ansible_automation_platform/2.5[window=_blank]
 
 
 === Solution:

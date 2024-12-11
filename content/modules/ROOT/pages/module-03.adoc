@@ -88,7 +88,7 @@ git push
 
 == Now on Controller:
 
-Open the URL: https://controller.{subdomain_base}/ 
+Open the URL: https://controller.{subdomain_base}/[window=_blank]
 Let's log in:
 
 [source,bash]

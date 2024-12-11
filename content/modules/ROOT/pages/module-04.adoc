@@ -9,7 +9,7 @@ In this section, we will send a curl to Event-Driven Ansible(Automation Decision
 == Let's add a node in zabbix:
 
 Let's run the client-zabbix playbook on the Ansible Automation Platform to configure the Zabbix agent on the host apache001
-Loging in Zabbix http://server.{subdomain_base}/zabbix/.
+Loging in Zabbix http://server.{subdomain_base}/zabbix/[window=_blank].
 
 [source,bash]
 ----
@@ -172,7 +172,7 @@ Let's now create the Rulebook in Event Driven to receive these Alerts:
 
 == Now on Controller:
 
-Open the URL: https://controller.{subdomain_base}/ 
+Open the URL: https://controller.{subdomain_base}/[window=_blank]
 
 Let's log in:
 
