@@ -105,77 +105,9 @@ Disable Rulebook activation successfully:
 image::lab005-013.jpg[lab005-013,100%,100%]
 
 
-Now the rh1-ansible-eda-vars-zabbix rulebook will be able to start.
+NOTE: The big problem is creating the correct regular expression for the payload to execute.
 
-
-== Let's now configure the APP Controller.
-
-Let's create the rh1-ansible-eda-vars-zabbix project.
-
-[source,bash]
-----
-name: rh1-ansible-eda-vars-zabbix
-Organization: Default
-Source Control type: git
-Source control URL: https://server.example.com/root/rh1-ansible-eda-vars-zabbix.git
-Source control Credential: gitlab
-Check box: 
-    Clean, 
-    Update revision on launch 
-    Delete
-----
-
-image::lab005-022.jpg[lab005-022,100%,100%]
-
-Click on Create project.
-
-Let's create the project-http inventory containing only the host localhost:
-
-[source,bash]
-----
-Name: project-http
-Organization: Default
-----
-
-
-image::lab005-015.jpg[lab005-015,100%,100%]
-
-Let's click on Create Host:
-
-image::lab005-016.jpg[lab005-016,100%,100%]
-
-Now let's add the host localhost:
-
-[source,bash]
-----
-Name: localhost
-----
-
-
-
-image::lab005-017.jpg[lab005-017,100%,100%]
-
-Let's click on Create Host:
-
-
-Let's create the job_template:
-Let's go to the Automation Execution section in Templates > Create Template > Create job Template:
-
-image::lab005-014.jpg[lab005-014,100%,100%]
-
-
-[source,bash]
-----
-Name: project-http
-Project: rh1-ansible-eda-vars-zabbix
-Playbook: project-http/playbook.yml
-Credentials: ec2-user
-Inventory: project-http
-----
-
-The big problem is creating the correct regular expression for the payload to execute.
-
-Now it's time to edit the rh1-ansible-eda-vars-zabbix/rulebooks/webhook-zabbix.yml file and find the correct expression.
+Now it's time to edit the 05-lab/rh1-ansible-eda-vars-zabbix/rulebooks/webhook-zabbix.yml file and find the correct expression.
 
 
 [source,yml]
@@ -207,15 +139,87 @@ You only need to edit this line:
 condition: event.payload.event_name == "Apache: Service is down"
 ----
 
+NOTE: Your rulebook won't start due to another error. Try to resolve it.
+
+
+== Let's now configure the APP Controller.
+
+Let's create the rh1-ansible-eda-vars-zabbix project.
+
+[source,bash]
+----
+name: rh1-ansible-eda-vars-zabbix
+Organization: Default
+Source Control type: git
+Source control URL: git@server.example.com:root/rh1-ansible-eda-vars-zabbix.git
+Source control Credential: gitlab
+Check box: 
+    Clean, 
+    Update revision on launch 
+    Delete
+----
+
+image::lab005-022.png[lab005-022,100%,100%]
+
+Click on Create project.
+
+Let's create the project-http inventory containing only the host localhost:
+
+[source,bash]
+----
+Name: project-http
+Organization: Default
+----
+
+
+image::lab005-015.jpg[lab005-015,100%,100%]
+
+Let's click on Create Host:
+
+image::lab005-016.jpg[lab005-016,100%,100%]
+
+Now let's add the host localhost:
+
+[source,bash]
+----
+Name: localhost
+----
+
+image::lab005-017.jpg[lab005-017,100%,100%]
+
+Let's click on Create Host:
+
+
+Let's create the job_template:
+Let's go to the Automation Execution section in Templates > Create Template > Create job Template:
+
+image::lab005-014.jpg[lab005-014,100%,100%]
+
+
+[source,bash]
+----
+Name: project-http
+Project: rh1-ansible-eda-vars-zabbix
+Playbook: project-http/playbook.yml
+Credentials: ec2-user
+Inventory: project-http
+----
+
 == Let's test Zabbix alerts:
 
 To do this. Let's stop httpd on node1 and validate in zabbix the sending of the alert.
+
+NOTE: To generate new alerts we need to start and stop httpd.
 
 Let's stop the server's httpd:
 
 [source,bash]
 ----
+ssh node1
+sudo systemctl stop httpd 
+sudo systemctl start httpd
 sudo systemctl stop httpd
+sudo systemctl start httpd
 ----
 
 Now Zabbix will send the notification to Ansible Event Driven:
@@ -227,6 +231,9 @@ And Check if the job ran successfully:
 image::lab005-020.jpg[lab005-020,100%,100%]
 
 Now we can see the logs in Ansible Event Driven
+
+NOTE: The success of this lab is that Ansible starts HTTPD on node1 with a Zabbix Alert.
+
 
 
 '''

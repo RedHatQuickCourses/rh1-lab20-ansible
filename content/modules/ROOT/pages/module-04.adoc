@@ -378,16 +378,8 @@ We will use this playload to solve the apache problem.
 [#guided_solution]
 == Guided solution
 
-. Set permission in selinux:
-
-  [source,bash]
-  ----
-  ssh server 
-  setenforce 0
-  ----
-
 . We are looking for what we can use from this payload:
 
  'event_name': 'Apache: Service is down',
- 'host_host': 'node1.{subdomain_base}',
+ 'host_host': 'node1.example.com',
 
