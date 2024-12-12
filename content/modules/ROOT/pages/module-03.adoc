@@ -38,11 +38,11 @@ drwx------. 10 ec2-user ec2-user 4.0K Nov 26 14:05 ..
 
 Copy the contents of the public key and add it to this link. To do this you will need to hold the shift key and then highlight the key and right click to copy:
 
-https://server.{subdomain_base}/-/user_settings/ssh_keys
+https://server.{subdomain_base}/-/user_settings/ssh_keys[window=_blank]
 
 image::lab003-add002.jpg[lab003-add002,100%,100%]
 
-Now click on add new key
+Give it a title and click on add new key
 
 Copy the .ssh/n66g5key.pub (Change to your ssh pub key)
 
@@ -86,9 +86,9 @@ git push
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ git push 
 ----
 
-== Now on Controller:
+== Now in Automation Execution(Controller):
 
-Open the URL: https://controller.{subdomain_base}/[window=_blank]
+If you have not already opened the AAP site, please do so now, the URL is: https://controller.{subdomain_base}/[window=_blank]
 Let's log in:
 
 [source,bash]
@@ -218,7 +218,7 @@ Credentials: ec2-user
 
 image::lab003-add006.jpg[lab003-add006,100%,100%]
 
-== Now in Automation Decisions we will create the credential:
+== Now in Automation Decisions(EDA) we will create the credential:
 
 Click em Create credential:
 
@@ -273,7 +273,7 @@ Let's add:
 Name: AAP
 Organization: Default
 Credential type: Red Hat Ansible Automation Platform
-Red Hat Ansible Automation Platform: https://controller.{subdomain_base}/  /api/controller/
+Red Hat Ansible Automation Platform: https://controller.example.com/api/controller/
 Username: admin 
 Password: R3dh4t1!
 ----

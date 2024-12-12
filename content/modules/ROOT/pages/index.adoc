@@ -35,6 +35,8 @@ Bastion password `{ssh_password}`
   * Username: `admin`
   * Password: `R3dh4t1!`
 
+NOTE: To avoid being logged out, we recommed editing Settings -> Platform gateway -> Edit platform gateway settings and changing the Session cookie age to 7200.
+
 == Access Gitlab running on server:
   * URL: https://server.{subdomain_base}[window=_blank]
   * Username: `root`
