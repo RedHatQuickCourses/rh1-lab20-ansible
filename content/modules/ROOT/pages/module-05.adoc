@@ -57,6 +57,8 @@ Click on Create rulebook activation:
 
 image::lab005-004.jpg[lab005-004,100%,100%]
 
+NOTE: The webhook-zabbix.yml file will not show in EDA. Fix this.
+
 Add the following information:
 
 [source,bash]
