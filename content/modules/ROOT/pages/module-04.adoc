@@ -362,8 +362,10 @@ image::lab005-add001.jpg[lab005-add001,100%,100%]
 == Guided solution
 
 
-We are looking for what we can use from this payload:
 
+
+
+NOTE: We are looking for what we can use from this payload:
 
 [source,bash]
 ----
@@ -376,7 +378,12 @@ In the next lab, we will customize the rulebook to take this event_name as a con
 
 We will use this playload to solve the apache problem.
 
-. We are looking for what we can use from this payload:
+. The rulebook folder name is missing the S:
 
- 'event_name': 'Apache: Service is down',
- 'host_host': 'node1.example.com',
+[source,bash]
+----
+cd 04-lab/
+cd eda-debug/
+mv  rulebook rulebooks
+git add . ; git commit -m add ; git push
+----
