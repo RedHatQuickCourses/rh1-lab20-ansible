@@ -353,34 +353,7 @@ In the next lab, we will customize the rulebook to take this event_name as a con
 
 We will use this playload to solve the apache problem.
 
-
-'''
-
-**PAUSE**
-
-'''
-
-== Before moving ahead 
-
-=== Please take a moment to solve the challenge on your own.
-
-**The real value of this activity lies in your effort to troubleshoot independently.**
-
-**Once you have tried, continue to the next section for guided steps to verify your approach or learn an alternate solution.**
-
-'''
-
-**CONTINUE**
-
-'''
-
-
-
-[#guided_solution]
-== Guided solution
-
 . We are looking for what we can use from this payload:
 
  'event_name': 'Apache: Service is down',
  'host_host': 'node1.example.com',
-
