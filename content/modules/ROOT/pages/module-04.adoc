@@ -112,11 +112,11 @@ image::lab004-019.jpg[lab004-019,100%,100%]
 
 Click Admin user
 
-image::lab004-021.jpg[lab004-021,100%,100%]
+image::lab004-020.jpg[lab004-021,100%,100%]
 
 Click on the Media tab:
 
-image::lab004-020.jpg[lab004-020,100%,100%]
+image::lab004-021.jpg[lab004-020,100%,100%]
 
 Let's add the Controller IP. First click Media, and then Add under Type:
 
@@ -188,7 +188,7 @@ Pass: R3dh4t1!
 ----
 cd 04-lab/
 git clone git@server.example.com:root/eda-debug.git
-cp -rf rulebooks eda-debug/
+cp -rf rulebook eda-debug/
 cd eda-debug/
 git add . ; git commit -m add ; git push
 ----
@@ -197,7 +197,7 @@ git add . ; git commit -m add ; git push
 ----
 [ec2-user@node1 ~]$ cd 04-lab/
 [ec2-user@node1 ~]$ git clone git@server.example.com:root/eda-debug.git
-[ec2-user@node1 04-lab]$ cp -rf rulebooks eda-debug/
+[ec2-user@node1 04-lab]$ cp -rf rulebook eda-debug/
 [ec2-user@node1 04-lab]$ cd eda-debug/
 [ec2-user@node1 eda-debug]$ git add . ; git commit -m add ; git push
 ----
@@ -337,6 +337,29 @@ image::lab005-add001.jpg[lab005-add001,100%,100%]
 ----
 
 
+'''
+
+**PAUSE**
+
+'''
+
+== Before moving ahead 
+
+=== Please take a moment to solve the challenge on your own.
+
+**The real value of this activity lies in your effort to troubleshoot independently.**
+
+**Once you have tried, continue to the next section for guided steps to verify your approach or learn an alternate solution.**
+
+'''
+
+**CONTINUE**
+
+'''
+
+
+[#guided_solution]
+== Guided solution
 
 
 We are looking for what we can use from this payload:
