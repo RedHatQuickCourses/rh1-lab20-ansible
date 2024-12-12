@@ -110,13 +110,13 @@ Now let's go to: Users > Users > Click on Admin.
 
 image::lab004-019.jpg[lab004-019,100%,100%]
 
-Click on the Media tab:
-
-image::lab004-020.jpg[lab004-020,100%,100%]
-
 Click Admin user
 
 image::lab004-021.jpg[lab004-021,100%,100%]
+
+Click on the Media tab:
+
+image::lab004-020.jpg[lab004-020,100%,100%]
 
 Let's add the Controller IP. First click Media, and then Add under Type:
 
@@ -189,6 +189,7 @@ Pass: R3dh4t1!
 cd 04-lab/
 git clone git@server.example.com:root/eda-debug.git
 cp -rf rulebooks eda-debug/
+cd eda-debug/
 git add . ; git commit -m add ; git push
 ----
 
