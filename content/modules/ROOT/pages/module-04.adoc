@@ -122,6 +122,10 @@ Let's add the Controller IP. First click Media, and then Add under Type:
 
 image::lab004-022.jpg[lab004-022,100%,100%]
 
+image::lab004-023.jpg[lab004-023,100%,100%]
+
+To find the IP log into the controller and run ip ad ls
+
 [source,bash]
 ----
 [lab-user@bastion ~]$ ssh controller
@@ -146,10 +150,9 @@ Last login: Thu Nov 21 14:12:38 2024 from 192.168.0.144
 [ec2-user@controller ~]$ 
 
 ----
+In this example the IP: 192.168.0.131.
 
-image::lab004-023.jpg[lab004-023,100%,100%]
-
-In this example the IP: 192.168.0.131 and the Rulebook port: 5000
+Now add the IP of the controller and the Rulebook port of 5000 to Send to:
 
 [source,bash]
 ----
