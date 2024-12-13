@@ -106,9 +106,9 @@ Alerts > Media Type > Event Driven Ansible. Click on Disabled(Red). It will chan
 
 image::lab004-018.jpg[lab004-018,100%,100%]
 
-Now let's go to: Users > Users > Click on Admin.
+Now let's go to: Users > Users
 
-image::lab004-019.jpg[lab004-019,100%,100%]
+image::lab004-020.jpg[lab004-020,100%,100%]
 
 Click Admin user
 
