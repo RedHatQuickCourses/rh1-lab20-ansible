@@ -47,6 +47,8 @@ NOTE: To avoid being logged out, we recommed editing Settings -> Platform gatewa
   * Username: `Admin`
   * Password: `zabbix`
 
+NOTE: The Zabbix server is currently running on HTTP and not HTTPS. If your browser automatically switches the URL to HTTPS, you may need to manually change it back to HTTP to access the server.
+
 == Access other instances from Bastion
 
 * Log in to the Ansible Automation Platform Controller from bastion:
