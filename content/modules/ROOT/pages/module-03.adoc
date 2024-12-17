@@ -37,7 +37,7 @@ drwx------. 10 ec2-user ec2-user 4.0K Nov 26 14:05 ..
 Copy the contents of the public key and add it to this link. To do this you will need to hold the shift key, and then highlight the key and right click to copy.
 
 You will need to open and log into the GitLab server if you have not done so already.
-  * URL: https://server.{subdomain_base}[window=_blank]
+  * URL: https://server.{subdomain_base}/-/user_settings/ssh_keys[window=_blank]
   * Username: `root`
   * Password: `redhat..123`
 
@@ -258,7 +258,7 @@ image::lab003-024.jpg[lab003-024,100%,100%]
 
 NOTE: The project does not sync. Find the error and resolve.
 
-Click em Create Credential:
+Click on Create Credential:
 
 image::lab003-017.jpg[lab003-017,100%,100%]
 
