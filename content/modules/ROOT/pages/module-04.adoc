@@ -169,29 +169,13 @@ image::lab004-025.jpg[lab004-025,100%,100%]
 
 Now our Zabbix is ​​monitoring node1. If there is any alert, it will be sent to Event Driven.
 
-Let's now create the Rulebook in Event Driven to receive these Alerts:
-
-
-
-== Now on Controller:
-
-Open the URL: https://controller.{subdomain_base}/[window=_blank]
-
-Let's log in:
-
-
-[source,bash]
-----
-User: admin
-Pass: R3dh4t1!
-----
-
+== Now on the terminal
 
 [source,bash]
 ----
 cd 04-lab/
 git clone git@server.example.com:root/eda-debug.git
-cp -rf rulebook eda-debug/
+cp -rf rulebooks eda-debug/
 cd eda-debug/
 git add . ; git commit -m add ; git push
 ----
@@ -205,7 +189,20 @@ git add . ; git commit -m add ; git push
 [ec2-user@node1 eda-debug]$ git add . ; git commit -m add ; git push
 ----
 
-Let's first create the project in Automation Decision:
+Let's now create the Rulebook in Decisions to receive these Alerts:
+
+== Now on the Ansible Automation Platform:
+
+Open the URL if you need to: https://controller.{subdomain_base}/[window=_blank]
+
+Let's log in:
+
+[source,bash]
+----
+User: admin
+Pass: R3dh4t1!
+----
+Let's first create the project in *Automation Decision*:
 
 Click on Create project:
 
@@ -240,10 +237,12 @@ Organization: Default
 Project: eda-debug
 Rulebook: webhook-debug.yml
 Credential: AAP
-Decision environment: Default
+Decision environment: Default Decision Environment
 ----
 
 image::lab004-031.jpg[lab004-031,100%,100%]
+
+NOTE: Find the error and remediate.
 
 Now the rulebook will start:
 
@@ -255,7 +254,7 @@ Access History:
 
 image::lab004-033.jpg[lab004-033,100%,100%]
 
-Access node1:
+Access the *node1* terminal:
 
 
 [source,bash]
@@ -268,9 +267,19 @@ sudo systemctl stop httpd
 
 We will be able to see the Apache alert being sent to the EDA:
 
+NOTE: It takes about 30 seconds and a browser refresh to show it under Actions.
+
 image::lab004-034.jpg[lab004-034,100%,100%]
 
-Shows that it was sent successfully:
+NOTE: The red line under Actions in the Current Problems section. This is a failure you must clear.
+
+Restart httpd in the *node1* terminal and clear the error before moving on.
+
+[source,bash]
+----
+ssh node1
+sudo systemctl start httpd
+----
 
 image::lab004-035.jpg[lab004-035,100%,100%]
 

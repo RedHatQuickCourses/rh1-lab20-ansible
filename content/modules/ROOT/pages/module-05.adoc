@@ -57,8 +57,6 @@ Click on Create rulebook activation:
 
 image::lab005-004.jpg[lab005-004,100%,100%]
 
-NOTE: The webhook-zabbix.yml file will not show in EDA. Fix this.
-
 Add the following information:
 
 [source,bash]
@@ -74,6 +72,8 @@ Now click on Create rulebook activation
 ----
 
 image::lab005-005.jpg[lab005-005,100%,100%]
+
+NOTE: The webhook-zabbix.yml file will not show in EDA. Fix this before moving on.
 
 Now click on Create rulebook activation
 
@@ -144,7 +144,7 @@ condition: event.payload.event_name == "Apache: Service is down"
 NOTE: Your rulebook won't start due to another error. Try to resolve it.
 
 
-== Let's now configure the APP Controller.
+== Let's now configure Automation Exection.
 
 Let's create the rh1-ansible-eda-vars-zabbix project.
 
@@ -219,8 +219,6 @@ Let's stop the server's httpd:
 ----
 ssh node1
 sudo systemctl stop httpd 
-sudo systemctl start httpd
-sudo systemctl stop httpd
 sudo systemctl start httpd
 ----
 

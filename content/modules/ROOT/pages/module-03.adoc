@@ -7,9 +7,7 @@ In this section, you will configure Ansible Automation Platform to receive event
 
 == Let's copy the files:
 
-Let's list the files in the .ssh/ folder
-
-Now, let's copy the contents of the .pub file:
+On *node1* let's list the files in the .ssh/ folder and view your public key.
 
 [source,bash]
 ----
@@ -36,19 +34,18 @@ drwx------. 10 ec2-user ec2-user 4.0K Nov 26 14:05 ..
 [ec2-user@node1 ~]$ cat .ssh/n66g5key.pub (Change to your ssh pub key)
 ----
 
-Copy the contents of the public key and add it to this link. To do this you will need to hold the shift key and then highlight the key and right click to copy:
+Copy the contents of the public key and add it to this link. To do this you will need to hold the shift key, and then highlight the key and right click to copy.
 
-https://server.{subdomain_base}/-/user_settings/ssh_keys[window=_blank]
+You will need to open and log into the GitLab server if you have not done so already.
+  * URL: https://server.{subdomain_base}[window=_blank]
+  * Username: `root`
+  * Password: `redhat..123`
 
 image::lab003-add002.jpg[lab003-add002,100%,100%]
 
-Give it a title and click on add new key
-
-Copy the .ssh/n66g5key.pub (Change to your ssh pub key)
+Click on add new key and paste the public key into the *"Key"* box. Give it a title and click *"Add key"*.
 
 image::lab003-add004.jpg[lab003-add004,100%,100%]
-
-Paste and click add key
 
 image::lab003-add005.jpg[lab003-add005,100%,100%]
 
@@ -97,7 +94,7 @@ User: admin
 Pass: R3dh4t1!
 ----
 
-Let's create the inventory. Select Automation Controller > Infrastructure > Inventories.
+Let's create the inventory. Select Automation Execution > Infrastructure > Inventories.
 
 To create the inventory we will click on "Create Inventory" in blue.
 
@@ -205,7 +202,7 @@ check box:
 
 image::lab003-015.jpg[lab003-015,100%,100%]
 
-Let's create the job_template in AAP with the project name rh1-aap-extra-vars-eda:
+Once the project finishes sync'ing, let's create the job_template in AAP with the project name rh1-aap-extra-vars-eda:
 
 [source,bash]
 ----
@@ -220,7 +217,7 @@ image::lab003-add006.jpg[lab003-add006,100%,100%]
 
 == Now in Automation Decisions(EDA) we will create the credential:
 
-Click em Create credential:
+Let's create the credential. Select Automation Decisions > Infrastructure > Credentials > Create credential:
 
 image::lab003-017.jpg[lab003-017,100%,100%]
 
@@ -240,7 +237,7 @@ Password: redhat..123
 
 Let's create the project in EDA:
 
-Click em Create Project:
+Click Create Project:
 
 image::lab003-021.jpg[lab003-021,100%,100%]
 
@@ -259,7 +256,8 @@ Disable verify SSL: Uncheck
 image::lab003-020.jpg[lab003-020,100%,100%]
 image::lab003-024.jpg[lab003-024,100%,100%]
 
-Now that the project has been successfully created and synced, let's create the AAP credential:
+NOTE: The project does not sync. Find the error and resolve.
+
 Click em Create Credential:
 
 image::lab003-017.jpg[lab003-017,100%,100%]
@@ -295,7 +293,7 @@ Organization: Default
 Credential type: Container Registry
 authentication URL: registry.redhat.io
 username: 1979710|rh1lab20
-Password or Token: (https://access.redhat.com/terms-based-registry/token/rh1lab20)
+Password or Token: (The token is located in /home/ec2-user/03-lab/registry-credentials.txt one node1)
 ----
 
 Click in Create Credential
@@ -328,7 +326,7 @@ Organization: Default
 Project: rh1-aap-extra-vars-eda
 Rulebook: webhook-example.yml
 Credential: AAP
-Decision environment: Default
+Decision environment: Default Decision Environment
 ----
 
 

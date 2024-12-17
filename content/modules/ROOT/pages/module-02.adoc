@@ -56,22 +56,22 @@ ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --pr
 [ec2-user@node1 02-lab]$ ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --print-events
 2024-11-29 15:24:45,039 - ansible_rulebook.app - INFO - Starting sources
 2024-11-29 15:24:45,039 - ansible_rulebook.app - INFO - Starting rules
-
 . . . 
-
-2024-11-29 15:24:47,527 - ansible_rulebook.rule_set_runner - INFO - Waiting for events, ruleset: Listen for events on a webhook
-2024-11-29 15:24:47 528 [drools-async-evaluator-thread] INFO org.drools.ansible.rulebook.integration.api.io.RuleExecutorChannel - Async channel connected
+2024-12-17 16:31:17,566 - ansible_rulebook.engine - INFO - Waiting for all ruleset tasks to end
+2024-12-17 16:31:17 566 [drools-async-evaluator-thread] INFO org.drools.ansible.rulebook.integration.api.io.RuleExecutorChannel - Async channel connected
+2024-12-17 16:31:17,567 - ansible_rulebook.rule_set_runner - INFO - Waiting for actions on events from Listen for events on a webhook
+2024-12-17 16:31:17,567 - ansible_rulebook.rule_set_runner - INFO - Waiting for events, ruleset: Listen for events on a webhook
 ----
 
 . Open another terminal on the bastion node and execute the `curl` command as specified.  
 +
 [source,bash]
 ----
-  curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "node1" }' node1:5000/endpoint
+curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "node1" }' node1:5000/endpoint
 ----
 
 . In the terminal where you ran the `ansible-rulebook` command, observe the output.  
-
++
 .Output
 ----
 2024-11-29 15:26:18,350 - aiohttp.access - INFO - 192.168.0.18 [29/Nov/2024:15:26:18 +0000] "POST /endpoint HTTP/1.1" 200 158 "-" "curl/7.76.1"
@@ -105,7 +105,7 @@ PLAY RECAP *********************************************************************
 localhost                  : ok=2    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
 node1                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 ----
-
++
 NOTE: "Failed to connect to the host via ssh:" You need to solve this problem. 
 
 . Break out of the rulebook by ctrl-c and note the error generated after the event is captured by the `ansible-rulebook` command and attempt to resolve it.
