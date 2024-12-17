@@ -159,7 +159,7 @@ Let's copy the contents of the private key and create the credential machine:
 ----
 Name: ec2-user
 Organization: Default
-credenial type: Machine
+credential type: Machine
 Username: ec2-user
 SSH Private Key: Copy your bastion private key: cat .ssh/vkhtjkey.pem
 
@@ -178,7 +178,7 @@ Let's create the gitlab credential:
 ----
 Name: gitlab
 Organization: Default
-credenial type: Source Control
+credential type: Source Control
 Username: root
 SCM Private Key: Copy your bastion private key: cat .ssh/vkhtjkey.pem
 ----
@@ -191,7 +191,7 @@ Let's create the project in AAP to sync the rh1-aap-extra-vars-eda project:
 ----
 Name: rh1-aap-extra-vars-eda
 Organization: Default
-credenial control type: git
+credential control type: git
 Source control URL: git@server.example.com:root/rh1-aap-extra-vars-eda.git
 Source control credential: gitlab
 check box:
@@ -308,7 +308,7 @@ image::lab003-add009.png[lab003-add009,100%,100%]
 
 image::lab003-add010.png[lab003-add010,100%,100%]
 
-In credenial add redhat
+In credential add redhat
 
 image::lab003-add011.png[lab003-add011,100%,100%]
 
