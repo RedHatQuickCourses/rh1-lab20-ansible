@@ -37,6 +37,7 @@ drwx------. 10 ec2-user ec2-user 4.0K Nov 26 14:05 ..
 Copy the contents of the public key and add it to this link. To do this you will need to hold the shift key, and then highlight the key and right click to copy.
 
 You will need to open and log into the GitLab server if you have not done so already.
+
   * URL: https://server.{subdomain_base}/-/user_settings/ssh_keys[window=_blank]
   * Username: `root`
   * Password: `redhat..123`
