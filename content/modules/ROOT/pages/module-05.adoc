@@ -3,7 +3,7 @@
 [#in_this_bfx]
 == What’s in this break-fix?
 
-In this section, we will configure Zabbix to monitor Node1. On Node1 execute an HTTPD. When HTTPD stops working. Zabbix sends an Event to Event-Driven Ansible(Automation Decisions) and thus executes the Jobs Template to solve the HTTPD problem.
+In this section, we will configure Zabbix to monitor *node1*. On *node1* execute an HTTPD. When HTTPD stops working. Zabbix sends an Event to Event-Driven Ansible(Automation Decisions) and thus executes the Jobs Template to solve the HTTPD problem.
 
 == Let's add the playbook and rulebook to git.
 
@@ -209,7 +209,7 @@ Inventory: project-http
 
 == Let's test Zabbix alerts:
 
-To do this. Let's stop httpd on node1 and validate in zabbix the sending of the alert.
+To do this. Let's stop httpd on *node1* and validate in zabbix the sending of the alert.
 
 NOTE: To generate new alerts we need to start and stop httpd.
 
@@ -232,7 +232,7 @@ image::lab005-020.jpg[lab005-020,100%,100%]
 
 Now we can see the logs in Ansible Event Driven
 
-NOTE: The success of this lab is that Ansible starts HTTPD on node1 with a Zabbix Alert.
+NOTE: The success of this lab is that Ansible starts HTTPD on *node1* with a Zabbix Alert.
 
 
 

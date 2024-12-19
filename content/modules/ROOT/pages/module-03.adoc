@@ -131,7 +131,7 @@ image::lab003-006.jpg[lab003-006,100%,100%]
 
 Let's create the hosts ec2-user user credential in AAP:
 
-To create the machine credential in AAP, we need to get the private key from the bastion host.
+To create the machine credential in AAP, we need to get the private key from the *bastion* host.
 
 In the test environment I'm using now it's: .ssh/vkhtjkey.pem 
 

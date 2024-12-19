@@ -144,7 +144,7 @@ Failed to connect to the host via ssh: root@node1: Permission denied (publickey,
 +
 This indicates a failure to connect to the node via SSH.
 
-. Copy the SSH config and key files from the `lab-user` on the `bastion` to the `ec2-user` on `node1` to enable passwordless SSH authentication from `node1` to itself.  
+. Copy the SSH config and key files from the `lab-user` on the *bastion* to the `ec2-user` on *node1* to enable passwordless SSH authentication from *node1* to itself.  
 +
 [source,bash]
 ----
@@ -166,7 +166,7 @@ xjvz8key.pub                                                                    
 [lab-user@bastion .ssh]$ 
 ----
 
-. Login back to `node1` and attempt to SSH to itself.
+. Login back to *node1* and attempt to SSH to itself.
 +
 .Output
 ----
@@ -192,7 +192,7 @@ fatal: [node1]: UNREACHABLE! => {"changed": false, "msg": "Failed to create temp
 Please login as the user \"ec2-user\" rather than the user \"root\"
 ----
 
-. Ensure you are in the `02-lab` directory on `node1`.
+. Ensure you are in the `02-lab` directory on *node1*.
 
 . Edit the `hello-rh1.yml` playbook and change `remote_user: root` to `remote_user: ec2-user`.
 +
@@ -201,6 +201,6 @@ Please login as the user \"ec2-user\" rather than the user \"root\"
 vi hello-rh1.yml
 ----
 
-. While the rulebook is still running on `node1`, send the event from the bastion host again.
+. While the rulebook is still running on *node1*, send the event from the bastion host again.
 
 . Note that the playbook runs successfully this time, and the `Install tcpdump` task is executed. Ctrl-c to exit the rulebook on node1 and continue to the next section.
