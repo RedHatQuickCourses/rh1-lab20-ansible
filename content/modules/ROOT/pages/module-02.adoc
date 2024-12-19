@@ -144,7 +144,7 @@ Failed to connect to the host via ssh: root@node1: Permission denied (publickey,
 +
 This indicates a failure to connect to the node via SSH.
 
-. Copy the SSH config and key files from the `lab-user` on the bastion to the `ec2-user` on `node1` to enable passwordless SSH authentication from `node1` to itself.  
+. Copy the SSH config and key files from the `lab-user` on the `bastion` to the `ec2-user` on `node1` to enable passwordless SSH authentication from `node1` to itself.  
 +
 [source,bash]
 ----
