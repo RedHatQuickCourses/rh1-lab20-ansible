@@ -364,7 +364,8 @@ curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host"
 ----
 
 
-After sending the curl. The Job Template rh1-aap-extra-vars-eda will execute.
+After sending the curl. The Job Template `rh1-aap-extra-vars-eda` will execute.
+
 
 NOTE: You need to resolve this error:
 
