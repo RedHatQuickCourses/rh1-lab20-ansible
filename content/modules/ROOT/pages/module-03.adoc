@@ -99,7 +99,8 @@ Let's create the inventory. Select Automation Execution > Infrastructure > Inven
 
 To create the inventory we will click on "Create Inventory" in blue.
 
-image::create-inventory-001.jpg[create-inventory-001,100%,100%]
+image::create-inventory-001.jpg[create-inventory-001,100%,100%,link=self,window=_blank]
+
 
 Now click on Create Inventory:
 
