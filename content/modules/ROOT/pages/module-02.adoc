@@ -1,9 +1,9 @@
 = Troubleshoot rulebook using CURL and extra_vars
 
 [#in_this_bfx]
-== What’s in this break-fix?
+== What is in this break-fix
 
-In this section, you will troubleshoot SSH authentication and user configuration issues in an Event-Driven Ansible(Automation Decisions) workflow while exploring the use of `extra_vars` in the rulebook.
+In this section, you will troubleshoot SSH authentication and user configuration issues in an Event-Driven Ansible (Automation Decisions) workflow while exploring the use of `extra_vars` in the rulebook.
 
 . SSH into the *node1* instance from the bastion host.
 +
@@ -19,7 +19,7 @@ Last login: Fri Nov 29 06:30:21 2024 from 192.168.0.33
 [ec2-user@node1 ~]$ 
 ----
 
-. Navigate to the *02-lab* directory.  
+. Navigate to the _02-lab_ directory.  
 +
 [source,bash]
 ----
@@ -63,7 +63,7 @@ ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --pr
 2024-12-17 16:31:17,567 - ansible_rulebook.rule_set_runner - INFO - Waiting for events, ruleset: Listen for events on a webhook
 ----
 
-. Open another terminal on the bastion node and execute the `curl` command as specified.  
+. Open another terminal on the bastion node and run the `curl` command as specified.  
 +
 [source,bash]
 ----
@@ -108,7 +108,7 @@ node1                      : ok=0    changed=0    unreachable=1    failed=0    s
 +
 NOTE: "Failed to connect to the host via ssh:" You need to solve this problem. 
 
-. Break out of the rulebook by ctrl-c and note the error generated after the event is captured by the `ansible-rulebook` command and attempt to resolve it.
+. Break out of the rulebook by Ctrl-c and note the error generated after the event is captured by the `ansible-rulebook` command and try to resolve it.
 
 
 '''
@@ -142,7 +142,7 @@ NOTE: "Failed to connect to the host via ssh:" You need to solve this problem.
 Failed to connect to the host via ssh: root@node1: Permission denied (publickey,gssapi-keyex,gssapi-with-mic).
 ----
 +
-This indicates a failure to connect to the node via SSH.
+This indicates a failure to connect to the node by SSH.
 
 . Copy the SSH config and key files from the `lab-user` on the *bastion* to the `ec2-user` on *node1* to enable passwordless SSH authentication from *node1* to itself.  
 +
@@ -166,7 +166,7 @@ xjvz8key.pub                                                                    
 [lab-user@bastion .ssh]$ 
 ----
 
-. Login back to *node1* and attempt to SSH to itself.
+. Login back to *node1* and try to SSH to itself.
 +
 .Output
 ----
@@ -192,9 +192,9 @@ fatal: [node1]: UNREACHABLE! => {"changed": false, "msg": "Failed to create temp
 Please login as the user \"ec2-user\" rather than the user \"root\"
 ----
 
-. Ensure you are in the `02-lab` directory on *node1*.
+. Ensure you are in the _02-lab_ directory on *node1*.
 
-. Edit the `hello-rh1.yml` playbook and change `remote_user: root` to `remote_user: ec2-user`.
+. Edit the _hello-rh1.yml_ playbook and change `remote_user: root` to `remote_user: ec2-user`.
 +
 [source,bash]
 ----

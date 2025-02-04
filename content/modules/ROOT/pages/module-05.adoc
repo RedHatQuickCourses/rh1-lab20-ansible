@@ -1,11 +1,11 @@
-= Let's configure EDA and AAP to fix issues coming from zabbix
+= Let's configure Event-Driven and Ansible Automation Platform to fix issues coming from Zabbix
 
 [#in_this_bfx]
-== What’s in this break-fix?
+== What is in this break-fix
 
-In this section, we will configure Zabbix to monitor *node1*. On *node1* execute an HTTPD. When HTTPD stops working. Zabbix sends an Event to Event-Driven Ansible(Automation Decisions) and thus executes the Jobs Template to solve the HTTPD problem.
+In this section, we will configure Zabbix to monitor *node1*. On *node1* run HTTPD. When HTTPD stops working. Zabbix sends an Event to Event-Driven Ansible(Automation Decisions) and therefore runs the Jobs Template to solve the HTTPD problem.
 
-== Let's add the playbook and rulebook to git.
+== Add the playbook and rulebook to git
 
 Add the files inside this folder to git.
 
@@ -28,7 +28,7 @@ git add . ; git commit -m add ; git push
 [ec2-user@node1 05-lab]$ git add . ; git commit -m add ; git push
 ----
 
-In Ansible Automation Platform we will create the rh1-ansible-eda-vars-zabbix project in Automation Decisions:
+In Ansible Automation Platform we will create the _rh1-ansible-eda-vars-zabbix_ project in Automation Decisions:
 
 
 [source,bash]
@@ -45,14 +45,14 @@ uncheck box Verify SSL
 
 image::lab005-001.jpg[lab005-001,100%,100%]
 
-Let's make sure the project Success syncs
+Make sure the project Success syncs
 
 image::lab005-000.jpg[lab005-000,100%,100%]
 
 
-After creating the project in Automation Decision, let's create the rulebook:
+After creating the project in Automation Decision, create the rulebook:
 
-Click on Create rulebook activation:
+Click Create rulebook activation:
 
 
 image::lab005-004.jpg[lab005-004,100%,100%]
@@ -73,9 +73,9 @@ Now click on Create rulebook activation
 
 image::lab005-005.jpg[lab005-005,100%,100%]
 
-NOTE: The webhook-zabbix.yml file will not show in EDA. Fix this before moving on.
+NOTE: The _webhook-zabbix.yml_ file will not show in Event-Driven. Fix this before moving on.
 
-Now click on Create rulebook activation
+Now click Create rulebook activation
 
 Validate if the rulebook is running:
 
@@ -83,22 +83,22 @@ Details of how we created the Rulebook:
 
 image::lab005-008.jpg[lab005-008,100%,100%]
 
-Click on History to see the issue:
+Click History to see the issue:
 
 image::lab005-009.jpg[lab005-009,100%,100%]
 
-Rulebook will fail to start due to port conflict. Let's stop eda-debug rulebook.
+Rulebook will fail to start due to port conflict. Stop the _eda-debug_ rulebook.
 
 Click Rulebook action in blue:
 
 image::lab005-010.jpg[lab005-010,100%,100%]
 
-Check Box:
+Checkbox:
 Yes, I confirm that I want to disable these rulebook activations.
 
 image::lab005-011.jpg[lab005-011,100%,100%]
 
-Click on Disable rulebook activations
+Click Disable rulebook activations
 
 image::lab005-012.jpg[lab005-012,100%,100%]
 
@@ -107,9 +107,9 @@ Disable Rulebook activation successfully:
 image::lab005-013.jpg[lab005-013,100%,100%]
 
 
-NOTE: The big problem is creating the correct regular expression for the payload to execute.
+NOTE: The big problem is creating the correct regular expression for the payload to run.
 
-Now it's time to edit the 05-lab/rh1-ansible-eda-vars-zabbix/rulebooks/webhook-zabbix.yml file and find the correct expression.
+Now it's time to edit the _05-lab/rh1-ansible-eda-vars-zabbix/rulebooks/webhook-zabbix.yml_ file and find the correct expression.
 
 
 [source,yml]
@@ -141,12 +141,12 @@ You only need to edit this line:
 condition: event.payload.event_name == "Apache: Service is down"
 ----
 
-NOTE: Your rulebook won't start due to another error. Try to resolve it.
+NOTE: Your rulebook will not start due to another error. Try to resolve it.
 
 
-== Let's now configure Automation Exection.
+== Let's now configure Automation Execution.
 
-Let's create the rh1-ansible-eda-vars-zabbix project.
+Let's create the _rh1-ansible-eda-vars-zabbix_ project.
 
 [source,bash]
 ----
@@ -163,9 +163,9 @@ Check box:
 
 image::lab005-022.png[lab005-022,100%,100%]
 
-Click on Create project.
+Click Create project.
 
-Let's create the project-http inventory containing only the host localhost:
+Next create the project-http inventory containing only the host *localhost*:
 
 [source,bash]
 ----
@@ -176,11 +176,11 @@ Organization: Default
 
 image::lab005-015.jpg[lab005-015,100%,100%]
 
-Let's click on Create Host:
+Click Create Host:
 
 image::lab005-016.jpg[lab005-016,100%,100%]
 
-Now let's add the host localhost:
+Now add the host *localhost*:
 
 [source,bash]
 ----
@@ -189,11 +189,10 @@ Name: localhost
 
 image::lab005-017.jpg[lab005-017,100%,100%]
 
-Let's click on Create Host:
+Next click Create Host:
 
-
-Let's create the job_template:
-Let's go to the Automation Execution section in Templates > Create Template > Create job Template:
+Create the job_template:
+Go to the Automation Execution section in Templates > Create Template > Create job Template:
 
 image::lab005-014.jpg[lab005-014,100%,100%]
 
@@ -207,13 +206,13 @@ Credentials: ec2-user
 Inventory: project-http
 ----
 
-== Let's test Zabbix alerts:
+== Test the Zabbix alerts:
 
-To do this. Let's stop httpd on *node1* and validate in zabbix the sending of the alert.
+To do this, stop *httpd* on *node1* and validate in Zabbix the sending of the alert.
 
-NOTE: To generate new alerts we need to start and stop httpd.
+NOTE: To generate new alerts we need to start and stop *httpd*.
 
-Let's stop the server's httpd:
+Next stop the server's *httpd*:
 
 [source,bash]
 ----
@@ -222,7 +221,7 @@ sudo systemctl stop httpd
 sudo systemctl start httpd
 ----
 
-Now Zabbix will send the notification to Ansible Event Driven:
+Now Zabbix will send the notification to Event-Driven Ansible:
 
 image::lab005-023.jpg[lab005-023,100%,100%]
 
@@ -230,7 +229,7 @@ And Check if the job ran successfully:
 
 image::lab005-020.jpg[lab005-020,100%,100%]
 
-Now we can see the logs in Ansible Event Driven
+Now we can see the logs in Event-Driven Ansible
 
 NOTE: The success of this lab is that Ansible starts HTTPD on *node1* with a Zabbix Alert.
 
@@ -244,7 +243,7 @@ NOTE: The success of this lab is that Ansible starts HTTPD on *node1* with a Zab
 
 == Before moving ahead 
 
-=== Please take a moment to solve the challenge on your own.
+=== Please take a moment to solve the challenge on your own
 
 **The real value of this activity lies in your effort to troubleshoot independently.**
 
@@ -259,21 +258,21 @@ NOTE: The success of this lab is that Ansible starts HTTPD on *node1* with a Zab
 [#guided_solution]
 == Guided solution
 
-. Disable eda-debug rulebook.
+. Disable _eda-debug_ rulebook.
 
-. Rulebook will fail to start due to port conflict. Let's stop eda-debug rulebook.
+. Rulebook will fail to start due to port conflict. Stop the _eda-debug_ rulebook.
 
 . Remember to put the host in disabled mode inside the inventory:
  
 image::lab005-018.jpg[lab005-018,100%,100%]
 
-. Mark the Extra variable check box as Prompt on launch
+. Mark the Extra variable checkbox as Prompt on launch
 
 image::lab005-019.jpg[lab005-019,100%,100%]
 
-. Before stopping Apache service. Need to remove remote_user: root 
+. Before stopping Apache service. Remove *remote_user: root* 
 
-. Change the condition line in the rulebooks/webhook-zabbix.yml file
+. Change the condition line in the _rulebooks/webhook-zabbix.yml_ file
 
 [source,bash]
 ----

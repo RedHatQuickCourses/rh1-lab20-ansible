@@ -1,15 +1,16 @@
 = {lab_name}
 
-Welcome to the *Troubleshooting Event-Driven Ansible in Ansible Automation Platform* lab. In this session, we will work with AAP 2.5, GitLab, and Zabbix Server. 
-Labs 1 through 5 contain issues that need to be identified and resolved. Zabbix will monitor `node1`, and we will simulate an alert by stopping Apache. This alert will be sent to Event-Driven Ansible(Automation Decisions), which will use Ansible to resolve the detected issues. Several configuration changes will be required in the environment to achieve this.
+Welcome to the *Troubleshooting Event-Driven Ansible in Ansible Automation Platform* lab. In this session, we will work with Ansible Automation Platform 2.5, GitLab, and Zabbix Server. 
 
-=== Lab Access
+Labs 1 through 5 contain issues that need to be identified and resolved. Zabbix will monitor `node1`, and we will simulate an alert by stopping Apache. This alert will be sent to Event-Driven Ansible (Automation Decisions), which will use Ansible to resolve the detected issues. Several configuration changes will be required in the environment to achieve this.
 
-The terminal window on your right is *already* logged into the *bastion* node as the `{ssh_user}`, if it is not please click "Terminals" in the top left of the left-side screen and two terminals will appear. You will need to do a carriage return to get paste to work.
+== Lab Access
+
+The terminal window on the right is *already* logged into the *bastion* node as the `{ssh_user}`. If it is not click "Terminals" in the top left of the left-side screen and two terminals will appear. You will need to do a carriage return to get paste to work.
 
 == Lab Access Details
 
-* If you are not already logged in to the bastion when you open the termails. Please log into them:
+* If you are not already logged in to the bastion when you open the terminals. Log in to them now:
 
 [subs=attributes+]
 ----
@@ -24,7 +25,7 @@ Bastion password `{ssh_password}`
   * Username: `admin`
   * Password: `R3dh4t1!`
 
-NOTE: To avoid being logged out, we recommed editing Settings -> Platform gateway -> Edit platform gateway settings and changing the Session cookie age to 7200. You will need to relog to implement the change.
+NOTE: To avoid being logged out, modify Settings -> Platform gateway -> Edit platform gateway settings and changing the Session cookie age to 7200. You will need to logout and log back in to implement the change.
 
 == Access Gitlab running on server:
   * URL: https://server.{subdomain_base}[window=_blank]
@@ -36,7 +37,7 @@ NOTE: To avoid being logged out, we recommed editing Settings -> Platform gatewa
   * Username: `Admin`
   * Password: `zabbix`
 
-NOTE: The Zabbix server is currently running on HTTP and not HTTPS. If your browser automatically switches the URL to HTTPS, you may need to manually change it back to HTTP to access the server.
+NOTE: The Zabbix server is currently running on HTTP and *not* HTTPS. If your browser automatically switches the URL to HTTPS, you will need to manually change it back to HTTP to access the server.
 
 == Access other instances from Bastion
 
@@ -72,6 +73,6 @@ If you need the documentation link:
 === Solution:
 
 A step-by-step guided solution is provided at the end of each lab section. 
-Before proceeding, take a moment to attempt the challenge on your own. 
+Before proceeding, take a moment to try the challenge on your own. 
 The true value of this activity lies in your effort to troubleshoot independently. 
 Once you have made an attempt, you can refer to the guided solutions to verify your approach or explore an alternate solution.

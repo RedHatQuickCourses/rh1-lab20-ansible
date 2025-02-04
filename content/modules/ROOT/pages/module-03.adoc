@@ -1,13 +1,13 @@
-= Configure Event Drive to send Extra Variables to AAP.
+= Configure Event-Driven to pass extra variables to Ansible Automation Platform
 
 [#in_this_bfx]
-== What’s in this break-fix?
+== What is in this break-fix
 
-In this section, you will configure Ansible Automation Platform to receive events from Event-Driven Ansible(Automation Decisions). To be successful in this lab. After sending the curl with the host parameters. You need to run the Jobs Template: rh1-aap-extra-vars-eda
+In this section, you will configure Ansible Automation Platform to receive events from Event-Driven Ansible (Automation Decisions). After sending the `curl` with the host parameters. You need to run the Jobs Template: _rh1-aap-extra-vars-eda_
 
 == Let's copy the files:
 
-On *node1* let's list the files in the .ssh/ folder and view your public key.
+On *node1* let's list the files in the _.ssh/_ folder and view your public key.
 
 [source,bash]
 ----
@@ -34,9 +34,9 @@ drwx------. 10 ec2-user ec2-user 4.0K Nov 26 14:05 ..
 [ec2-user@node1 ~]$ cat .ssh/n66g5key.pub (Change to your ssh pub key)
 ----
 
-Copy the contents of the public key and add it to this link. To do this you will need to hold the shift key, and then highlight the key and right click to copy.
+Copy the contents of the public key and add it to this link. To do this you will need to hold the Shift key, and then highlight the key and right click to copy.
 
-You will need to open and log into the GitLab server if you have not done so already.
+You will need to open and log in to the GitLab server if you have not done so already.
 
   * URL: https://server.{subdomain_base}/-/user_settings/ssh_keys[window=_blank]
   * Username: `root`
@@ -44,13 +44,13 @@ You will need to open and log into the GitLab server if you have not done so alr
 
 image::lab003-add002.jpg[lab003-add002,100%,100%]
 
-Click on add new key and paste the public key into the *"Key"* box. Give it a title and click *"Add key"*.
+Click add new key and paste the public key into the *"Key"* box. Give it a title and click *"Add key"*.
 
 image::lab003-add004.jpg[lab003-add004,100%,100%]
 
 image::lab003-add005.jpg[lab003-add005,100%,100%]
 
-On node1, pull the rh1-aap-extra-vars-eda repository and copy both folders into rh1-aap-extra-vars-eda:
+On *node1*, pull the _rh1-aap-extra-vars-eda_ repository and copy both folders into _rh1-aap-extra-vars-eda_:
 
 [source,bash]
 ----
@@ -66,7 +66,7 @@ cp -rf rh1-eda-example/*  rh1-aap-extra-vars-eda/
 [ec2-user@node1 03-lab]$ cp -rf rh1-eda-example/*  rh1-aap-extra-vars-eda/
 ----
 
-Change directory to rh1-aap-extra-vars-eda and commit to git:
+Change directory to _rh1-aap-extra-vars-eda_ and commit to git:
 
 [source,bash]
 ----
@@ -86,8 +86,8 @@ git push
 
 == Now in Automation Execution(Controller):
 
-If you have not already opened the AAP site, please do so now, the URL is: https://controller.{subdomain_base}/[window=_blank]
-Let's log in:
+If you have not already opened Ansible Auotomaton Platform, do so now. The URL is: https://controller.{subdomain_base}/[window=_blank]
+Log in with the these credentials
 
 [source,bash]
 ----
@@ -95,14 +95,14 @@ User: admin
 Pass: R3dh4t1!
 ----
 
-Let's create the inventory. Select Automation Execution > Infrastructure > Inventories.
+Create the inventory. Select Automation Execution > Infrastructure > Inventories.
 
-To create the inventory we will click on "Create Inventory" in blue.
+To create the inventory click "Create Inventory" in blue.
 
 image::create-inventory-001.jpg[create-inventory-001,100%,100%,link=self,window=_blank]
 
 
-Now click on Create Inventory:
+Now click Create Inventory:
 
 [source,bash]
 ----
@@ -112,17 +112,17 @@ Organization: Default
 
 image::lab003-002.jpg[lab003-002,100%,100%]
 
-Let's add a host to the inventory. Now click on Hosts
+To add a host to the inventory, click Hosts
 
 image::lab003-003.jpg[lab003-003,100%,100%]
 
-Click on Create hosts:
+Click Create hosts:
 
 image::lab003-004.jpg[lab003-004,100%,100%]
 
 Name: localhost
 
-Click on create host:
+Click create host:
 
 image::lab003-005.jpg[lab003-005,100%,100%]
 
@@ -130,11 +130,11 @@ Now with the host created:
 
 image::lab003-006.jpg[lab003-006,100%,100%]
 
-Let's create the hosts ec2-user user credential in AAP:
+Create the _ec2-user_ user credential in Ansible Automation Platform:
 
-To create the machine credential in AAP, we need to get the private key from the *bastion* host.
+To create the machine credential in Ansible Automation Platform, we need to get the private key from the *bastion* host.
 
-In the test environment I'm using now it's: .ssh/vkhtjkey.pem 
+In the test environment I am using now it is: .ssh/vkhtjkey.pem 
 
 NOTE: To validate your private key:
 
@@ -154,7 +154,7 @@ drwxr-xr-x. 8 lab-user lab-user 4.0K Nov 19 12:41 ..
 [lab-user@bastion ~]$ cat .ssh/vkhtjkey.pem 
 ----
 
-Let's copy the contents of the private key and create the credential machine:
+Copy the contents of the private key and create the credential machine:
 
 
 [source,bash]
@@ -169,11 +169,11 @@ SSH Private Key: Copy your bastion private key: cat .ssh/vkhtjkey.pem
 
 image::lab003-009.jpg[lab003-009,100%,100%]
 
-Confirming that you created the ec2-user user:
+Confirm that you created the _ec2-user_ user:
 
 image::lab003-010.jpg[lab003-010,100%,100%]
 
-Let's create the gitlab credential:
+Create the gitlab credential:
 
 
 [source,bash]
@@ -187,7 +187,7 @@ SCM Private Key: Copy your bastion private key: cat .ssh/vkhtjkey.pem
 
 image::lab003-011.jpg[lab003-011,100%,100%]
 
-Let's create the project in AAP to sync the rh1-aap-extra-vars-eda project:
+Create a project in Ansible Automation Platform to sync the _rh1-aap-extra-vars-eda_ project:
 
 [source,bash]
 ----
@@ -204,7 +204,7 @@ check box:
 
 image::lab003-015.jpg[lab003-015,100%,100%]
 
-Once the project finishes sync'ing, let's create the job_template in AAP with the project name rh1-aap-extra-vars-eda:
+Once the project finishes syncing, create the *job_template* in Ansible Automation Platform with the project name _rh1-aap-extra-vars-eda_:
 
 [source,bash]
 ----
@@ -217,13 +217,13 @@ Credentials: ec2-user
 
 image::lab003-add006.jpg[lab003-add006,100%,100%]
 
-== Now in Automation Decisions(EDA) we will create the credential:
+== Now in Automation Decisions (Event-Driven) create the credential:
 
-Let's create the credential. Select Automation Decisions > Infrastructure > Credentials > Create credential:
+To create the credential, select Automation Decisions > Infrastructure > Credentials > Create credential:
 
 image::lab003-017.jpg[lab003-017,100%,100%]
 
-Let's now add the credential information:
+Now add the credential information:
 
 image::lab003-018.jpg[lab003-018,100%,100%]
 
@@ -236,8 +236,7 @@ Username: root
 Password: redhat..123
 
 ----
-
-Let's create the project in EDA:
+Create the project in Event-Driven:
 
 Click Create Project:
 
@@ -260,13 +259,13 @@ image::lab003-024.jpg[lab003-024,100%,100%]
 
 NOTE: The project does not sync. Find the error and resolve.
 
-Click on Create Credential:
+Click Create Credential:
 
 image::lab003-017.jpg[lab003-017,100%,100%]
 
 image::lab003-018.jpg[lab003-018,100%,100%]
 
-Let's add:
+Now add:
 
 [source,bash]
 ----
@@ -278,7 +277,7 @@ Username: admin
 Password: R3dh4t1!
 ----
 
-Click on Create Credential:
+Click Create Credential:
 
 image::lab003-027.jpg[lab003-027,100%,100%]
 
@@ -298,13 +297,13 @@ username: 1979710|rh1lab20
 Password or Token: (The token is located in /home/ec2-user/03-lab/registry-credentials.txt one node1)
 ----
 
-Click in Create Credential
+Click Create Credential
 
 image::lab003-add008.png[lab003-add008,100%,100%]
 
 Now, edit Decision Environments:
 
-Click in tree dots.
+Click the three dots.
 
 image::lab003-add009.png[lab003-add009,100%,100%]
 
@@ -314,12 +313,12 @@ In credential add redhat
 
 image::lab003-add011.png[lab003-add011,100%,100%]
 
-Click on Save Decision Environment
+Click Save Decision Environment
 
 
-Now let's create the RuleBook:
+Now create the RuleBook:
 
-Click on Create Rulebook activation:
+Click Create Rulebook activation:
 
 [source,bash]
 ----
@@ -336,26 +335,26 @@ image::lab003-025.jpg[lab003-025,100%,100%]
 
 image::lab003-028.jpg[lab003-028,100%,100%]
 
-Click on Create rulebook activation
+Click Create rulebook activation
 
 Now in Running:
 
 image::lab003-032.jpg[lab003-032,100%,100%]
 
-Let's click on the rulebook: rh1-aap-extra-vars-eda
+Click the rulebook: _rh1-aap-extra-vars-eda_
 
 image::lab003-033.jpg[lab003-033,100%,100%]
 
-Let's go to History:
+Next go to History:
 
 image::lab003-034.jpg[lab003-034,100%,100%]
 
-Click on the rulebook that is in Running:
+Click the rulebook that is in Running:
 
 image::lab003-035.jpg[lab003-035,100%,100%]
 
 
-Now let's send the curl to this rulebook:
+Now send the *curl* to this rulebook:
 
 
 [source,bash]
@@ -365,7 +364,7 @@ curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host"
 ----
 
 
-After sending the curl. The Job Template `rh1-aap-extra-vars-eda` will execute.
+After sending the curl. The Job Template _rh1-aap-extra-vars-eda_ will run.
 
 
 NOTE: You need to resolve this error:
@@ -408,7 +407,7 @@ fatal: [localhost]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect
   
 image::lab003-007.jpg[lab003-006,100%,100%]
 
-. Remove `remote_user: root` the playbook `hello-rh1.yml`.
+. Remove `remote_user: root` the playbook _hello-rh1.yml_.
 
 [source,bash]
 ----
@@ -422,18 +421,18 @@ playbook  README.md  rulebooks
 ----
 Save the file.
 
-. In job_template rh1-aap-extra-vars-eda, enable Prompt on launch in Extra variables.
+. In job_template _rh1-aap-extra-vars-eda_, enable Prompt on launch in Extra variables.
 
 image::lab003-add013.png[lab003-add013,100%,100%]
 
-. Now, send curl command:
+. Now, send the *curl* command:
 
-  [source,bash]
-  ----
-  ssh node1
-  curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "node1.example.com" }' controller:6000/endpoint
-  ----
+[source,bash]
+----
+ssh node1
+curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "node1.example.com" }' controller:6000/endpoint
+----
 
-After sending the curl. The Job Template rh1-aap-extra-vars-eda will execute.
+After sending the *curl*. The Job Template _rh1-aap-extra-vars-eda_ will run.
 
 

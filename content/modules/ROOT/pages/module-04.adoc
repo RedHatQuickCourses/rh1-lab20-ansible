@@ -1,15 +1,15 @@
-= Configure Event Drive to send Extra Variables to AAP.
+= Configure Event-Driven to pass extra variables to Ansible Automation Platform
 
 [#in_this_bfx]
-== What’s in this break-fix?
+== What is in this break-fix
 
-In this section, we will send a curl to Event-Driven Ansible(Automation Decisions). Event-Driven Ansible(Automation Decisions) needs to execute the Jobs Template: rh1-aap-extra-vars-eda
+In this section, we will send a curl to Event-Driven Ansible (Automation Decisions). Event-Driven Ansible (Automation Decisions) needs to run the Jobs Template: _rh1-aap-extra-vars-eda_
 
 
-== Let's add a node in zabbix:
+== Add a node in Zabbix:
 
-Let's run the client-zabbix playbook on the Ansible Automation Platform to configure the Zabbix agent on the host apache001
-Loging in Zabbix http://server.{subdomain_base}/zabbix/[window=_blank].
+Run the client-zabbix playbook on the Ansible Automation Platform to configure the Zabbix agent on the host *apache001*.
+Log in to Zabbix http://server.{subdomain_base}/zabbix/[window=_blank].
 
 [source,bash]
 ----
@@ -19,9 +19,9 @@ Pass: zabbix
 
 image::lab004-001.jpg[lab004-001,100%,100%]
 
-Let's go to Monitoring > Hosts:
+Go to Monitoring > Hosts:
 
-Click on Create Host:
+Click Create Host:
 
 image::lab004-002.jpg[lab004-002,100%,100%]
 
@@ -48,11 +48,11 @@ Click select again:
 
 image::lab004-006.jpg[lab004-006,100%,100%]
 
-Let's add another template, Click on select again:
+Next add another template, Click select again:
 
 image::lab004-007.jpg[lab004-007,100%,100%]
 
-click on Templates/application
+click Templates/application
 
 image::lab004-008.jpg[lab004-008,100%,100%]
 
@@ -64,7 +64,7 @@ In Host Group, click select and select Applications
 
 image::lab004-010.jpg[lab004-010,100%,100%]
 
-Now in interface. Click on Add and then click agent
+Now in interface. Click Add and then click agent
 
 image::lab004-011.jpg[lab004-011,100%,100%]
 
@@ -81,7 +81,7 @@ DNS name: node1.example.com
 
 image::lab004-013.jpg[lab004-013,100%,100%]
 
-Now click on Add(Blue)
+Now click Add(Blue)
 
 image::lab004-014.jpg[lab004-014,100%,100%]
 
@@ -89,7 +89,7 @@ Wait 15 seconds. Press F5 to refresh the browser. Turning Green on Available. Ev
 
 image::lab004-015.jpg[lab004-015,100%,100%]
 
-Let's configure Zabbix to send events to Event Driven:
+Next configure Zabbix to send events to Event-Driven:
 Alerts > Actions > Trigger actions:
 Enable Report problems to Zabbix administrators:
 Before:
@@ -102,11 +102,11 @@ image::lab004-017.jpg[lab004-017,100%,100%]
 
 Let's enable the Media Type:
 
-Alerts > Media Type > Event Driven Ansible. Click on Disabled(Red). It will change to Enabled(Green):
+Alerts > Media Type > Event Driven Ansible. Click Disabled(Red). It will change to Enabled(Green):
 
 image::lab004-018.jpg[lab004-018,100%,100%]
 
-Now let's go to: Users > Users
+Now go to: Users > Users
 
 image::lab004-020.jpg[lab004-020,100%,100%]
 
@@ -114,17 +114,17 @@ Click Admin user
 
 image::lab004-020.jpg[lab004-021,100%,100%]
 
-Click on the Media tab:
+Click the Media tab:
 
 image::lab004-021.jpg[lab004-020,100%,100%]
 
-Let's add the Controller IP. First click Media, and then Add under Type:
+Add the Controller IP. First click Media, and then Add under Type:
 
 image::lab004-022.jpg[lab004-022,100%,100%]
 
 image::lab004-023.jpg[lab004-023,100%,100%]
 
-To find the IP log into the controller and run ip ad ls
+To find the IP address, log in to the controller and run `ip ad ls`
 
 [source,bash]
 ----
@@ -159,17 +159,17 @@ Now add the IP of the controller and the Rulebook port of 5000 to Send to:
 192.168.0.131:5000
 ----
 
-Now click on Add
+Now click Add
 
 image::lab004-024.jpg[lab004-024,100%,100%]
 
-Click on Update
+Click Update
 
 image::lab004-025.jpg[lab004-025,100%,100%]
 
-Now our Zabbix is ​​monitoring node1. If there is any alert, it will be sent to Event Driven.
+Now Zabbix is ​​monitoring *node1*. If there is any alert, it will be sent to Event-Driven.
 
-== Now on the terminal
+== From the terminal
 
 [source,bash]
 ----
@@ -189,22 +189,23 @@ git add . ; git commit -m add ; git push
 [ec2-user@node1 eda-debug]$ git add . ; git commit -m add ; git push
 ----
 
-Let's now create the Rulebook in Decisions to receive these Alerts:
+Next create the Rulebook in Automation Decisions to receive the Alerts:
 
-== Now on the Ansible Automation Platform:
+== From Ansible Automation Platform:
 
 Open the URL if you need to: https://controller.{subdomain_base}/[window=_blank]
 
-Let's log in:
+Log in with the following credentials:
 
 [source,bash]
 ----
 User: admin
 Pass: R3dh4t1!
 ----
-Let's first create the project in *Automation Decision*:
 
-Click on Create project:
+First create the project in *Automation Decision*:
+
+Click Create project:
 
 image::lab004-026.jpg[lab004-026,100%,100%]
 
@@ -222,13 +223,13 @@ After you have created the project. The project will sync and then finish succes
 
 image::lab004-028.jpg[lab004-028,100%,100%]
 
-Let's create the rulebook:
+Create the rulebook:
 
 image::lab004-030.jpg[lab004-030,100%,100%]
 
-Now let's create the RuleBook:
+Now create the RuleBook:
 
-Click on Create Rulebook activation:
+Click Create Rulebook activation:
 
 [source,bash]
 ----
@@ -248,7 +249,7 @@ Now the rulebook will start:
 
 image::lab004-032.jpg[lab004-032,100%,100%]
 
-Click on the rulebook name: eda-debug
+Click the rulebook name: eda-debug
 
 Access History:
 
@@ -265,7 +266,7 @@ sudo systemctl stop httpd
 
 == In the Zabbix Dashboards 
 
-We will be able to see the Apache alert being sent to the EDA:
+We will be able to see the Apache alert being sent to Event-Driven:
 
 NOTE: It takes about 30 seconds and a browser refresh to show it under Actions.
 
@@ -273,7 +274,7 @@ image::lab004-034.jpg[lab004-034,100%,100%]
 
 NOTE: The red line under Actions in the Current Problems section. This is a failure you must clear.
 
-Restart httpd in the *node1* terminal and clear the error before moving on.
+Restart *httpd* in the *node1* terminal and clear the error before moving on.
 
 [source,bash]
 ----
@@ -283,7 +284,7 @@ sudo systemctl start httpd
 
 image::lab004-035.jpg[lab004-035,100%,100%]
 
-In eda we can see the playload arriving.
+In event-driven we can see the playload arriving.
 
 image::lab005-add001.jpg[lab005-add001,100%,100%]
 
@@ -357,7 +358,7 @@ image::lab005-add001.jpg[lab005-add001,100%,100%]
 
 == Before moving ahead 
 
-=== Please take a moment to solve the challenge on your own.
+=== Please take a moment to solve the challenge on your own
 
 **The real value of this activity lies in your effort to troubleshoot independently.**
 
@@ -388,7 +389,7 @@ NOTE: We are looking for what we can use from this payload:
 In the next lab, we will customize the rulebook to take this event_name as a condition!
 
 
-We will use this playload to solve the apache problem.
+We will use this payload to solve the apache problem.
 
 . The rulebook folder name is missing the S:
 
