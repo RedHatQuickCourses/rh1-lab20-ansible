@@ -15,6 +15,7 @@ The terminal window on the right is *already* logged into the *bastion* node as 
 [subs=attributes+]
 ----
 {ssh_command}
+
 ----
 
 Bastion password `{ssh_password}`

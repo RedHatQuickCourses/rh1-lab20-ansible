@@ -17,13 +17,13 @@ User: Admin
 Pass: zabbix
 ----
 
-image::lab004-001.jpg[lab004-001,100%,100%]
+image::lab004-001.jpg[lab004-001,100%,100%,link=self,window=_blank]
 
 Go to Monitoring > Hosts:
 
 Click Create Host:
 
-image::lab004-002.jpg[lab004-002,100%,100%]
+image::lab004-002.jpg[lab004-002,100%,100%,link=self,window=_blank]
 
 [source,bash]
 ----
@@ -32,45 +32,45 @@ Host name: node1.example.com
 
 Templates, click in select.
 
-image::lab004-003.jpg[lab004-003,100%,100%]
+image::lab004-003.jpg[lab004-003,100%,100%,link=self,window=_blank]
 
 Click select again:
 
-image::lab004-004.jpg[lab004-004,100%,100%]
+image::lab004-004.jpg[lab004-004,100%,100%,link=self,window=_blank]
 
 From the list, select Operating System:
 
-image::lab004-005.jpg[lab004-005,100%,100%]
+image::lab004-005.jpg[lab004-005,100%,100%,link=self,window=_blank]
 
 Then, Linux by zabbix agent
 
 Click select again:
 
-image::lab004-006.jpg[lab004-006,100%,100%]
+image::lab004-006.jpg[lab004-006,100%,100%,link=self,window=_blank]
 
 Next add another template, Click select again:
 
-image::lab004-007.jpg[lab004-007,100%,100%]
+image::lab004-007.jpg[lab004-007,100%,100%,link=self,window=_blank]
 
 click Templates/application
 
-image::lab004-008.jpg[lab004-008,100%,100%]
+image::lab004-008.jpg[lab004-008,100%,100%,link=self,window=_blank]
 
 Now, Apache by agent Zabbix Agent
 
-image::lab004-009.jpg[lab004-009,100%,100%]
+image::lab004-009.jpg[lab004-009,100%,100%,link=self,window=_blank]
 
 In Host Group, click select and select Applications
 
-image::lab004-010.jpg[lab004-010,100%,100%]
+image::lab004-010.jpg[lab004-010,100%,100%,link=self,window=_blank]
 
 Now in interface. Click Add and then click agent
 
-image::lab004-011.jpg[lab004-011,100%,100%]
+image::lab004-011.jpg[lab004-011,100%,100%,link=self,window=_blank]
 
 In Connect to. Change to DNS: (IMPORTANT)
 
-image::lab004-012.jpg[lab004-012,100%,100%]
+image::lab004-012.jpg[lab004-012,100%,100%,link=self,window=_blank]
 
 Click DNS next to IP and add DNS name:
 
@@ -79,50 +79,50 @@ Click DNS next to IP and add DNS name:
 DNS name: node1.example.com
 ----
 
-image::lab004-013.jpg[lab004-013,100%,100%]
+image::lab004-013.jpg[lab004-013,100%,100%,link=self,window=_blank]
 
 Now click Add(Blue)
 
-image::lab004-014.jpg[lab004-014,100%,100%]
+image::lab004-014.jpg[lab004-014,100%,100%,link=self,window=_blank]
 
 Wait 15 seconds. Press F5 to refresh the browser. Turning Green on Available. Everything is OK.
 
-image::lab004-015.jpg[lab004-015,100%,100%]
+image::lab004-015.jpg[lab004-015,100%,100%,link=self,window=_blank]
 
 Next configure Zabbix to send events to Event-Driven:
 Alerts > Actions > Trigger actions:
 Enable Report problems to Zabbix administrators:
 Before:
 
-image::lab004-016.jpg[lab004-016,100%,100%]
+image::lab004-016.jpg[lab004-016,100%,100%,link=self,window=_blank]
 
 After. After clicking on Disabled(Red). It will change to Enabled(Green):
 
-image::lab004-017.jpg[lab004-017,100%,100%]
+image::lab004-017.jpg[lab004-017,100%,100%,link=self,window=_blank]
 
 Let's enable the Media Type:
 
 Alerts > Media Type > Event Driven Ansible. Click Disabled(Red). It will change to Enabled(Green):
 
-image::lab004-018.jpg[lab004-018,100%,100%]
+image::lab004-018.jpg[lab004-018,100%,100%,link=self,window=_blank]
 
 Now go to: Users > Users
 
-image::lab004-020.jpg[lab004-020,100%,100%]
+image::lab004-020.jpg[lab004-020,100%,100%,link=self,window=_blank]
 
 Click Admin user
 
-image::lab004-020.jpg[lab004-021,100%,100%]
+image::lab004-020.jpg[lab004-021,100%,100%,link=self,window=_blank]
 
 Click the Media tab:
 
-image::lab004-021.jpg[lab004-020,100%,100%]
+image::lab004-021.jpg[lab004-020,100%,100%,link=self,window=_blank]
 
 Add the Controller IP. First click Media, and then Add under Type:
 
-image::lab004-022.jpg[lab004-022,100%,100%]
+image::lab004-022.jpg[lab004-022,100%,100%,link=self,window=_blank]
 
-image::lab004-023.jpg[lab004-023,100%,100%]
+image::lab004-023.jpg[lab004-023,100%,100%,link=self,window=_blank]
 
 To find the IP address, log in to the controller and run `ip ad ls`
 
@@ -161,11 +161,11 @@ Now add the IP of the controller and the Rulebook port of 5000 to Send to:
 
 Now click Add
 
-image::lab004-024.jpg[lab004-024,100%,100%]
+image::lab004-024.jpg[lab004-024,100%,100%,link=self,window=_blank]
 
 Click Update
 
-image::lab004-025.jpg[lab004-025,100%,100%]
+image::lab004-025.jpg[lab004-025,100%,100%,link=self,window=_blank]
 
 Now Zabbix is ​​monitoring *node1*. If there is any alert, it will be sent to Event-Driven.
 
@@ -207,7 +207,7 @@ First create the project in *Automation Decision*:
 
 Click Create project:
 
-image::lab004-026.jpg[lab004-026,100%,100%]
+image::lab004-026.jpg[lab004-026,100%,100%,link=self,window=_blank]
 
 [source,bash]
 ----
@@ -221,11 +221,11 @@ Options: uncheck Verify SSL
 
 After you have created the project. The project will sync and then finish successfully:
 
-image::lab004-028.jpg[lab004-028,100%,100%]
+image::lab004-028.jpg[lab004-028,100%,100%,link=self,window=_blank]
 
 Create the rulebook:
 
-image::lab004-030.jpg[lab004-030,100%,100%]
+image::lab004-030.jpg[lab004-030,100%,100%,link=self,window=_blank]
 
 Now create the RuleBook:
 
@@ -241,19 +241,19 @@ Credential: AAP
 Decision environment: Default Decision Environment
 ----
 
-image::lab004-031.jpg[lab004-031,100%,100%]
+image::lab004-031.jpg[lab004-031,100%,100%,link=self,window=_blank]
 
 NOTE: Find the error and remediate.
 
 Now the rulebook will start:
 
-image::lab004-032.jpg[lab004-032,100%,100%]
+image::lab004-032.jpg[lab004-032,100%,100%,link=self,window=_blank]
 
 Click the rulebook name: eda-debug
 
 Access History:
 
-image::lab004-033.jpg[lab004-033,100%,100%]
+image::lab004-033.jpg[lab004-033,100%,100%,link=self,window=_blank]
 
 Access the *node1* terminal:
 
@@ -270,7 +270,7 @@ We will be able to see the Apache alert being sent to Event-Driven:
 
 NOTE: It takes about 30 seconds and a browser refresh to show it under Actions.
 
-image::lab004-034.jpg[lab004-034,100%,100%]
+image::lab004-034.jpg[lab004-034,100%,100%,link=self,window=_blank]
 
 NOTE: The red line under Actions in the Current Problems section. This is a failure you must clear.
 
@@ -282,11 +282,11 @@ ssh node1
 sudo systemctl start httpd
 ----
 
-image::lab004-035.jpg[lab004-035,100%,100%]
+image::lab004-035.jpg[lab004-035,100%,100%,link=self,window=_blank]
 
 In event-driven we can see the playload arriving.
 
-image::lab005-add001.jpg[lab005-add001,100%,100%]
+image::lab005-add001.jpg[lab005-add001,100%,100%,link=self,window=_blank]
 
 .Output
 ----

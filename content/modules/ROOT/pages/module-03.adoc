@@ -42,13 +42,13 @@ You will need to open and log in to the GitLab server if you have not done so al
   * Username: `root`
   * Password: `redhat..123`
 
-image::lab003-add002.jpg[lab003-add002,100%,100%]
+image::lab003-add002.jpg[lab003-add002,100%,100%,link=self,window=_blank]
 
 Click add new key and paste the public key into the *"Key"* box. Give it a title and click *"Add key"*.
 
-image::lab003-add004.jpg[lab003-add004,100%,100%]
+image::lab003-add004.jpg[lab003-add004,100%,100%,link=self,window=_blank]
 
-image::lab003-add005.jpg[lab003-add005,100%,100%]
+image::lab003-add005.jpg[lab003-add005,100%,100%,link=self,window=_blank]
 
 On *node1*, pull the _rh1-aap-extra-vars-eda_ repository and copy both folders into _rh1-aap-extra-vars-eda_:
 
@@ -110,25 +110,25 @@ Name: localhost
 Organization: Default
 ----
 
-image::lab003-002.jpg[lab003-002,100%,100%]
+image::lab003-002.jpg[lab003-002,100%,100%,link=self,window=_blank]
 
 To add a host to the inventory, click Hosts
 
-image::lab003-003.jpg[lab003-003,100%,100%]
+image::lab003-003.jpg[lab003-003,100%,100%,link=self,window=_blank]
 
 Click Create hosts:
 
-image::lab003-004.jpg[lab003-004,100%,100%]
+image::lab003-004.jpg[lab003-004,100%,100%,link=self,window=_blank]
 
 Name: localhost
 
 Click create host:
 
-image::lab003-005.jpg[lab003-005,100%,100%]
+image::lab003-005.jpg[lab003-005,100%,100%,link=self,window=_blank]
 
 Now with the host created:
 
-image::lab003-006.jpg[lab003-006,100%,100%]
+image::lab003-006.jpg[lab003-006,100%,100%,link=self,window=_blank]
 
 Create the _ec2-user_ user credential in Ansible Automation Platform:
 
@@ -167,11 +167,11 @@ SSH Private Key: Copy your bastion private key: cat .ssh/vkhtjkey.pem
 
 ----
 
-image::lab003-009.jpg[lab003-009,100%,100%]
+image::lab003-009.jpg[lab003-009,100%,100%,link=self,window=_blank]
 
 Confirm that you created the _ec2-user_ user:
 
-image::lab003-010.jpg[lab003-010,100%,100%]
+image::lab003-010.jpg[lab003-010,100%,100%,link=self,window=_blank]
 
 Create the gitlab credential:
 
@@ -185,7 +185,7 @@ Username: root
 SCM Private Key: Copy your bastion private key: cat .ssh/vkhtjkey.pem
 ----
 
-image::lab003-011.jpg[lab003-011,100%,100%]
+image::lab003-011.jpg[lab003-011,100%,100%,link=self,window=_blank]
 
 Create a project in Ansible Automation Platform to sync the _rh1-aap-extra-vars-eda_ project:
 
@@ -202,7 +202,7 @@ check box:
   Update revision on launch
 ----
 
-image::lab003-015.jpg[lab003-015,100%,100%]
+image::lab003-015.jpg[lab003-015,100%,100%,link=self,window=_blank]
 
 Once the project finishes syncing, create the *job_template* in Ansible Automation Platform with the project name _rh1-aap-extra-vars-eda_:
 
@@ -215,17 +215,17 @@ Playbook: playbook/hello-rh1.yml
 Credentials: ec2-user
 ----
 
-image::lab003-add006.jpg[lab003-add006,100%,100%]
+image::lab003-add006.jpg[lab003-add006,100%,100%,link=self,window=_blank]
 
 == Now in Automation Decisions (Event-Driven) create the credential:
 
 To create the credential, select Automation Decisions > Infrastructure > Credentials > Create credential:
 
-image::lab003-017.jpg[lab003-017,100%,100%]
+image::lab003-017.jpg[lab003-017,100%,100%,link=self,window=_blank]
 
 Now add the credential information:
 
-image::lab003-018.jpg[lab003-018,100%,100%]
+image::lab003-018.jpg[lab003-018,100%,100%,link=self,window=_blank]
 
 [source,bash]
 ----
@@ -240,7 +240,7 @@ Create the project in Event-Driven:
 
 Click Create Project:
 
-image::lab003-021.jpg[lab003-021,100%,100%]
+image::lab003-021.jpg[lab003-021,100%,100%,link=self,window=_blank]
 
 Create the project:
 
@@ -254,16 +254,16 @@ Source control credential: gitlab
 Disable verify SSL: Uncheck
 ----
 
-image::lab003-020.jpg[lab003-020,100%,100%]
-image::lab003-024.jpg[lab003-024,100%,100%]
+image::lab003-020.jpg[lab003-020,100%,100%,link=self,window=_blank]
+image::lab003-024.jpg[lab003-024,100%,100%,link=self,window=_blank]
 
 NOTE: The project does not sync. Find the error and resolve.
 
 Click Create Credential:
 
-image::lab003-017.jpg[lab003-017,100%,100%]
+image::lab003-017.jpg[lab003-017,100%,100%,link=self,window=_blank]
 
-image::lab003-018.jpg[lab003-018,100%,100%]
+image::lab003-018.jpg[lab003-018,100%,100%,link=self,window=_blank]
 
 Now add:
 
@@ -279,13 +279,13 @@ Password: R3dh4t1!
 
 Click Create Credential:
 
-image::lab003-027.jpg[lab003-027,100%,100%]
+image::lab003-027.jpg[lab003-027,100%,100%,link=self,window=_blank]
 
 Create credential registry Red Hat.
 
 Click in Create Credential in Automation Decisions:
 
-image::lab003-add007.png[lab003-add007,100%,100%]
+image::lab003-add007.png[lab003-add007,100%,100%,link=self,window=_blank]
 
 [source,bash]
 ----
@@ -299,19 +299,19 @@ Password or Token: (The token is located in /home/ec2-user/03-lab/registry-crede
 
 Click Create Credential
 
-image::lab003-add008.png[lab003-add008,100%,100%]
+image::lab003-add008.png[lab003-add008,100%,100%,link=self,window=_blank]
 
 Now, edit Decision Environments:
 
 Click the three dots.
 
-image::lab003-add009.png[lab003-add009,100%,100%]
+image::lab003-add009.png[lab003-add009,100%,100%,link=self,window=_blank]
 
-image::lab003-add010.png[lab003-add010,100%,100%]
+image::lab003-add010.png[lab003-add010,100%,100%,link=self,window=_blank]
 
 In credential add redhat
 
-image::lab003-add011.png[lab003-add011,100%,100%]
+image::lab003-add011.png[lab003-add011,100%,100%,link=self,window=_blank]
 
 Click Save Decision Environment
 
@@ -331,27 +331,27 @@ Decision environment: Default Decision Environment
 ----
 
 
-image::lab003-025.jpg[lab003-025,100%,100%]
+image::lab003-025.jpg[lab003-025,100%,100%,link=self,window=_blank]
 
-image::lab003-028.jpg[lab003-028,100%,100%]
+image::lab003-028.jpg[lab003-028,100%,100%,link=self,window=_blank]
 
 Click Create rulebook activation
 
 Now in Running:
 
-image::lab003-032.jpg[lab003-032,100%,100%]
+image::lab003-032.jpg[lab003-032,100%,100%,link=self,window=_blank]
 
 Click the rulebook: _rh1-aap-extra-vars-eda_
 
-image::lab003-033.jpg[lab003-033,100%,100%]
+image::lab003-033.jpg[lab003-033,100%,100%,link=self,window=_blank]
 
 Next go to History:
 
-image::lab003-034.jpg[lab003-034,100%,100%]
+image::lab003-034.jpg[lab003-034,100%,100%,link=self,window=_blank]
 
 Click the rulebook that is in Running:
 
-image::lab003-035.jpg[lab003-035,100%,100%]
+image::lab003-035.jpg[lab003-035,100%,100%,link=self,window=_blank]
 
 
 Now send the *curl* to this rulebook:
@@ -405,7 +405,7 @@ fatal: [localhost]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect
 
   Go back to the inventory and disable the host:
   
-image::lab003-007.jpg[lab003-006,100%,100%]
+image::lab003-007.jpg[lab003-006,100%,100%,link=self,window=_blank]
 
 . Remove `remote_user: root` the playbook _hello-rh1.yml_.
 
@@ -423,7 +423,7 @@ Save the file.
 
 . In job_template _rh1-aap-extra-vars-eda_, enable Prompt on launch in Extra variables.
 
-image::lab003-add013.png[lab003-add013,100%,100%]
+image::lab003-add013.png[lab003-add013,100%,100%,link=self,window=_blank]
 
 . Now, send the *curl* command:
 

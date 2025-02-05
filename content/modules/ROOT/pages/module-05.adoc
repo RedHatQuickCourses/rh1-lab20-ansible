@@ -43,11 +43,11 @@ Options
 uncheck box Verify SSL
 ----
 
-image::lab005-001.jpg[lab005-001,100%,100%]
+image::lab005-001.jpg[lab005-001,100%,100%,link=self,window=_blank]
 
 Make sure the project Success syncs
 
-image::lab005-000.jpg[lab005-000,100%,100%]
+image::lab005-000.jpg[lab005-000,100%,100%,link=self,window=_blank]
 
 
 After creating the project in Automation Decision, create the rulebook:
@@ -55,7 +55,7 @@ After creating the project in Automation Decision, create the rulebook:
 Click Create rulebook activation:
 
 
-image::lab005-004.jpg[lab005-004,100%,100%]
+image::lab005-004.jpg[lab005-004,100%,100%,link=self,window=_blank]
 
 Add the following information:
 
@@ -71,7 +71,7 @@ Log Level: Debug
 Now click on Create rulebook activation
 ----
 
-image::lab005-005.jpg[lab005-005,100%,100%]
+image::lab005-005.jpg[lab005-005,100%,100%,link=self,window=_blank]
 
 NOTE: The _webhook-zabbix.yml_ file will not show in Event-Driven. Fix this before moving on.
 
@@ -81,30 +81,30 @@ Validate if the rulebook is running:
 
 Details of how we created the Rulebook:
 
-image::lab005-008.jpg[lab005-008,100%,100%]
+image::lab005-008.jpg[lab005-008,100%,100%,link=self,window=_blank]
 
 Click History to see the issue:
 
-image::lab005-009.jpg[lab005-009,100%,100%]
+image::lab005-009.jpg[lab005-009,100%,100%,link=self,window=_blank]
 
 Rulebook will fail to start due to port conflict. Stop the _eda-debug_ rulebook.
 
 Click Rulebook action in blue:
 
-image::lab005-010.jpg[lab005-010,100%,100%]
+image::lab005-010.jpg[lab005-010,100%,100%,link=self,window=_blank]
 
 Checkbox:
 Yes, I confirm that I want to disable these rulebook activations.
 
-image::lab005-011.jpg[lab005-011,100%,100%]
+image::lab005-011.jpg[lab005-011,100%,100%,link=self,window=_blank]
 
 Click Disable rulebook activations
 
-image::lab005-012.jpg[lab005-012,100%,100%]
+image::lab005-012.jpg[lab005-012,100%,100%,link=self,window=_blank]
 
 Disable Rulebook activation successfully:
 
-image::lab005-013.jpg[lab005-013,100%,100%]
+image::lab005-013.jpg[lab005-013,100%,100%,link=self,window=_blank]
 
 
 NOTE: The big problem is creating the correct regular expression for the payload to run.
@@ -161,7 +161,7 @@ Check box:
     Delete
 ----
 
-image::lab005-022.png[lab005-022,100%,100%]
+image::lab005-022.png[lab005-022,100%,100%,link=self,window=_blank]
 
 Click Create project.
 
@@ -174,11 +174,11 @@ Organization: Default
 ----
 
 
-image::lab005-015.jpg[lab005-015,100%,100%]
+image::lab005-015.jpg[lab005-015,100%,100%,link=self,window=_blank]
 
 Click Create Host:
 
-image::lab005-016.jpg[lab005-016,100%,100%]
+image::lab005-016.jpg[lab005-016,100%,100%,link=self,window=_blank]
 
 Now add the host *localhost*:
 
@@ -187,14 +187,14 @@ Now add the host *localhost*:
 Name: localhost
 ----
 
-image::lab005-017.jpg[lab005-017,100%,100%]
+image::lab005-017.jpg[lab005-017,100%,100%,link=self,window=_blank]
 
 Next click Create Host:
 
 Create the job_template:
 Go to the Automation Execution section in Templates > Create Template > Create job Template:
 
-image::lab005-014.jpg[lab005-014,100%,100%]
+image::lab005-014.jpg[lab005-014,100%,100%,link=self,window=_blank]
 
 
 [source,bash]
@@ -223,11 +223,11 @@ sudo systemctl start httpd
 
 Now Zabbix will send the notification to Event-Driven Ansible:
 
-image::lab005-023.jpg[lab005-023,100%,100%]
+image::lab005-023.jpg[lab005-023,100%,100%,link=self,window=_blank]
 
 And Check if the job ran successfully:
 
-image::lab005-020.jpg[lab005-020,100%,100%]
+image::lab005-020.jpg[lab005-020,100%,100%,link=self,window=_blank]
 
 Now we can see the logs in Event-Driven Ansible
 
@@ -264,11 +264,11 @@ NOTE: The success of this lab is that Ansible starts HTTPD on *node1* with a Zab
 
 . Remember to put the host in disabled mode inside the inventory:
  
-image::lab005-018.jpg[lab005-018,100%,100%]
+image::lab005-018.jpg[lab005-018,100%,100%,link=self,window=_blank]
 
 . Mark the Extra variable checkbox as Prompt on launch
 
-image::lab005-019.jpg[lab005-019,100%,100%]
+image::lab005-019.jpg[lab005-019,100%,100%,link=self,window=_blank]
 
 . Before stopping Apache service. Remove *remote_user: root* 
 
