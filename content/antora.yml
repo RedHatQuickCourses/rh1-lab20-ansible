@@ -9,8 +9,8 @@ asciidoc:
     lab_name: "LAB20: Troubleshooting Event-Driven Ansible in Ansible Automation Platform"
     release-version: master
     page-pagination: true
+    experimental: ""
     my_var: "foo"
-    guid: my-guid
     ssh_user: lab-user
     ssh_password: devops
     ssh_command: ssh someone@example.com

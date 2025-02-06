@@ -7,7 +7,7 @@ In this section, you will troubleshoot SSH authentication and user configuration
 
 . SSH into the *node1* instance from the bastion host.
 +
-[source,bash]
+[source,sh,role=execute]
 ----
 ssh node1
 ----
@@ -21,7 +21,7 @@ Last login: Fri Nov 29 06:30:21 2024 from 192.168.0.33
 
 . Navigate to the _02-lab_ directory.  
 +
-[source,bash]
+[source,sh,role=execute]
 ----
 cd 02-lab
 ls
@@ -37,16 +37,16 @@ hello-rh1.yml  inventory.yml  webhook-example.yml
 
 . Review the rulebook, playbook, and inventory files in the lab directory and try to understand their purpose.
 +
-[source,bash]
+[source,sh,role=execute]
 ----
 less webhook-example.yml
 less hello-rh1.yml
 less inventory.yml
 ----
-  
-. Run the `ansible-rulebook` command from the lab's directory in the terminal as shown below.  
+
+. Run the `ansible-rulebook` command from the directory _02-lab/_ in the terminal as shown below.  
 +
-[source,bash]
+[source,sh,role=execute]
 ----
 ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --print-events
 ----
@@ -65,7 +65,7 @@ ansible-rulebook --rulebook webhook-example.yml -i inventory.yml --verbose  --pr
 
 . Open another terminal on the bastion node and run the `curl` command as specified.  
 +
-[source,bash]
+[source,sh,role=execute]
 ----
 curl -H 'Content-Type: application/json' -d '{"event_name": "Hello", "host_host": "node1" }' node1:5000/endpoint
 ----
@@ -108,7 +108,7 @@ node1                      : ok=0    changed=0    unreachable=1    failed=0    s
 +
 NOTE: "Failed to connect to the host via ssh:" You need to solve this problem. 
 
-. Break out of the rulebook by Ctrl-c and note the error generated after the event is captured by the `ansible-rulebook` command and try to resolve it.
+. Break out of the rulebook by kbd:[Ctrl-C] and note the error generated after the event is captured by the `ansible-rulebook` command and try to resolve it.
 
 
 '''
@@ -146,7 +146,7 @@ This indicates a failure to connect to the node by SSH.
 
 . Copy the SSH config and key files from the `lab-user` on the *bastion* to the `ec2-user` on *node1* to enable passwordless SSH authentication from *node1* to itself.  
 +
-[source,bash]
+[source,sh,role=execute]
 ----
 cd ~/.ssh
 ls
@@ -201,6 +201,6 @@ Please login as the user \"ec2-user\" rather than the user \"root\"
 vi hello-rh1.yml
 ----
 
-. While the rulebook is still running on *node1*, send the event from the bastion host again.
+. While the rulebook is still running on *node1*, send the event from the *bastion* host again.
 
-. Note that the playbook runs successfully this time, and the `Install tcpdump` task is executed. Ctrl-c to exit the rulebook on node1 and continue to the next section.
+. Note that the playbook runs successfully this time, and the `Install tcpdump` task is executed. kbd:[Ctrl-C] to exit the rulebook on node1 and continue to the next section.

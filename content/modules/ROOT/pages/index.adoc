@@ -10,7 +10,7 @@ The terminal window on the right is *already* logged into the *bastion* node as 
 
 == Lab Access Details
 
-* If you are not already logged in to the bastion when you open the terminals. Log in to them now:
+* If you are not already logged in to the *bastion* host when you open the terminals. Log in to them now:
 
 [subs=attributes+]
 ----
@@ -25,7 +25,7 @@ Bastion password `{ssh_password}`
   * Username: `admin`
   * Password: `R3dh4t1!`
 
-NOTE: To avoid being logged out, modify Settings -> Platform gateway -> Edit platform gateway settings and changing the Session cookie age to 7200. You will need to logout and log back in to implement the change.
+NOTE: To avoid being logged out, modify the `Session cookie age`. Log in to https://{nginx_web_url}. On the left side menu navigate to, menu:Settings[Platform gateway]. Click btn:[Edit platform gateway settings],and changing the `Session cookie age` to `7200`. Then click btn:[Save platform gateway settings]. You will need to logout and log back in to implement the change.
 
 == Access Gitlab running on server:
   * URL: https://server.{subdomain_base}[window=_blank]
@@ -41,21 +41,21 @@ NOTE: The Zabbix server is currently running on HTTP and *not* HTTPS. If your br
 
 == Access other instances from Bastion
 
-* Log in to the Ansible Automation Platform Controller from bastion:
+* Log in to the Ansible Automation Platform Controller from the *bastion* host:
 
 [subs=attributes+]
 ----
 [lab-user@bastion ~]$ ssh controller
 ----
 
-* Log in to the additional node from bastion:
+* Log in to *node1* from *bastion*:
 
 [subs=attributes+]
 ----
 [lab-user@bastion ~]$ ssh node1
 ----
 
-* Log in to the additional server from bastion:
+* Log in to the additional *server* from *bastion*:
 
 [subs=attributes+]
 ----
@@ -63,7 +63,7 @@ NOTE: The Zabbix server is currently running on HTTP and *not* HTTPS. If your br
 ----
 
 == Documentation:
-If you need the documentation link:
+If needed, here are links to documentation:
 
 * https://ansible.readthedocs.io/projects/rulebook/en/stable/introduction.html[window=_blank]
 
