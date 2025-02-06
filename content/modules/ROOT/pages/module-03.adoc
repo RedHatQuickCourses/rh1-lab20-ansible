@@ -297,6 +297,11 @@ username: 1979710|rh1lab20
 Password or Token: (The token is located in /home/ec2-user/03-lab/registry-credentials.txt one node1)
 ----
 
+<<<<<<< HEAD
+=======
+Click Create Credential
+
+>>>>>>> refs/remotes/origin/jhunt-dev
 image::lab003-add008.png[lab003-add008,100%,100%,link=self,window=_blank]
 
 Now, edit Decision Environments:
