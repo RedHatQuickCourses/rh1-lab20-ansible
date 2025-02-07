@@ -107,7 +107,7 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0    s
 node1                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 ----
 +
-NOTE: "Failed to connect to the host via ssh:" You need to solve this problem. 
+NOTE: "Failed to connect to the host via ssh:" You need to solve this problem. We will use the access key of the bastion host and the lab-user user. 
 
 . Break out of the rulebook by kbd:[Ctrl-C] and note the error generated after the event is captured by the `ansible-rulebook` command and try to resolve it.
 

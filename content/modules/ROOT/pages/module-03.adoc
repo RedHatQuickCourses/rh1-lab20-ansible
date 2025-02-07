@@ -102,8 +102,6 @@ To create the inventory click btn:[Create inventory] in blue.
 image::create-inventory-001.jpg[create-inventory-001,100%,100%,link=self,window=_blank]
 
 
-Now click btn:[Create inventory]:
-
 [source,bash]
 ----
 Name: localhost
@@ -111,6 +109,8 @@ Organization: Default
 ----
 
 image::lab003-002.jpg[lab003-002,100%,100%,link=self,window=_blank]
+
+Now click btn:[Create inventory]:
 
 To add a host to the inventory, click the btn:[Hosts] tab. 
 
@@ -122,9 +122,9 @@ image::lab003-004.jpg[lab003-004,100%,100%,link=self,window=_blank]
 
 Name: localhost
 
-Click btn:[Create host]:
-
 image::lab003-005.jpg[lab003-005,100%,100%,link=self,window=_blank]
+
+Click btn:[Create host]:
 
 Now you can view the host created in the btn:[Details] tab.
 
@@ -204,6 +204,8 @@ check box:
 
 image::lab003-015.jpg[lab003-015,100%,100%,link=self,window=_blank]
 
+Now click btn:[Create project]:
+
 Once the project finishes syncing, create the *job_template* in Ansible Automation Platform with the project name _rh1-aap-extra-vars-eda_:
 
 [source,bash]
@@ -254,10 +256,13 @@ Source control credential: gitlab
 Disable verify SSL: Uncheck
 ----
 
-image::lab003-020.jpg[lab003-020,100%,100%,link=self,window=_blank]
-image::lab003-024.jpg[lab003-024,100%,100%,link=self,window=_blank]
-
 NOTE: The project does not sync. Find the error and resolve.
+
+image::lab003-020.jpg[lab003-020,100%,100%,link=self,window=_blank]
+
+NOTE: Import error: The 'extensions/eda/rulebooks' or 'rulebooks' directory doesn't exist within the project root.
+
+image::lab003-024.jpg[lab003-024,100%,100%,link=self,window=_blank]
 
 Click btn:[Create credential]:
 
@@ -297,11 +302,6 @@ username: 1979710|rh1lab20
 Password or Token: (The token is located in /home/ec2-user/03-lab/registry-credentials.txt one node1)
 ----
 
-<<<<<<< HEAD
-=======
-Click Create Credential
-
->>>>>>> refs/remotes/origin/jhunt-dev
 image::lab003-add008.png[lab003-add008,100%,100%,link=self,window=_blank]
 
 Now, edit Decision Environments:
@@ -403,6 +403,24 @@ fatal: [localhost]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect
 
 [#guided_solution]
 == Guided solution
+
+image::lab03-erro-lab.png[lab03-erro-lab,100%,100%,link=self,window=_blank]
+
+. The rulebook folder name is missing the S:
+
+[source,bash]
+----
+[ec2-user@node1 ~]$ cd 03-lab/
+[ec2-user@node1 03-lab]$ ls
+rh1-aap-extra-vars-eda  rh1-eda-example
+[ec2-user@node1 03-lab]$ cd rh1-aap-extra-vars-eda/
+[ec2-user@node1 rh1-aap-extra-vars-eda]$ ls
+playbook  README.md  rulebook
+[ec2-user@node1 rh1-aap-extra-vars-eda]$ mv rulebook rulebooks
+[ec2-user@node1 rh1-aap-extra-vars-eda]$ git add .
+[ec2-user@node1 rh1-aap-extra-vars-eda]$ git commit -m add
+[ec2-user@node1 rh1-aap-extra-vars-eda]$ git push 
+----
 
 . Disable host in inventory:
 

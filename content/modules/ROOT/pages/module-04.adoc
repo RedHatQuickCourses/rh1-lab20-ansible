@@ -374,10 +374,6 @@ image::lab005-add001.jpg[lab005-add001,100%,100%,link=self,window=_blank]
 [#guided_solution]
 == Guided solution
 
-
-
-
-
 NOTE: We are looking for what we can use from this payload:
 
 [source,bash]
@@ -391,12 +387,3 @@ In the next lab, we will customize the rulebook to take this event_name as a con
 
 We will use this payload to solve the apache problem.
 
-. The rulebook folder name is missing the S:
-
-[source,bash]
-----
-cd 04-lab/
-cd eda-debug/
-mv  rulebook rulebooks
-git add . ; git commit -m add ; git push
-----
