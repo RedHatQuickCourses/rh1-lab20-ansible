@@ -79,6 +79,8 @@ Change directory to _rh1-aap-extra-vars-eda_ and commit to git:
 [source,sh,role=execute]
 ----
 cd rh1-aap-extra-vars-eda/
+git config --global user.name "ec2-user"
+git config --global user.email ec2-user@localhost
 git add .
 git commit -m "RH1"
 git push 
@@ -87,6 +89,8 @@ git push
 .Output
 ----
 [ec2-user@node1 03-lab]$ cd rh1-aap-extra-vars-eda/
+[ec2-user@node1 rh1-aap-extra-vars-eda]$ git config --global user.name "ec2-user"
+[ec2-user@node1 rh1-aap-extra-vars-eda]$ git config --global user.email ec2-user@localhost
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ git add .
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ git commit -m "RH1"
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ git push 
@@ -272,6 +276,8 @@ NOTE: Import error: The 'extensions/eda/rulebooks' or 'rulebooks' directory does
 
 image::lab003-024.jpg[lab003-024,100%,100%,link=self,window=_blank]
 
+Next, under Automation Decisions > Infrastructure > Credentials, click Create credential
+
 Click btn:[Create credential]:
 
 image::lab003-017.jpg[lab003-017,100%,100%,link=self,window=_blank]
@@ -380,6 +386,12 @@ After sending the curl. The Job Template _rh1-aap-extra-vars-eda_ will run.
 
 NOTE: You need to resolve this error:
 
+.Output
+----
+fatal: [localhost]: FAILED! => {"msg": "'hosts_update' is undefined. 'hosts_update' is undefined"}
+----
+
+NOTE: You need to resolve this error:
 
 .Output
 ----
@@ -449,6 +461,13 @@ playbook  README.md  rulebooks
 [ec2-user@node1 rh1-aap-extra-vars-eda]$ vim playbook/hello-rh1.yml
 ----
 Save the file.
+
+
+To resolve this issue:
+
+NOTE: fatal: [localhost]: FAILED! => {"msg": "'hosts_update' is undefined. 'hosts_update' is undefined"}
+
+Make this configuration:
 
 . In job_template _rh1-aap-extra-vars-eda_, enable *Prompt on launch* in Extra variables.
 
