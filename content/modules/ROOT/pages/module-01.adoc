@@ -10,7 +10,7 @@ What is `ansible-rulebook`? The `ansible-rulebook` command is similar to `ansibl
 
 A rulebook consists of three main components:
 
-* *Sources* define which event source we will use. These sources come from source plugins which have been built to accommodate common use cases. Some of the source plugins that are currently available, including: webhooks, Kafka, Azure service bus, file changes, and alertmanager.
+* *Sources* define which event source we will use. These sources come from source plugins which have been built to accommodate common use cases. Some of the source plugins that are currently available include webhooks, Kafka, Azure service bus, file changes, and alertmanager.
 * *Rules* define conditionals we will try to match from the event source. Should the condition be met, then we can trigger an action.
 * *Actions* trigger what need to happen should a condition be met. Some of the current actions are: __run_playbook__, __run_module__, __set_fact__, __post_event__, and __debug__.
 
