@@ -9,7 +9,7 @@
 * xref:module-03.adoc[3 - Config Event Driven send extra variables]
 ** xref:module-03.adoc#in_this_bfx[What’s in this break-fix?]
 ** xref:module-03.adoc#guided_solution[Guided solution]
-* xref:module-04.adoc[4 - Valide playload Event Driven zabbix]
+* xref:module-04.adoc[4 - Validate playload Event Driven zabbix]
 ** xref:module-04.adoc#in_this_bfx[What’s in this break-fix?]
 ** xref:module-04.adoc#guided_solution[Guided solution]
 * xref:module-05.adoc[5 - Valide extra_vars]
