@@ -335,6 +335,8 @@ Click btn:[Save Decision Environment].
 
 Now create the RuleBook:
 
+NOTE: The Rulebook will not be able to be located. You need to resolve this issue.
+
 Click btn:[Create rulebook activation]:
 
 [source,bash]
