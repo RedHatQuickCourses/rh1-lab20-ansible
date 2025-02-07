@@ -138,10 +138,6 @@ image::lab003-005.jpg[lab003-005,100%,100%,link=self,window=_blank]
 
 Click btn:[Create host]:
 
-Now you can view the host created in the btn:[Details] tab.
-
-image::lab003-006.jpg[lab003-006,100%,100%,link=self,window=_blank]
-
 Next create the _ec2-user_ user credential in Ansible Automation Platform.
 
 To create the machine credential in Ansible Automation Platform, we need to get the private key from the *bastion* host.
