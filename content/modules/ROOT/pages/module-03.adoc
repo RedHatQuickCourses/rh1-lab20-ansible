@@ -36,6 +36,14 @@ drwx------. 10 ec2-user ec2-user 4.0K Nov 26 14:05 ..
 
 Copy the contents of the public key and add it to this link. To do this you will need to hold the kbd:[Shift] key, and then highlight the key and right click to copy.
 
+image::lab003-git.png[lab003-git,100%,100%,link=self,window=_blank]
+
+Go to User Settings / Preferences / SSH keys
+
+image::lab003-git002.png[lab003-git002,100%,100%,link=self,window=_blank]
+
+
+
 You will need to open and log in to the GitLab server if you have not done so already.
 
   * URL: https://server.{subdomain_base}/-/user_settings/ssh_keys[window=_blank]
