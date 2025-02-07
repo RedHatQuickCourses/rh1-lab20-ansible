@@ -203,8 +203,7 @@ User: admin
 Pass: R3dh4t1!
 ----
 
-First create the project in *Automation Decision*:
-
+First create the project in *Automation Decision* / Projects:
 Click btn:[Create project], create the project with the following information:
 
 image::lab004-026.jpg[lab004-026,100%,100%,link=self,window=_blank]
@@ -221,15 +220,13 @@ Options: uncheck Verify SSL
 
 image::lab004-028.jpg[lab004-028,100%,100%,link=self,window=_blank]
 
-After you have created the project. The project will sync and then finish successfully.
+After you have created the project, it will sync successfully:
 
 Create the rulebook:
 
 image::lab004-030.jpg[lab004-030,100%,100%,link=self,window=_blank]
 
-Now create the RuleBook:
-
-Click btn:[Create rulebook activation]:
+Click on Automation Decisions/Rulebook Activations and then click __[Create rulebook activation]__:
 
 [source,bash]
 ----
@@ -245,7 +242,7 @@ image::lab004-031.jpg[lab004-031,100%,100%,link=self,window=_blank]
 
 NOTE: Find the error and remediate.
 
-Now the rulebook will start:
+Once the issue has been resolved, the rulebook will start:
 
 image::lab004-032.jpg[lab004-032,100%,100%,link=self,window=_blank]
 
