@@ -52,7 +52,7 @@ Next add another template, on the Templates line, Click btn:[Select]:
 
 image::lab004-007.jpg[lab004-007,100%,100%,link=self,window=_blank]
 
-click __Templates/Applications__
+Click __Templates/Applications__
 
 image::lab004-008.jpg[lab004-008,100%,100%,link=self,window=_blank]
 
@@ -219,9 +219,9 @@ Source control credential: gitlab
 Options: uncheck Verify SSL 
 ----
 
-After you have created the project. The project will sync and then finish successfully:
-
 image::lab004-028.jpg[lab004-028,100%,100%,link=self,window=_blank]
+
+After you have created the project. The project will sync and then finish successfully.
 
 Create the rulebook:
 

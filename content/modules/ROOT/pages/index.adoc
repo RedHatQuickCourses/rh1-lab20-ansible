@@ -8,7 +8,7 @@ Labs 1 through 5 contain issues that need to be identified and resolved. Zabbix 
 
 The terminal window on the right is *already* logged into the *bastion* node as the `{ssh_user}`. If it is not click "Terminals" in the top left of the left-side screen and two terminals will appear. You will need to do a carriage return to get paste to work.
 
-Note: The ec2-user is the primary user account provisioned on controller, node1, and server. From the bastion host, the lab-user connects to all hosts by utilizing the ssh key of the ec2-user.
+NOTE: The ec2-user is the primary user account provisioned on controller, node1, and server. From the bastion host, the lab-user connects to all hosts by utilizing the ssh key of the ec2-user.
 
 == Lab Access Details
 
