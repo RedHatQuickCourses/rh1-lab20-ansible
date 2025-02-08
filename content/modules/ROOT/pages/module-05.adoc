@@ -286,14 +286,6 @@ image::lab005-new001.png[lab005-new001,100%,100%,link=self,window=_blank]
 condition: event.payload.event_name is regex("Apache.*Service is down", ignorecase=true)
 ----
 
-To test the configuration, you can start and stop the Apache service:
-
-[source,bash]
----
-sudo systemctl start httpd
-sudo systemctl stop httpd
----
-
 [source,bash]
 ----
 cd 05-lab/
@@ -310,5 +302,14 @@ git add . ; git commit -m add ; git push
 [ec2-user@node1 rh1-ansible-eda-vars-zabbix]$ vim project-http/playbook.yml
 [ec2-user@node1 05-lab]$ git add . ; git commit -m add ; git push
 ----
+
+To test the configuration, you can start and stop the Apache service:
+
+[source,bash]
+---
+sudo systemctl start httpd
+sudo systemctl stop httpd
+---
+
 
 NOTE: Congratulations! You have completed all lab objectives!
