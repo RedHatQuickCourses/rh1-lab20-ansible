@@ -162,8 +162,7 @@ drwxr-xr-x. 8 lab-user lab-user 4.0K Nov 19 12:41 ..
 [lab-user@bastion ~]$ cat .ssh/vkhtjkey.pem 
 ----
 
-Copy the contents of the private key and create the credential machine:
-
+Copy the contents of the private key and create the machine credential:
 
 [source,bash]
 ----
@@ -248,7 +247,7 @@ Password: redhat..123
 ----
 Create the project in Event-Driven:
 
-Click btn:[Create project]:
+Select Automation Decisions > Projects and Click btn:[Create project]:
 
 image::lab003-021.jpg[lab003-021,100%,100%,link=self,window=_blank]
 
@@ -333,7 +332,7 @@ Now create the RuleBook:
 
 NOTE: The Rulebook will not be able to be located. You need to resolve this issue.
 
-Click btn:[Create rulebook activation]:
+Under Automation Decisions > Rulebook Activations, Click btn:[Create rulebook activation]:
 
 [source,bash]
 ----
