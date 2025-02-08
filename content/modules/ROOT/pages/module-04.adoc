@@ -89,14 +89,11 @@ Wait 15 seconds. Press btn:[F5] to refresh the browser. When _Availability_ turn
 
 image::lab004-015.jpg[lab004-015,100%,100%,link=self,window=_blank]
 
-Next configure Zabbix to send events to Event-Driven:
-menu:Alerts[Actions > Trigger actions]
-Enable __Report problems to Zabbix administrators__:
-Before:
+Next, configure Zabbix to send events to Event-Driven: 
+Alerts  > Actions  > Trigger actions. 
+For Enable Report problems to Zabbix administrators:, there is a "Disabled" link on the far right under the Status column that you need to click to Enable it. The following two screenshots show the before and after of changing this setting.
 
 image::lab004-016.jpg[lab004-016,100%,100%,link=self,window=_blank]
-
-After. Click on __Disabled__, it will change to __Enabled__:
 
 image::lab004-017.jpg[lab004-017,100%,100%,link=self,window=_blank]
 
@@ -114,7 +111,7 @@ Click on the __Admin__ user.
 
 image::lab004-020.jpg[lab004-021,100%,100%,link=self,window=_blank]
 
-Click the btn:[Media] tab:
+Click the btn:[Media] tab on the top left:
 
 image::lab004-021.jpg[lab004-020,100%,100%,link=self,window=_blank]
 
@@ -203,7 +200,7 @@ User: admin
 Pass: R3dh4t1!
 ----
 
-First create the project in *Automation Decision* / Projects:
+First create the project in *Automation Decisions* / Projects:
 Click btn:[Create project], create the project with the following information:
 
 image::lab004-026.jpg[lab004-026,100%,100%,link=self,window=_blank]
@@ -240,9 +237,10 @@ Decision environment: Default Decision Environment
 
 image::lab004-031.jpg[lab004-031,100%,100%,link=self,window=_blank]
 
-NOTE: Find the error and remediate.
+The rulebook will start:
 
-Once the issue has been resolved, the rulebook will start:
+Stop the apache service for the alert to be sent to Event-Driven.
+
 
 image::lab004-032.jpg[lab004-032,100%,100%,link=self,window=_blank]
 
@@ -263,7 +261,7 @@ sudo systemctl stop httpd
 
 == In the Zabbix Dashboards 
 
-We will be able to see the Apache alert being sent to Event-Driven:
+We will be able to see the Apache alert being sent to Event-Driven on the Zabbix dashboard:
 
 NOTE: It takes about 30 seconds and a browser refresh to show it under Actions.
 
