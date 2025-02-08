@@ -258,7 +258,9 @@ NOTE: The success of this lab is that Ansible starts HTTPD on *node1* with a Zab
 [#guided_solution]
 == Guided solution
 
-. First, you will need to disable the eda-debug rulebook under under Automation Decisions > Rulebook Activations. Next, after creating a new "project-http" inventory and adding localhost as a new host under the Hosts tab, remember to put localhost into disabled mode for this new inventory.
+. First, you will need to disable the eda-debug rulebook under under Automation Decisions > Rulebook Activations. 
+
+. Next, after creating a new "project-http" inventory and adding localhost as a new host under the Hosts tab, remember to put localhost into disabled mode for this new inventory.
 
 . Then, the job template should be created with the following parameters:
 
@@ -274,8 +276,6 @@ Extra variable: checkbox as Prompt on launch
 ----
 
 image::lab005-new001.png[lab005-new001,100%,100%,link=self,window=_blank]
-
-. Mark the Extra variable checkbox as Prompt on launch. doesn't make sense without more context.
 
 image::lab005-019.jpg[lab005-019,100%,100%,link=self,window=_blank]
 
