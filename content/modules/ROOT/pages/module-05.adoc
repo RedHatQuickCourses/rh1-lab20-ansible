@@ -286,7 +286,13 @@ image::lab005-new001.png[lab005-new001,100%,100%,link=self,window=_blank]
 condition: event.payload.event_name is regex("Apache.*Service is down", ignorecase=true)
 ----
 
-. To test the configuration. You can start and stop Apache
+To test the configuration, you can start and stop the Apache service:
+
+[source,bash]
+---
+sudo systemctl start httpd
+sudo systemctl stop httpd
+---
 
 [source,bash]
 ----
