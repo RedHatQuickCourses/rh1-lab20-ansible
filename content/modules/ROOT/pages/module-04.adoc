@@ -48,7 +48,7 @@ Click btn:[Select] to confirm your selection:
 
 image::lab004-006.jpg[lab004-006,100%,100%,link=self,window=_blank]
 
-Next add another template, on the Templates line, Click btn:[Select]:
+Next, add another template. On the Templates line, Click btn:[Select]:
 
 image::lab004-007.jpg[lab004-007,100%,100%,link=self,window=_blank]
 
@@ -56,7 +56,7 @@ Click __Templates/Applications__
 
 image::lab004-008.jpg[lab004-008,100%,100%,link=self,window=_blank]
 
-Then select __Apache by Zabbix agent__
+Then, select __Apache by Zabbix agent__
 
 image::lab004-009.jpg[lab004-009,100%,100%,link=self,window=_blank]
 
@@ -72,7 +72,7 @@ In the __Connect to__ field, change to *DNS*: (IMPORTANT)
 
 image::lab004-012.jpg[lab004-012,100%,100%,link=self,window=_blank]
 
-Add the host to the __DNS name__ field:
+Add (in bold) __node1.example.com__  to the DNS name field:
 
 [source,bash]
 ----
@@ -99,7 +99,7 @@ image::lab004-017.jpg[lab004-017,100%,100%,link=self,window=_blank]
 
 Let's enable the Media Type:
 
-menu:Alerts[Media Type > Event Driven Ansible]. Click __Disabled__, it will change to __Enabled__:
+menu:Alerts[Media Type > Event Driven Ansible]. Click __Disabled__, and it will change to __Enabled__:
 
 image::lab004-018.jpg[lab004-018,100%,100%,link=self,window=_blank]
 
@@ -115,7 +115,7 @@ Click the btn:[Media] tab on the top left:
 
 image::lab004-021.jpg[lab004-020,100%,100%,link=self,window=_blank]
 
-Add the Controller IP address, first click btn:[Media], and then btn:[Add] under *Type*:
+Add the (bold font) controller.example.com IP address. First, click btn:[Media], and then btn:[Add] under *Type*:
 
 image::lab004-022.jpg[lab004-022,100%,100%,link=self,window=_blank]
 
@@ -147,7 +147,7 @@ Last login: Thu Nov 21 14:12:38 2024 from 192.168.0.144
 [ec2-user@controller ~]$ 
 
 ----
-In this example the IP: 192.168.0.131.
+In this example the IP: 192.168.0.131:*5000*
 
 Now add the IP of the controller and the Rulebook port of 5000 in the __Send to__ field:
 
@@ -200,7 +200,7 @@ User: admin
 Pass: R3dh4t1!
 ----
 
-First create the project in *Automation Decisions* / Projects:
+First create the project in *Automation Decisions* > *Projects*:
 Click btn:[Create project], create the project with the following information:
 
 image::lab004-026.jpg[lab004-026,100%,100%,link=self,window=_blank]
@@ -246,12 +246,11 @@ image::lab004-032.jpg[lab004-032,100%,100%,link=self,window=_blank]
 
 Click the rulebook name: eda-debug
 
-Access History:
+Click on History:
 
 image::lab004-033.jpg[lab004-033,100%,100%,link=self,window=_blank]
 
-Access the *node1* terminal:
-
+Access the *node1* terminal and stop the Apache service:
 
 [source,bash]
 ----
