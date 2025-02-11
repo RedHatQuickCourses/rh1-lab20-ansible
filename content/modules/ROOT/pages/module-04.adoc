@@ -147,9 +147,9 @@ Last login: Thu Nov 21 14:12:38 2024 from 192.168.0.144
 [ec2-user@controller ~]$ 
 
 ----
-In this example the IP: 192.168.0.131:*5000*
+In this example the IP: 192.168.0.131:**5000**
 
-Now add the IP of the controller and the Rulebook port of 5000 in the __Send to__ field:
+Now add the IP of the controller and the Rulebook port of **5000** in the __Send to__ field:
 
 [source,bash]
 ----
@@ -200,7 +200,7 @@ User: admin
 Pass: R3dh4t1!
 ----
 
-First create the project in *Automation Decisions* > *Projects*:
+First, create the project in menu:Automation Decisions[Projects]:
 Click btn:[Create project], create the project with the following information:
 
 image::lab004-026.jpg[lab004-026,100%,100%,link=self,window=_blank]
@@ -223,7 +223,7 @@ Create the rulebook:
 
 image::lab004-030.jpg[lab004-030,100%,100%,link=self,window=_blank]
 
-Click on Automation Decisions/Rulebook Activations and then click __[Create rulebook activation]__:
+Click on menu:Automation Decisions[Rulebook Activations] and then click btn:[Create rulebook activation]:
 
 [source,bash]
 ----
@@ -244,7 +244,7 @@ Stop the apache service for the alert to be sent to Event-Driven.
 
 image::lab004-032.jpg[lab004-032,100%,100%,link=self,window=_blank]
 
-Click the rulebook name: eda-debug
+Click the rulebook name: **eda-debug**
 
 Click on History:
 
@@ -278,7 +278,7 @@ sudo systemctl start httpd
 
 image::lab004-035.jpg[lab004-035,100%,100%,link=self,window=_blank]
 
-In event-driven we can see the playload arriving.
+In Event-Driven we can see the playload arriving.
 
 image::lab005-add001.jpg[lab005-add001,100%,100%,link=self,window=_blank]
 
@@ -366,9 +366,9 @@ image::lab005-add001.jpg[lab005-add001,100%,100%,link=self,window=_blank]
 
 
 [#guided_solution]
-== Guided solution
+== Solution Hint
 
-NOTE: We are looking for what we can use from this payload:
+NOTE: If your configuration was successful you will receive the message below during playback.
 
 [source,bash]
 ----

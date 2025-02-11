@@ -74,7 +74,7 @@ image::lab005-005.jpg[lab005-005,100%,100%,link=self,window=_blank]
 
 NOTE: The _webhook-zabbix.yml_ file will not show in Event-Driven. Fix this before moving on.
 
-Now, click Create rulebook activation.
+Now, click btn:[Create rulebook activation].
 
 Validate if the rulebook is running.
 
@@ -82,13 +82,13 @@ Details of how we created the Rulebook:
 
 image::lab005-008.jpg[lab005-008,100%,100%,link=self,window=_blank]
 
-Click History to see the issue:
+Click btn:[History] to see the issue:
 
 image::lab005-009.jpg[lab005-009,100%,100%,link=self,window=_blank]
 
 The rulebook will fail to start due to a port conflict. Stop the _eda-debug_ rulebook.
 
-Click Rulebook action in blue:
+Click on the running rulebook action in blue:
 
 image::lab005-010.jpg[lab005-010,100%,100%,link=self,window=_blank]
 
@@ -162,9 +162,9 @@ Check box:
 
 image::lab005-022.png[lab005-022,100%,100%,link=self,window=_blank]
 
-Click Create project.
+Click btn:[Create project].
 
-Next create the project-http inventory containing only the host *localhost*:
+Next, create the **project-http** inventory containing only the host *localhost*:
 
 [source,bash]
 ----
@@ -191,7 +191,7 @@ image::lab005-017.jpg[lab005-017,100%,100%,link=self,window=_blank]
 Next click btn:[Create Host]:
 
 Create the job template:
-In Automation Execution section in Templates > Create Template > Create Job Template:
+In Automation Execution section in menu:Templates[Create Template > Create Job Template]:
 
 image::lab005-014.jpg[lab005-014,100%,100%,link=self,window=_blank]
 
