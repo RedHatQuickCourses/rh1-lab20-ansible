@@ -107,7 +107,7 @@ localhost                  : ok=2    changed=1    unreachable=0    failed=0    s
 node1                      : ok=0    changed=0    unreachable=1    failed=0    skipped=0    rescued=0    ignored=0   
 ----
 +
-NOTE: "Failed to connect to the host via ssh:" You need to solve this problem. We will use the access key of the bastion host and the lab-user user. 
+NOTE: "Failed to connect to the host via ssh:" You will need to use the access key of the bastion host and the lab-user user."
 
 . Break out of the rulebook by kbd:[Ctrl-C] and note the error generated after the event is captured by the `ansible-rulebook` command and try to resolve it.
 
@@ -187,7 +187,7 @@ TASK [Gathering Facts] *********************************************************
 fatal: [node1]: UNREACHABLE! => {"changed": false, "msg": "Failed to create temporary directory. In some cases, you may have been able to authenticate and did not have permissions on the target directory. Consider changing the remote tmp path in ansible.cfg to a path rooted in \"/tmp\", for more error information use -vvv. Failed command was: ( umask 77 && mkdir -p \"` echo Please login as the user \"ec2-user\" rather than the user \"root\"./.ansible/tmp `\"&& mkdir \"` echo Please login as the user \"ec2-user\" rather than the user \"root\"./.ansible/tmp/ansible-tmp-1732897310.5139034-2830-144138432594257 `\" && echo ansible-tmp-1732897310.5139034-2830-144138432594257=\"` echo Please login as the user \"ec2-user\" rather than the user \"root\"./.ansible/tmp/ansible-tmp-1732897310.5139034-2830-144138432594257 `\" ), exited with result 142, stdout output: Please login as the user \"ec2-user\" rather than the user \"root\".\n\n", "unreachable": true}
 ----
 
-. Note the new error captured this time.
+. Note the new error captured this time:
 +
 ----
 Please login as the user \"ec2-user\" rather than the user \"root\"

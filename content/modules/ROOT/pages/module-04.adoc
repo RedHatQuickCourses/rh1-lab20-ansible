@@ -9,7 +9,7 @@ In this section, we will send a curl to Event-Driven Ansible (Automation Decisio
 == Add a node in Zabbix:
 
 Run the client-zabbix playbook on the Ansible Automation Platform to configure the Zabbix agent on the host *apache001*.
-Log in to Zabbix http://server.{subdomain_base}/zabbix/[window=_blank].
+Log in to Zabbix: http://server.{subdomain_base}/zabbix/[window=_blank].
 
 [source,bash]
 ----
@@ -30,7 +30,7 @@ image::lab004-002.jpg[lab004-002,100%,100%,link=self,window=_blank]
 Host name: node1.example.com
 ----
 
-From the Templates line click btn:[Select].
+From the Templates line, click btn:[Select].
 
 image::lab004-003.jpg[lab004-003,100%,100%,link=self,window=_blank]
 
@@ -42,7 +42,7 @@ From the list, select __Templates/Operating Systems__:
 
 image::lab004-005.jpg[lab004-005,100%,100%,link=self,window=_blank]
 
-Then select __Linux by Zabbix agent__
+Then, select __Linux by Zabbix agent__
 
 Click btn:[Select] to confirm your selection:
 
@@ -64,7 +64,7 @@ In Host groups, click btn:[Select] and select __Applications__
 
 image::lab004-010.jpg[lab004-010,100%,100%,link=self,window=_blank]
 
-Just below _Interfaces_ click *Add* and then click *agent*.
+Just below _Interfaces_, click *Add*, and then click *agent*.
 
 image::lab004-011.jpg[lab004-011,100%,100%,link=self,window=_blank]
 
@@ -85,7 +85,7 @@ Now click btn:[Add] on the bottom right of the page.
 
 image::lab004-014.jpg[lab004-014,100%,100%,link=self,window=_blank]
 
-Wait 15 seconds. Press btn:[F5] to refresh the browser. When _Availability_ turns green everything is OK.
+Wait 15 seconds. Press btn:[F5] to refresh the browser. When _Availability_ turns green, everything is OK.
 
 image::lab004-015.jpg[lab004-015,100%,100%,link=self,window=_blank]
 

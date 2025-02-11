@@ -1,6 +1,6 @@
 = {lab_name}
 
-Welcome to the *Troubleshooting Event-Driven Ansible in Ansible Automation Platform* lab. In this session, we will work with Ansible Automation Platform 2.5, GitLab, and Zabbix Server. 
+Welcome to the *Troubleshooting Event-Driven Ansible in Ansible Automation Platform* lab. In this session, we will work with Ansible Automation Platform 2.5, GitLab, and a Zabbix Server. 
 
 Labs 1 through 5 contain issues that need to be identified and resolved. Zabbix will monitor `node1`, and we will simulate an alert by stopping Apache. This alert will be sent to Event-Driven Ansible (Automation Decisions), which will use Ansible to resolve the detected issues. Several configuration changes will be required in the environment to achieve this outcome.
 
@@ -12,7 +12,7 @@ NOTE: The ec2-user is the primary user account provisioned on controller, node1,
 
 == Lab Access Details
 
-* If you are not already logged in to the *bastion* host when you open the terminals. Log in to them now:
+* If you are not already logged in to the *bastion* host when you open the terminals, log in to it now:
 
 [subs=attributes+]
 ----
@@ -28,7 +28,7 @@ Bastion password `{ssh_password}`
   * Username: `admin`
   * Password: `R3dh4t1!`
 
-NOTE: To avoid being logged out, modify the `Session cookie age`. Log in to https://{nginx_web_url}. On the left side menu navigate to, menu:Settings[Platform gateway]. Click btn:[Edit platform gateway settings],and changing the `Session cookie age` to `7200`. Then click btn:[Save platform gateway settings]. You will need to logout and log back in to implement the change.
+NOTE: To avoid being logged out, modify the `Session cookie age`. Log in to https://{nginx_web_url}. On the left side menu navigate to, menu:Settings[Platform gateway]. Click btn:[Edit platform gateway settings],and change the `Session cookie age` to `7200`. Then click btn:[Save platform gateway settings]. You will need to logout and log back in to implement the change.
 
 == Access Gitlab running on server:
   * URL: https://server.{subdomain_base}[window=_blank]

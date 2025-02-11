@@ -109,7 +109,7 @@ Pass: R3dh4t1!
 
 Create the inventory. Select menu:Automation Execution[Infrastructure > Inventories].
 
-To create the inventory click btn:[Create inventory] in blue.
+To create the inventory, click btn:[Create inventory] in blue.
 
 image::create-inventory-001.jpg[create-inventory-001,100%,100%,link=self,window=_blank]
 
@@ -138,7 +138,7 @@ image::lab003-005.jpg[lab003-005,100%,100%,link=self,window=_blank]
 
 Click btn:[Create host]:
 
-Next create the _ec2-user_ user credential in Ansible Automation Platform.
+Next, create the _ec2-user_ user credential in Ansible Automation Platform.
 
 To create the machine credential in Ansible Automation Platform, we need to get the private key from the *bastion* host.
 
@@ -313,7 +313,7 @@ Password or Token: (The token is located in /home/ec2-user/03-lab/registry-crede
 
 image::lab003-add008.png[lab003-add008,100%,100%,link=self,window=_blank]
 
-Now, edit Decision Environments:
+Now edit Decision Environments:
 
 Click the three dots, then btn:[Edit decision environment].
 
@@ -321,18 +321,18 @@ image::lab003-add009.png[lab003-add009,100%,100%,link=self,window=_blank]
 
 image::lab003-add010.png[lab003-add010,100%,100%,link=self,window=_blank]
 
-In credential add *redhat*.
+In credential, add *redhat*.
 
 image::lab003-add011.png[lab003-add011,100%,100%,link=self,window=_blank]
 
 Click btn:[Save Decision Environment].
 
 
-Now create the RuleBook:
+Now create the Rulebook:
 
 NOTE: The Rulebook will not be able to be located. You need to resolve this issue.
 
-Under Automation Decisions > Rulebook Activations, Click btn:[Create rulebook activation]:
+Under Automation Decisions > Rulebook Activations, click btn:[Create rulebook activation]:
 
 [source,bash]
 ----
